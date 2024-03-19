@@ -1,0 +1,133 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ce7780f9f423548b7c35e380c4df36, type: 3}
+  m_Name: small_world_preset
+  m_EditorClassIdentifier: 
+  presetName: small
+  size: 300
+  scale: 5
+  biomes:
+  - ID: cave
+    GroundTile: {fileID: 11400000, guid: f1a5acb91f8282f47b42b9b72d8f91fd, type: 2}
+    WallsTile: {fileID: 11400000, guid: 6b74cfc64f729d942ac9206201b3bf46, type: 2}
+    MinBiomeHeight: 0
+    MaxBiomeHeight: 1
+    Points:
+    - TargetHeight: 0.3
+      CellType: 0
+    - TargetHeight: 0.5
+      CellType: 1
+    - TargetHeight: 0.7
+      CellType: 0
+  objects:
+  - Prefab: {fileID: 3647170533468332458, guid: 05cbf57c81125374f928e524ddbf461b, type: 3}
+    BiomeID: cave
+    CellType: 0
+    NeedRotate: 1
+    StartCount: 250
+    MaxCount: 0
+  - Prefab: {fileID: 788848808171410180, guid: a4fc04716c3096f438df8506c75b88ec, type: 3}
+    BiomeID: cave
+    CellType: 0
+    NeedRotate: 1
+    StartCount: 250
+    MaxCount: 0
+  - Prefab: {fileID: 2600926962206698055, guid: 53aeb8c4f21dc0845a2a8d7c208d8e2a, type: 3}
+    BiomeID: cave
+    CellType: 0
+    NeedRotate: 0
+    StartCount: 50
+    MaxCount: 0
+  - Prefab: {fileID: 8758121524616475911, guid: 1588f3d2ba63dc148a8f806298a305a1, type: 3}
+    BiomeID: cave
+    CellType: 0
+    NeedRotate: 0
+    StartCount: 50
+    MaxCount: 0
+  - Prefab: {fileID: 1300054888596583501, guid: 53cab0467dc6aff4a9e8012e9dceaddb, type: 3}
+    BiomeID: cave
+    CellType: 0
+    NeedRotate: 0
+    StartCount: 50
+    MaxCount: 0
+  - Prefab: {fileID: 7046162383461145406, guid: 9e0493ca02e663e40990941dff7cb030, type: 3}
+    BiomeID: cave
+    CellType: 0
+    NeedRotate: 0
+    StartCount: 35
+    MaxCount: 0
+  - Prefab: {fileID: 671699448977818292, guid: 94fb9d76cb508d64babf7fdbd0a94447, type: 3}
+    BiomeID: cave
+    CellType: 0
+    NeedRotate: 0
+    StartCount: 35
+    MaxCount: 0
+  - Prefab: {fileID: 1031523874647070758, guid: b5c1999ff7d82e447ab79c1728244479, type: 3}
+    BiomeID: cave
+    CellType: 0
+    NeedRotate: 0
+    StartCount: 35
+    MaxCount: 0
+  - Prefab: {fileID: 3737960709294202625, guid: 37fe48fc2d232a147964b587e9748e63, type: 3}
+    BiomeID: cave
+    CellType: 0
+    NeedRotate: 0
+    StartCount: 45
+    MaxCount: 0
+  - Prefab: {fileID: 6626605845696246614, guid: f8132ccb626bee447877bce84f07957b, type: 3}
+    BiomeID: cave
+    CellType: 0
+    NeedRotate: 0
+    StartCount: 45
+    MaxCount: 0
+  - Prefab: {fileID: 6963574600671772603, guid: 7d4952ea7d19fb345a435e34ef1d5ce4, type: 3}
+    BiomeID: cave
+    CellType: 0
+    NeedRotate: 0
+    StartCount: 45
+    MaxCount: 0
+  - Prefab: {fileID: 6698089783258496947, guid: 1a984ffc2706ad4428ebfc4529af6feb, type: 3}
+    BiomeID: cave
+    CellType: 0
+    NeedRotate: 0
+    StartCount: 45
+    MaxCount: 0
+  - Prefab: {fileID: 7083254448836019092, guid: 454fa24aa80f157409d6aa340a12dedf, type: 3}
+    BiomeID: cave
+    CellType: 0
+    NeedRotate: 0
+    StartCount: 45
+    MaxCount: 0
+  - Prefab: {fileID: 5044668153400794537, guid: da38378a1a5010f42b55659e99fc777d, type: 3}
+    BiomeID: cave
+    CellType: 0
+    NeedRotate: 0
+    StartCount: 25
+    MaxCount: 0
+  - Prefab: {fileID: 7780489212177591498, guid: c77eb29ae506d3b48b595933bd2876ce, type: 3}
+    BiomeID: cave
+    CellType: 0
+    NeedRotate: 0
+    StartCount: 25
+    MaxCount: 0
+  - Prefab: {fileID: 8829300078591520223, guid: 96c3d05ffdcabef448c6a2e23c1db06f, type: 3}
+    BiomeID: cave
+    CellType: 0
+    NeedRotate: 0
+    StartCount: 25
+    MaxCount: 0
+  - Prefab: {fileID: 508375527209005265, guid: 710f1e6bfd9de9b4e85b6d2fe0f3b54b, type: 3}
+    BiomeID: cave
+    CellType: 0
+    NeedRotate: 0
+    StartCount: 15
+    MaxCount: 0
