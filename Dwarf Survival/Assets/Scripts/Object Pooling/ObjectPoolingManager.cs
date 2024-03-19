@@ -39,4 +39,18 @@ public class ObjectPoolingManager : MonoBehaviour
             return cachedPoolables[prefab.PoolID].GetObject() as T;
         }
     }
+
+    public T GetPoolable<T>(T prefab, Vector3 spawnPos, int poolableCount = 2) where T : PoolableObject
+    {
+        if (cachedPoolables.ContainsKey(prefab.PoolID))
+        {
+            return cachedPoolables[prefab.PoolID].GetObject() as T;
+        }
+        else
+        {
+            PoolObjects<PoolableObject> newPool = new PoolObjects<PoolableObject>(prefab, poolableCount, true);
+            cachedPoolables.Add(prefab.PoolID, newPool);
+            return cachedPoolables[prefab.PoolID].GetObject() as T;
+        }
+    }
 }

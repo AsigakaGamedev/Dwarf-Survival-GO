@@ -29,6 +29,12 @@ MonoBehaviour:
     - TargetHeight: 0.7
       CellType: 0
   objects:
+  - Prefab: {fileID: 2040965218900927825, guid: 99318b7732180784786d8b5a6132342e, type: 3}
+    BiomeID: cave
+    CellType: 0
+    NeedRotate: 0
+    StartCount: 150
+    MaxCount: 0
   - Prefab: {fileID: 3647170533468332458, guid: 05cbf57c81125374f928e524ddbf461b, type: 3}
     BiomeID: cave
     CellType: 0

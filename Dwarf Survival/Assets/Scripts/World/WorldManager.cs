@@ -85,12 +85,11 @@ public class WorldManager : MonoBehaviour, IInitializable
             for (int i = 0; i < worldObject.StartCount; i++)
             {
                 PoolableObject newObject = poolingManager.GetPoolable(worldObject.Prefab, worldObject.StartCount);
-                newObject.transform.parent = transform;
+                //newObject.transform.parent = transform;
                 
                 if (worldObject.NeedRotate) newObject.transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
 
                 WorldCellData randomCell = GetRandomCell(worldObject.BiomeID, worldObject.CellType);
-
                 newObject.transform.position = new Vector2(randomCell.PosX, randomCell.PosY);
             }
         }
@@ -136,6 +135,11 @@ public class WorldManager : MonoBehaviour, IInitializable
         }
 
         return randomCell;
+    }
+
+    public WorldCellData GetCell(Vector2 rawPos)
+    {
+        return worldCells[(int)rawPos.x, (int)rawPos.y];
     }
 }
 
