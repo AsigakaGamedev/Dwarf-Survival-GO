@@ -13,6 +13,8 @@ public class InputsManager : MonoBehaviour, IInitializable
 
     public Action onAttack;
 
+    public Action onInventoryOpen;
+
     public static InputsManager Instance;
 
     public void OnInitialize()
@@ -37,5 +39,7 @@ public class InputsManager : MonoBehaviour, IInitializable
         onMove?.Invoke(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
 
         if (Input.GetMouseButton(0)) onAttack?.Invoke();
+
+        if (Input.GetKeyDown(KeyCode.I)) onInventoryOpen?.Invoke();
     }
 }

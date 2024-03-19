@@ -13,6 +13,8 @@ public class PlayerManager : MonoBehaviour, IInitializable
 
     private WorldManager worldManager;
     private CameraManager cameraManager;
+    private InputsManager inputsManager;
+    private UIManager uiManager;
 
     public PlayerActorController PlayerInstance { get => playerInstance; }
 
@@ -20,17 +22,28 @@ public class PlayerManager : MonoBehaviour, IInitializable
     {
         worldManager = WorldManager.Instance;
         cameraManager = CameraManager.Instance;
+        inputsManager = InputsManager.Instance;
+        uiManager = ServiceLocator.GetService<UIManager>();
 
         WorldCellData spawnCell = worldManager.GetRandomCell(playerSpawnBiome, WorldCellType.Ground);
         playerInstance = Instantiate(playerPrefab, new Vector2(spawnCell.PosX, spawnCell.PosY), Quaternion.identity, transform);
         playerInstance.OnInitialize();
         cameraManager.SetCameraTarget(playerInstance.transform);
 
+        inputsManager.onInventoryOpen += OnInventoryOpenClick;
+
         print("Player Manager инициализирован");
     }
 
     public void OnDeinitialize()
     {
+        inputsManager.onInventoryOpen -= OnInventoryOpenClick;
+
         playerInstance.OnDeinitialize();
+    }
+
+    private void OnInventoryOpenClick()
+    {
+        uiManager.ChangeScreen("inventory");
     }
 }
