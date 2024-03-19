@@ -9,10 +9,9 @@ public class InputsManager : MonoBehaviour, IInitializable
 {
     [SerializeField] private InputType inputType;
 
-    public Action<Vector3> onMove;
+    public Action<Vector2> onMove;
 
-    public Action onStartAttackPrepare;
-    public Action onEndAttackPrepare;
+    public Action onAttack;
 
     public static InputsManager Instance;
 
@@ -30,14 +29,13 @@ public class InputsManager : MonoBehaviour, IInitializable
 
     public void OnDeinitialize()
     {
-
+        Instance = null;
     }
 
     private void Update()
     {
-        onMove?.Invoke(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")));
+        onMove?.Invoke(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
 
-        if (Input.GetMouseButtonDown(0)) onStartAttackPrepare?.Invoke();
-        else if (Input.GetMouseButtonUp(0)) onEndAttackPrepare?.Invoke();
+        if (Input.GetMouseButton(0)) onAttack?.Invoke();
     }
 }

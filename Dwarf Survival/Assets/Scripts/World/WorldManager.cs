@@ -22,18 +22,22 @@ public class WorldManager : MonoBehaviour, IInitializable
 
     private ObjectPoolingManager poolingManager;
 
+    public static WorldManager Instance;
+
     public void OnInitialize()
     {
-        print("World Manager инициализирован");
+        poolingManager = ServiceLocator.GetService<ObjectPoolingManager>();
 
-        poolingManager = ServiceLocator.GetService<ObjectPoolingManager>(); 
+        Instance = this;
 
         GenerateCurrent();
+
+        print("World Manager инициализирован");
     }
 
     public void OnDeinitialize()
     {
-
+        Instance = null;
     }
 
     [Button]

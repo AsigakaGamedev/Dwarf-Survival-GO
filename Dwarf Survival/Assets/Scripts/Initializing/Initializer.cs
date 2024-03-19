@@ -7,7 +7,7 @@ public class Initializer : MonoBehaviour
 {
     [SerializeField] private InterfaceReference<IInitializable, MonoBehaviour>[] initializables;
 
-    private void Awake()
+    private void Start()
     {
         foreach (var initializable in initializables)
         {
