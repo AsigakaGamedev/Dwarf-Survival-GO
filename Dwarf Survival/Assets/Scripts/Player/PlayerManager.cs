@@ -12,16 +12,19 @@ public class PlayerManager : MonoBehaviour, IInitializable
     [ReadOnly, SerializeField] private PlayerActorController playerInstance;
 
     private WorldManager worldManager;
+    private CameraManager cameraManager;
 
     public PlayerActorController PlayerInstance { get => playerInstance; }
 
     public void OnInitialize()
     {
         worldManager = WorldManager.Instance;
+        cameraManager = CameraManager.Instance;
 
         WorldCellData spawnCell = worldManager.GetRandomCell(playerSpawnBiome, WorldCellType.Ground);
         playerInstance = Instantiate(playerPrefab, new Vector2(spawnCell.PosX, spawnCell.PosY), Quaternion.identity, transform);
         playerInstance.OnInitialize();
+        cameraManager.SetCameraTarget(playerInstance.transform);
 
         print("Player Manager инициализирован");
     }
