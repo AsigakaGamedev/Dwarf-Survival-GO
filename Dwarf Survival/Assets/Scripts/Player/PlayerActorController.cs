@@ -9,6 +9,8 @@ public class PlayerActorController : MonoBehaviour, IInitListener, IUpdateListen
     private InputsManager inputs;
     private UIManager uiManager;
 
+    public Actor Actor { get => actor; }
+
     public void OnInitialize()
     {
         actor.OnInitialize();
