@@ -26,7 +26,7 @@ public class InteractionsController : MonoBehaviour
         {
             foreach (Collider2D collider in collidersAround)
             {
-                if (collider.TryGetComponent(out InteractableObject newInteract))
+                if (!collider.isTrigger && collider.TryGetComponent(out InteractableObject newInteract))
                 {
                     if (selectedInteractable)
                     {
