@@ -14,6 +14,7 @@ public class InputsManager : MonoBehaviour, IInitListener, IDeinitListener
     public Action onAttack;
 
     public Action onInventoryOpen;
+    public Action onInteract;
 
     public static InputsManager Instance;
 
@@ -41,5 +42,6 @@ public class InputsManager : MonoBehaviour, IInitListener, IDeinitListener
         if (Input.GetMouseButton(0)) onAttack?.Invoke();
 
         if (Input.GetKeyDown(KeyCode.I)) onInventoryOpen?.Invoke();
+        if (Input.GetKeyDown(KeyCode.F)) onInteract?.Invoke();
     }
 }

@@ -9,6 +9,9 @@ public class InteractableObject : MonoBehaviour
     [Space]
     [SerializeField] private bool deactivateOnInteract;
 
+    [Space]
+    [SerializeField] private List<AInteractionComponent> components;
+
     private void Start()
     {
         HideOutline();
@@ -22,5 +25,22 @@ public class InteractableObject : MonoBehaviour
     public void HideOutline()
     {
         if (outline) outline.SetActive(false);
+    }
+
+    public void Interact(Actor actor)
+    {
+        foreach (AInteractionComponent component in components)
+        {
+            component.OnInteract(actor);
+        }
+
+        if (deactivateOnInteract) gameObject.SetActive(false);
+    }
+
+    public void AddComponent(AInteractionComponent newComp)
+    {
+        if (components.Contains(newComp)) return;   
+
+        components.Add(newComp);
     }
 }

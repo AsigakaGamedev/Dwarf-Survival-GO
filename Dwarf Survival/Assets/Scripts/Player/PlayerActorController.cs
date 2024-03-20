@@ -6,10 +6,8 @@ public class PlayerActorController : MonoBehaviour, IInitListener, IUpdateListen
 {
     [SerializeField] private Actor actor;
 
-    [Space]
-    [SerializeField] private InteractionsController interactions;
-
     private InputsManager inputs;
+    private UIManager uiManager;
 
     public void OnInitialize()
     {
@@ -17,26 +15,45 @@ public class PlayerActorController : MonoBehaviour, IInitListener, IUpdateListen
         actor.ChangeMovementType(true);
 
         inputs = InputsManager.Instance;
+        uiManager = ServiceLocator.GetService<UIManager>();
 
-        inputs.onMove += OnMove;
+        inputs.onMove += OnMoveInput;
+        inputs.onInteract += OnInteractInput;
+        inputs.onInventoryOpen += OnInventoryOpenInput;
 
         print("Player Actor Controller инициализирован");
     }
 
     public void OnUpdate()
     {
-        interactions.CheckInteractions();
+        actor.Interactions.CheckInteractions();
     }
 
     public void OnDeinitialize()
     {
         actor.OnDeinitialize();
 
-        inputs.onMove -= OnMove;
+        inputs.onMove -= OnMoveInput;
+        inputs.onInteract -= OnInteractInput;
+        inputs.onInventoryOpen -= OnInventoryOpenInput;
     }
 
-    private void OnMove(Vector2 dir)
+    #region Inputs
+
+    private void OnMoveInput(Vector2 dir)
     {
         actor.MoveByDir(dir);
     }
+
+    private void OnInteractInput()
+    {
+        actor.TryInteract();
+    }
+
+    private void OnInventoryOpenInput()
+    {
+        uiManager.ChangeScreen("inventory");
+    }
+
+    #endregion
 }

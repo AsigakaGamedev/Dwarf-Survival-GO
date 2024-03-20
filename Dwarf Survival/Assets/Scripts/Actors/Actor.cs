@@ -12,6 +12,10 @@ public class Actor : MonoBehaviour, IInitListener, IDeinitListener
     [Space]
     [SerializeField] private CharacteristicsController characteristics;
     [SerializeField] private ActorInventory inventory;
+    [SerializeField] private InteractionsController interactions;
+
+    public ActorInventory Inventory { get => inventory; }
+    public InteractionsController Interactions { get => interactions; }
 
     private void OnValidate()
     {
@@ -65,5 +69,10 @@ public class Actor : MonoBehaviour, IInitListener, IDeinitListener
     public void MoveAgent(Vector2 targetPoint)
     {
         agent.SetDestination(targetPoint);
+    }
+
+    public void TryInteract()
+    {
+        interactions.TryInteract(this);
     }
 }

@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -49,5 +50,14 @@ public class InteractionsController : MonoBehaviour
             selectedInteractable.HideOutline();
             selectedInteractable = null;
         }
+    }
+
+    public void TryInteract(Actor actor)
+    {
+        if (!selectedInteractable) return;
+
+        selectedInteractable.Interact(actor);
+        selectedInteractable.HideOutline();
+        selectedInteractable = null;
     }
 }
