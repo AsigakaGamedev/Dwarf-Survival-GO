@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum InputType { Desktop, Mobile }
 
-public class InputsManager : MonoBehaviour, IInitializable
+public class InputsManager : MonoBehaviour, IInitListener, IDeinitListener
 {
     [SerializeField] private InputType inputType;
 
@@ -19,7 +19,7 @@ public class InputsManager : MonoBehaviour, IInitializable
 
     public void OnInitialize()
     {
-        print("Inputs Manager Инициализирован");
+        print("Inputs Manager инициализирован");
 
         Instance = this;
 

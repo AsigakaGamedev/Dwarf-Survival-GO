@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UIBuildingsPanel : MonoBehaviour, IInitializable
+public class UIBuildingsPanel : MonoBehaviour, IInitListener, IDeinitListener
 {
     [SerializeField] private UIBuildingsType[] typesBtns;
 
@@ -41,6 +41,8 @@ public class UIBuildingsPanel : MonoBehaviour, IInitializable
         }
 
         OnTypeChange(BuildingType.Other);
+
+        print("UI Buildings Panel инициализирован");
     }
 
     public void OnDeinitialize()

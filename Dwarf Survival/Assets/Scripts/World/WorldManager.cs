@@ -9,7 +9,7 @@ using UnityEngine.Tilemaps;
 
 public enum WorldCellType { Ground, Wall }
 
-public class WorldManager : MonoBehaviour, IInitializable
+public class WorldManager : MonoBehaviour, IInitListener, IDeinitListener
 {
     [Expandable, SerializeField] private WorldPreset currentPreset;
 

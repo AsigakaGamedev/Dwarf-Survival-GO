@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour, IInitializable
+public class UIManager : MonoBehaviour, IInitListener, IDeinitListener
 {
     [SerializeField] private string startScreen;
     [SerializeField] private UIScreen[] screens;

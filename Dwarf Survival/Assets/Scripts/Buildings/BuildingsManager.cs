@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum BuildingType { Other, Craft, Defence }
 
-public class BuildingsManager : MonoBehaviour, IInitializable
+public class BuildingsManager : MonoBehaviour, IInitListener, IDeinitListener
 {
     [SerializeField] private BuildingObject[] allBuildingsPrefabs;
 
@@ -25,6 +25,8 @@ public class BuildingsManager : MonoBehaviour, IInitializable
 
         poolingManager = ServiceLocator.GetService<ObjectPoolingManager>();
         mainCamera = Camera.main;
+
+        print("Buildings Manager инициализирован");
     }
 
     public void OnDeinitialize()

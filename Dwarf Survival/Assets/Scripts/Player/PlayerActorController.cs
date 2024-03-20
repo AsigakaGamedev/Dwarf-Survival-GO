@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerActorController : MonoBehaviour, IInitializable
+public class PlayerActorController : MonoBehaviour, IInitListener, IDeinitListener
 {
     [SerializeField] private Actor actor;
+
+    [Space]
+    [SerializeField] private InteractionsController interactions;
 
     private InputsManager inputs;
 
@@ -16,6 +19,8 @@ public class PlayerActorController : MonoBehaviour, IInitializable
         inputs = InputsManager.Instance;
 
         inputs.onMove += OnMove;
+
+        print("Player Actor Controller инициализирован");
     }
 
     public void OnDeinitialize()

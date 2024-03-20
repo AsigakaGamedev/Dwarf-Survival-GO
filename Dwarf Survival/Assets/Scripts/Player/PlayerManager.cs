@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour, IInitializable
+public class PlayerManager : MonoBehaviour, IInitListener, IDeinitListener
 {
     [SerializeField] private PlayerActorController playerPrefab;
     [SerializeField] private string playerSpawnBiome = "cave";

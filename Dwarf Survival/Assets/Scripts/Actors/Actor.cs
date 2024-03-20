@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Actor : MonoBehaviour, IInitializable
+public class Actor : MonoBehaviour, IInitListener, IDeinitListener
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private NavMeshAgent agent;
