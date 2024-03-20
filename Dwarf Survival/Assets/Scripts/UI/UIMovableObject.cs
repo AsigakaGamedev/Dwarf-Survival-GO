@@ -17,8 +17,6 @@ public class UIMovableObject : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     [Space]
     [Range(0, 1), SerializeField] private float dragAlpha = 0.6f;
 
-    private Vector3 defaultPos;
-
     public void SetParents(Transform origin, Transform drag)
     {
         originParent = origin;
@@ -27,7 +25,6 @@ public class UIMovableObject : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
     {
-        defaultPos = transform.position;
         transform.SetParent(dragParent);
         group.alpha = dragAlpha;
         group.blocksRaycasts = false;
@@ -44,7 +41,7 @@ public class UIMovableObject : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         transform.SetParent(originParent);
         group.alpha = 1;
-        transform.position = defaultPos;
+        transform.localPosition = Vector3.zero;
         group.blocksRaycasts = true;
         OnEnd(eventData);
     }

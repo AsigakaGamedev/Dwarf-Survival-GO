@@ -106,6 +106,7 @@ MonoBehaviour:
   originParent: {fileID: 0}
   dragParent: {fileID: 0}
   dragAlpha: 0.6
+  linkedCell: {fileID: 8992840834436762586}
 --- !u!1 &8286101900994362965
 GameObject:
   m_ObjectHideFlags: 0
