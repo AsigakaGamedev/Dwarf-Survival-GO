@@ -125,7 +125,10 @@ GameObject:
   - component: {fileID: 8283358427365239879}
   - component: {fileID: 3619333044419396633}
   - component: {fileID: 2040965218900927825}
-  m_Layer: 0
+  - component: {fileID: 3641964356301130776}
+  - component: {fileID: 6870253844085787069}
+  - component: {fileID: 1786834705935001224}
+  m_Layer: 10
   m_Name: Mole Dog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,6 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actor: {fileID: 8282222770186760637}
   allStates:
+  - {fileID: 1786834705935001224}
   - {fileID: 3619333044419396633}
   currentState: {fileID: 0}
 --- !u!114 &8282222770186760637
@@ -239,8 +243,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d2f6971f241c04dba2789a5b21945b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: mole_dog
   rb: {fileID: 8752960316129166844}
   agent: {fileID: 8283358427365239879}
+  characteristics: {fileID: 3641964356301130776}
+  inventory: {fileID: 0}
+  interactions: {fileID: 0}
+  vision: {fileID: 6870253844085787069}
+  enemiesID:
+  - player
 --- !u!195 &8283358427365239879
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -291,3 +302,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolID: mole_dog
+--- !u!114 &3641964356301130776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7823870278877199652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c24fcfb3d44b0e43af4e98a9f6ee286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characteristics:
+    _serializedList: []
+--- !u!114 &6870253844085787069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7823870278877199652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c843dbd644522540b9d843f61f35a9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  enemiesCheckRange: 4
+  enemiesCheckDelay: 0.5
+  enemies: []
+--- !u!114 &1786834705935001224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7823870278877199652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5f69a6a1ea70f64b88cc32f505fbb70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

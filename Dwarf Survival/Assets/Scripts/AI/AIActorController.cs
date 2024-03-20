@@ -49,6 +49,7 @@ public class AIActorController : MonoBehaviour
 
                 currentState = state;
                 currentState.OnEnterState();
+                break;
             }
         }
 

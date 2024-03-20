@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3431620532066353168}
   - component: {fileID: 2663528870628309799}
   - component: {fileID: 8239907977075635806}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player Actor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,11 +65,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d2f6971f241c04dba2789a5b21945b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: player
   rb: {fileID: 7052477000795624155}
   agent: {fileID: 1367517034194922355}
   characteristics: {fileID: 2663528870628309799}
   inventory: {fileID: 8239907977075635806}
   interactions: {fileID: 3431620532066353168}
+  vision: {fileID: 0}
+  enemiesID: []
 --- !u!50 &7052477000795624155
 Rigidbody2D:
   serializedVersion: 4
