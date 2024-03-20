@@ -10,7 +10,7 @@ public class InteractableObject : MonoBehaviour
     [SerializeField] private bool deactivateOnInteract;
 
     [Space]
-    [SerializeField] private List<AInteractionComponent> components;
+    [SerializeField] private List<AInteractionComponent> components = new List<AInteractionComponent>();
 
     private void Start()
     {
