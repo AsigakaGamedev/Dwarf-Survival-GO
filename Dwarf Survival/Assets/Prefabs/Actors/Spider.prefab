@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1860049384055190880}
   - component: {fileID: 4863527863643565840}
+  - component: {fileID: 4059442229148335210}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Spider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 1168706663
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 3585760568007889489, guid: b6958cd9f9c29ce4597aaaa72beaefc1, type: 3}
+  m_Sprite: {fileID: -3438905571476058607, guid: 1c5cc67aef1e09444bee8977803fbd23, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,6 +87,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4059442229148335210
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388146001974266244}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2b1bcc516c2c1c54ab8369293abb565e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7823870278877199652
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,9 +125,8 @@ GameObject:
   - component: {fileID: 8283358427365239879}
   - component: {fileID: 3619333044419396633}
   - component: {fileID: 2040965218900927825}
-  - component: {fileID: 5083066357956149958}
   m_Layer: 0
-  m_Name: Cave Bear
+  m_Name: Spider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,7 +183,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.36
 --- !u!50 &8752960316129166844
 Rigidbody2D:
   serializedVersion: 4
@@ -228,7 +250,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7823870278877199652}
   m_Enabled: 0
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.32
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -268,26 +290,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f8b60b7b2013d46a0402b5a8ca6e13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolID: cave_bear
---- !u!95 &5083066357956149958
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7823870278877199652}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d6b61e92a2c8e804783eb6ac6cff8c27, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  poolID: spider
