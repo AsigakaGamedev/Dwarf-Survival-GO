@@ -3,19 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(CharacteristicsController))]
 public class Actor : MonoBehaviour, IInitListener, IDeinitListener
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private NavMeshAgent agent;
 
+    [Space]
+    [SerializeField] private CharacteristicsController characteristics;
+    [SerializeField] private ActorInventory inventory;
+
     private void OnValidate()
     {
         if (agent) agent.enabled = false;
+
+        if (!characteristics) characteristics = GetComponent<CharacteristicsController>();
+
+        if (!inventory) inventory = GetComponent<ActorInventory>();
+
+        if (inventory)
+        {
+            characteristics.AddCharacteristic("cells_count", new CharacteristicEntity(6, 6));
+        }
     }
 
     public void OnInitialize()
     {
         agent.updateRotation = false;
+
+        if (inventory)
+        {
+            inventory.OnInitialize();
+            inventory.SetCellsCount((int)characteristics["cells_count"].CurValue);
+        }
     }
 
     public void OnDeinitialize()

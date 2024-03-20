@@ -26,7 +26,7 @@ public class PlayerManager : MonoBehaviour, IInitListener, IUpdateListener, IDei
         uiManager = ServiceLocator.GetService<UIManager>();
 
         WorldCellData spawnCell = worldManager.GetRandomCell(playerSpawnBiome, WorldCellType.Ground);
-        playerInstance = Instantiate(playerPrefab, new Vector2(spawnCell.PosX + 0.5f, spawnCell.PosY + 0.5f), Quaternion.identity, transform);
+        playerInstance = Instantiate(playerPrefab, new Vector2(spawnCell.PosX + 0.5f, spawnCell.PosY + 0.5f), playerPrefab.transform.rotation, transform);
         playerInstance.OnInitialize();
         cameraManager.SetCameraTarget(playerInstance.transform);
 
