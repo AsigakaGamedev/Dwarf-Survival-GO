@@ -45,7 +45,7 @@ public class AIWalkAround : AIActorState
             
             if (randomCell.CellType == WorldCellType.Ground)
             {
-                actor.MoveAgent(new Vector2(randomCell.PosX, randomCell.PosY));
+                actor.MoveAgent(new Vector2(randomCell.PosX + 0.5f, randomCell.PosY + 0.5f));
             }
         }
         catch { }

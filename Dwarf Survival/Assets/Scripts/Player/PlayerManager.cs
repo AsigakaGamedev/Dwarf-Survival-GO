@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour, IInitListener, IDeinitListener
+public class PlayerManager : MonoBehaviour, IInitListener, IUpdateListener, IDeinitListener
 {
     [SerializeField] private PlayerActorController playerPrefab;
     [SerializeField] private string playerSpawnBiome = "cave";
@@ -26,13 +26,18 @@ public class PlayerManager : MonoBehaviour, IInitListener, IDeinitListener
         uiManager = ServiceLocator.GetService<UIManager>();
 
         WorldCellData spawnCell = worldManager.GetRandomCell(playerSpawnBiome, WorldCellType.Ground);
-        playerInstance = Instantiate(playerPrefab, new Vector2(spawnCell.PosX, spawnCell.PosY), Quaternion.identity, transform);
+        playerInstance = Instantiate(playerPrefab, new Vector2(spawnCell.PosX + 0.5f, spawnCell.PosY + 0.5f), Quaternion.identity, transform);
         playerInstance.OnInitialize();
         cameraManager.SetCameraTarget(playerInstance.transform);
 
         inputsManager.onInventoryOpen += OnInventoryOpenClick;
 
         print("Player Manager инициализирован");
+    }
+
+    public void OnUpdate()
+    {
+        playerInstance.OnUpdate();
     }
 
     public void OnDeinitialize()

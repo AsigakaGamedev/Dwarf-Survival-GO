@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerActorController : MonoBehaviour, IInitListener, IDeinitListener
+public class PlayerActorController : MonoBehaviour, IInitListener, IUpdateListener, IDeinitListener
 {
     [SerializeField] private Actor actor;
 
@@ -21,6 +21,11 @@ public class PlayerActorController : MonoBehaviour, IInitListener, IDeinitListen
         inputs.onMove += OnMove;
 
         print("Player Actor Controller инициализирован");
+    }
+
+    public void OnUpdate()
+    {
+        interactions.CheckInteractions();
     }
 
     public void OnDeinitialize()
