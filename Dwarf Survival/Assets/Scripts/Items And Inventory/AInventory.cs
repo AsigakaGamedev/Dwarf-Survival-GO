@@ -7,6 +7,8 @@ public abstract class AInventory : MonoBehaviour
 {
     [ReadOnly, SerializeField] protected List<InventoryCellEntity> cells;
 
+    public List<InventoryCellEntity> Cells { get => cells; }
+
     public void SetCellsCount(int count)
     {
         for (int i = 0; i < count; i++)

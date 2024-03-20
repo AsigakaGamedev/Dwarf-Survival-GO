@@ -1,18 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class UIInventoryCell : MonoBehaviour
+public class UIInventoryCell : PoolableObject
 {
-    // Start is called before the first frame update
-    void Start()
+    [Space]
+    [SerializeField] private UIMovableItem linkedItem;
+
+    private InventoryCellEntity entity;
+
+    public void SetEntity(InventoryCellEntity entity)
     {
-        
+        this.entity = entity;
+
+        UpdateCell();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetItemParen(Transform dragParent)
     {
-        
+        linkedItem.SetParents(transform, dragParent);
+    }
+
+    public void UpdateCell()
+    {
+        if (entity.ItemInCell != null && entity.ItemInCell.Info)
+        {
+            linkedItem.SetItem(entity.ItemInCell);
+            linkedItem.gameObject.SetActive(true);
+        }
+        else
+        {
+            linkedItem.gameObject.SetActive(false);
+        }
     }
 }

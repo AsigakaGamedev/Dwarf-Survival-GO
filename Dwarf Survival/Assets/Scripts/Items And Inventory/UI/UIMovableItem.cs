@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class UIMovableItem : MonoBehaviour
+public class UIMovableItem : UIMovableObject
 {
-    // Start is called before the first frame update
-    void Start()
+    private ItemEntity linkedItem;
+
+    public void SetItem(ItemEntity item)
     {
-        
+        linkedItem = item;
+
+        iconImg.sprite = linkedItem.Info.CellIcon;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void OnBegin(PointerEventData eventData)
     {
-        
+        iconImg.sprite = linkedItem.Info.MoveIcon;
+    }
+
+    protected override void OnEnd(PointerEventData eventData)
+    {
+        iconImg.sprite = linkedItem.Info.CellIcon;
     }
 }

@@ -16,8 +16,12 @@ public class PlayerManager : MonoBehaviour, IInitListener, IUpdateListener, IDei
 
     public PlayerActorController PlayerInstance { get => playerInstance; }
 
+    public static PlayerManager Instance;
+
     public void OnInitialize()
     {
+        Instance = this;
+
         worldManager = WorldManager.Instance;
         cameraManager = CameraManager.Instance;
 
@@ -36,6 +40,8 @@ public class PlayerManager : MonoBehaviour, IInitListener, IUpdateListener, IDei
 
     public void OnDeinitialize()
     {
+        Instance = null;
+
         playerInstance.OnDeinitialize();
     }
 }

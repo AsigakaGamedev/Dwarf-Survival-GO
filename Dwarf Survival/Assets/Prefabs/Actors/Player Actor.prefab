@@ -188,8 +188,8 @@ MonoBehaviour:
     _serializedList:
     - Key: cells_count
       Value:
-        curValue: 6
-        maxValue: 6
+        curValue: 18
+        maxValue: 18
 --- !u!114 &8239907977075635806
 MonoBehaviour:
   m_ObjectHideFlags: 0

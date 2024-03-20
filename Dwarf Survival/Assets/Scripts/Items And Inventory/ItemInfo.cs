@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="Items/Info")]
 public class ItemInfo : ScriptableObject
 {
-    [SerializeField] private Sprite icon;
+    [ShowAssetPreview, SerializeField] private Sprite cellIcon;
+    [ShowAssetPreview, SerializeField] private Sprite moveIcon;
 
-    public Sprite Icon { get => icon; }
+    public Sprite CellIcon { get => cellIcon; }
+    public Sprite MoveIcon { get => moveIcon; }
 }

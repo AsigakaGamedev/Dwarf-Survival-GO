@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class UIPlayerInventoryPanel : UIInventoryPanel
 {
-    private PlayerManager playerManager;
+    private AInventory playerInventory;
 
-    private void Start()
+    private void OnEnable()
     {
-        
+        if (!playerInventory && PlayerManager.Instance) playerInventory = PlayerManager.Instance.PlayerInstance.Actor.Inventory;
+
+        if (playerInventory)
+        {
+            ShowInventory(playerInventory);
+        }
     }
 }

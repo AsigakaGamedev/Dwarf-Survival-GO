@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0cff115f8f29734e95a6ee9cbb72bd4, type: 3}
   m_Name: item_stone
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  cellIcon: {fileID: -5428206428529569624, guid: 76547c7be8af27c4580b2ab1b09e661f, type: 3}
+  moveIcon: {fileID: -7833671090200325546, guid: 76547c7be8af27c4580b2ab1b09e661f, type: 3}
