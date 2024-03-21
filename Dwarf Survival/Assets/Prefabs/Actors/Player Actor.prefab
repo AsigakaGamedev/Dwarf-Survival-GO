@@ -933,6 +933,7 @@ GameObject:
   - component: {fileID: 7540527357616798669}
   - component: {fileID: 4735065243254956244}
   - component: {fileID: 1641711390895625608}
+  - component: {fileID: 4475031665431186252}
   m_Layer: 10
   m_Name: cooper_pickaxe
   m_TagString: Untagged
@@ -1034,5 +1035,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3900e12fba9f97b4a9e041c05d9bc09f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allAttacks: []
+  allAttacks:
+  - {fileID: 4475031665431186252}
   attackDelay: 1
+--- !u!114 &4475031665431186252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8726466701793178157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 873d236fe87dd5f43921fee6d9b286d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilesLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  mineRayDistance: 2

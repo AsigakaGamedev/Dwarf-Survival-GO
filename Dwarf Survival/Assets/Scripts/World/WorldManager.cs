@@ -17,6 +17,9 @@ public class WorldManager : MonoBehaviour, IInitListener, IDeinitListener
     [SerializeField] private Tilemap groundTilemap;
     [SerializeField] private Tilemap wallsTilemap;
 
+    [Space]
+    [SerializeField] private TilemapCollider2D wallsTilemapCollider; 
+
     private WorldCellData[,] worldCells;
     private Dictionary<string, WorldBiomeData> biomes;
 
@@ -40,8 +43,9 @@ public class WorldManager : MonoBehaviour, IInitListener, IDeinitListener
         Instance = null;
     }
 
-    [Button]
-    public void GenerateCurrent()
+    #region Generating
+
+    private void GenerateCurrent()
     {
         print("Генерация тайлов...");
 
@@ -62,7 +66,8 @@ public class WorldManager : MonoBehaviour, IInitListener, IDeinitListener
 
                 float height = Mathf.PerlinNoise(xCoord, yCoord);
 
-                WorldBiomeData biome = biomes[GetBiomeID(height, out WorldCellType cellType)];
+                string biomeID = GetBiomeID(height, out WorldCellType cellType);
+                WorldBiomeData biome = biomes[biomeID];
 
                 if (cellType == WorldCellType.Ground)
                 {
@@ -73,7 +78,7 @@ public class WorldManager : MonoBehaviour, IInitListener, IDeinitListener
                     wallsTilemap.SetTile(new Vector3Int(x, y), biome.Info.WallsTile);
                 }
 
-                worldCells[x, y] = new WorldCellData(x, y, cellType);
+                worldCells[x, y] = new WorldCellData(biomeID, x, y, cellType, 3);
                 biome.Cells.Add(worldCells[x, y]);
             }
         }
@@ -85,7 +90,6 @@ public class WorldManager : MonoBehaviour, IInitListener, IDeinitListener
             for (int i = 0; i < worldObject.StartCount; i++)
             {
                 PoolableObject newObject = poolingManager.GetPoolable(worldObject.Prefab, worldObject.StartCount);
-                //newObject.transform.parent = transform;
                 
                 if (worldObject.NeedRotate) newObject.transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
 
@@ -96,6 +100,10 @@ public class WorldManager : MonoBehaviour, IInitListener, IDeinitListener
 
         print("Мир сгенерировался");
     }
+
+    #endregion
+
+    #region Biomes
 
     public string GetBiomeID(float height, out WorldCellType cellType)
     {
@@ -120,6 +128,10 @@ public class WorldManager : MonoBehaviour, IInitListener, IDeinitListener
         throw new System.Exception($"Для высоты {height} не нашёлся биом");
     }
 
+    #endregion
+
+    #region Cells
+
     public WorldCellData GetRandomCell(string biomeID, WorldCellType cellType)
     {
         WorldCellData randomCell = biomes[biomeID].Cells[Random.Range(0, biomes[biomeID].Cells.Count)];
@@ -141,20 +153,50 @@ public class WorldManager : MonoBehaviour, IInitListener, IDeinitListener
     {
         return worldCells[(int)rawPos.x, (int)rawPos.y];
     }
+
+    public bool TryMineCell(Vector2 minePoint, float miningPower)
+    {
+        WorldCellData miningCell = GetCell(minePoint);
+
+        if (miningCell.Health == -1) return false;
+
+        miningCell.Health -= miningPower;
+        //print($"{miningCell.PosX} {miningCell.PosY} : {miningCell.Health}");
+
+        if (miningCell.Health <= 0)
+        {
+            Vector3Int tilePos = new Vector3Int(miningCell.PosX, miningCell.PosY, 0);
+
+            wallsTilemapCollider.enabled = false;
+            miningCell.CellType = WorldCellType.Ground;
+            groundTilemap.SetTile(tilePos, biomes[miningCell.BiomeID].Info.GroundTile);
+            wallsTilemap.SetTile(tilePos, null);
+            wallsTilemapCollider.enabled = true;
+        }
+
+        return true;
+    }
+
+    #endregion
 }
 
-public struct WorldCellData
+public class WorldCellData
 {
+    public readonly string BiomeID;
+
     public readonly int PosX;
     public readonly int PosY;
 
     public WorldCellType CellType;
+    public float Health;
 
-    public WorldCellData(int posX, int posY, WorldCellType cellType)
+    public WorldCellData(string biomeID, int posX, int posY, WorldCellType cellType, float health)
     {
+        BiomeID = biomeID;
         PosX = posX;
         PosY = posY;
         CellType = cellType;
+        Health = health;
     }
 }
 

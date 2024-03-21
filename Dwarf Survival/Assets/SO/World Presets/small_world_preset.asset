@@ -51,19 +51,19 @@ MonoBehaviour:
     BiomeID: cave
     CellType: 0
     NeedRotate: 0
-    StartCount: 100
+    StartCount: 50
     MaxCount: 0
   - Prefab: {fileID: 2040965218900927825, guid: 48a2a2f15ffd5c24c87a22cbef3a5ecf, type: 3}
     BiomeID: cave
     CellType: 0
     NeedRotate: 0
-    StartCount: 100
+    StartCount: 50
     MaxCount: 0
   - Prefab: {fileID: 2040965218900927825, guid: bd1502391162c2f4fbc78d62bb662f18, type: 3}
     BiomeID: cave
     CellType: 0
     NeedRotate: 0
-    StartCount: 100
+    StartCount: 50
     MaxCount: 0
   - Prefab: {fileID: 3647170533468332458, guid: 05cbf57c81125374f928e524ddbf461b, type: 3}
     BiomeID: cave
