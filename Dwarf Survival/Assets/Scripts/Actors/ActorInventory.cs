@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class ActorInventory : AInventory, IInitListener
 {
-    public void OnInitialize()
-    {
-        cells = new List<InventoryCellEntity>();
-    }
+
 }

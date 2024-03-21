@@ -10,6 +10,6 @@ public class MeleeAttack : AAttack
 
     public override void OnAttack(Vector2 dir)
     {
-        print("Melee Attack");
+
     }
 }

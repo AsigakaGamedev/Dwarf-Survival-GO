@@ -3,11 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AInventory : MonoBehaviour
+public abstract class AInventory : MonoBehaviour, IInitListener
 {
+    [SerializeField] private ItemData[] startItems;
+
+    [Space]
     [ReadOnly, SerializeField] protected List<InventoryCellEntity> cells;
 
     public List<InventoryCellEntity> Cells { get => cells; }
+
+    public void OnInitialize()
+    {
+        cells = new List<InventoryCellEntity>();
+    }
+
+    public void AddStartItems()
+    {
+        foreach (ItemData startItem in startItems)
+        {
+            AddItem(startItem);
+        }
+    }
 
     public void SetCellsCount(int count)
     {

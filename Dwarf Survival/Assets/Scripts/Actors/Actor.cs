@@ -63,6 +63,7 @@ public class Actor : MonoBehaviour, IInitListener, IDeinitListener
         {
             inventory.OnInitialize();
             inventory.SetCellsCount((int)characteristics["cells_count"].Value);
+            inventory.AddStartItems();
         }
 
         if (vision)
