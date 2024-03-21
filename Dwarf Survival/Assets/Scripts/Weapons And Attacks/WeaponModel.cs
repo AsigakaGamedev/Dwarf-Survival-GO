@@ -2,8 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponModel : MonoBehaviour
+public class WeaponModel : MonoBehaviour, IInitListener
 {
+    [SerializeField] private AttacksHandler attackHandler;
+
+    public void OnInitialize()
+    {
+        attackHandler.OnInitialize();
+    }
+
+    public bool TryAttack(Vector2 dir)
+    {
+        return attackHandler.TryAttack(dir);   
+    }
+
     public void OnEquip()
     {
         gameObject.SetActive(true);

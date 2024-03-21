@@ -10,6 +10,7 @@ public class InputsManager : MonoBehaviour, IInitListener, IDeinitListener
     [SerializeField] private InputType inputType;
 
     public Action<Vector2> onMove;
+    public Action<Vector2> onLook;
 
     public Action onAttack;
 

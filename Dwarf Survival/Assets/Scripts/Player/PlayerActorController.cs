@@ -8,6 +8,7 @@ public class PlayerActorController : MonoBehaviour, IInitListener, IUpdateListen
 
     private InputsManager inputs;
     private UIManager uiManager;
+    private Camera mainCamera;
 
     public Actor Actor { get => actor; }
 
@@ -18,8 +19,10 @@ public class PlayerActorController : MonoBehaviour, IInitListener, IUpdateListen
 
         inputs = InputsManager.Instance;
         uiManager = ServiceLocator.GetService<UIManager>();
+        mainCamera = Camera.main;
 
         inputs.onMove += OnMoveInput;
+        inputs.onAttack += OnAttackInput;
         inputs.onInteract += OnInteractInput;
         inputs.onInventoryOpen += OnInventoryOpenInput;
 
@@ -36,6 +39,7 @@ public class PlayerActorController : MonoBehaviour, IInitListener, IUpdateListen
         actor.OnDeinitialize();
 
         inputs.onMove -= OnMoveInput;
+        inputs.onAttack -= OnAttackInput;
         inputs.onInteract -= OnInteractInput;
         inputs.onInventoryOpen -= OnInventoryOpenInput;
     }
@@ -50,6 +54,13 @@ public class PlayerActorController : MonoBehaviour, IInitListener, IUpdateListen
     private void OnInteractInput()
     {
         actor.TryInteract();
+    }
+
+    private void OnAttackInput()
+    {
+        Vector2 attackDir = mainCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        attackDir.Normalize();
+        actor.Attack(attackDir);
     }
 
     private void OnInventoryOpenInput()

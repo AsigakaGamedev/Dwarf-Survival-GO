@@ -61,6 +61,11 @@ public class Actor : MonoBehaviour, IInitListener, IDeinitListener
             vision.Actor = this;
             vision.OnInitialize();
         }
+
+        if (weapons)
+        {
+            weapons.OnInitialize();
+        }
     }
 
     public void OnDeinitialize()
@@ -112,6 +117,11 @@ public class Actor : MonoBehaviour, IInitListener, IDeinitListener
         {
             enemiesID.Add(newEnemy);
         }
+    }
+
+    public void Attack(Vector2 dir)
+    {
+        if (weapons) weapons.TryAttack(dir);
     }
 
     #endregion
