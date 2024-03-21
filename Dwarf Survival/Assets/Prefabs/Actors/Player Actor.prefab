@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 3431620532066353168}
   - component: {fileID: 2663528870628309799}
   - component: {fileID: 8239907977075635806}
+  - component: {fileID: 7736019347785914835}
   m_Layer: 10
   m_Name: Player Actor
   m_TagString: Untagged
@@ -218,8 +219,8 @@ MonoBehaviour:
   id: player
   rb: {fileID: 7052477000795624155}
   agent: {fileID: 1367517034194922355}
-  lookBody: {fileID: 0}
   characteristics: {fileID: 2663528870628309799}
+  health: {fileID: 7736019347785914835}
   inventory: {fileID: 8239907977075635806}
   interactions: {fileID: 3431620532066353168}
   vision: {fileID: 0}
@@ -345,7 +346,9 @@ MonoBehaviour:
     - Key: cells_count
       Value:
         curValue: 18
-        maxValue: 18
+    - Key: max_health
+      Value:
+        curValue: 100
 --- !u!114 &8239907977075635806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,6 +362,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cells: []
+--- !u!114 &7736019347785914835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754703439877410341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a51a1c72782ee4bb0e8fa02baa2de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  curHealth: 100
 --- !u!1 &1963582003012193556
 GameObject:
   m_ObjectHideFlags: 0

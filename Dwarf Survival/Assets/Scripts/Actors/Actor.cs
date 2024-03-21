@@ -15,6 +15,7 @@ public class Actor : MonoBehaviour, IInitListener, IDeinitListener
 
     [Space]
     [SerializeField] private CharacteristicsController characteristics;
+    [SerializeField] private HealthController health;
     [SerializeField] private ActorInventory inventory;
     [SerializeField] private InteractionsController interactions;
     [SerializeField] private ActorVision vision;
@@ -42,7 +43,15 @@ public class Actor : MonoBehaviour, IInitListener, IDeinitListener
 
         if (inventory)
         {
-            characteristics.AddCharacteristic("cells_count", new CharacteristicEntity(6, 6));
+            characteristics.AddCharacteristic("cells_count", new CharacteristicEntity(6));
+        }
+
+        if (!health) inventory = GetComponent<ActorInventory>();
+
+        if (health)
+        {
+            characteristics.AddCharacteristic("max_health", new CharacteristicEntity(100));
+            health.SetMaxHealth(characteristics["max_health"].Value);
         }
     }
 
@@ -53,7 +62,7 @@ public class Actor : MonoBehaviour, IInitListener, IDeinitListener
         if (inventory)
         {
             inventory.OnInitialize();
-            inventory.SetCellsCount((int)characteristics["cells_count"].CurValue);
+            inventory.SetCellsCount((int)characteristics["cells_count"].Value);
         }
 
         if (vision)
@@ -65,6 +74,11 @@ public class Actor : MonoBehaviour, IInitListener, IDeinitListener
         if (weapons)
         {
             weapons.OnInitialize();
+        }
+
+        if (health)
+        {
+            health.SetMaxHealth(characteristics["max_health"].Value);
         }
     }
 

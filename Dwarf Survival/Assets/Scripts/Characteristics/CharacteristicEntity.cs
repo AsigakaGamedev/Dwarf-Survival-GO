@@ -6,19 +6,16 @@ using UnityEngine;
 public class CharacteristicEntity 
 {
     [SerializeField] private float curValue;
-    [SerializeField] private float maxValue;
 
-    public CharacteristicEntity(float curValue, float maxValue)
+    public CharacteristicEntity(float curValue)
     {
         this.curValue = curValue;
-        this.maxValue = maxValue;
     }
 
-    public float CurValue { get => curValue;
+    public float Value { get => curValue;
         set
         {
-            curValue = Mathf.Clamp(value, 0, maxValue);
+            curValue = value;
         }
     }
-    public float MaxValue { get => maxValue; set => maxValue = value; }
 }

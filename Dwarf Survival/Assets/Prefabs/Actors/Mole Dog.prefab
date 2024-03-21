@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 3641964356301130776}
   - component: {fileID: 6870253844085787069}
   - component: {fileID: 1786834705935001224}
+  - component: {fileID: 2908905318515902245}
   m_Layer: 10
   m_Name: Mole Dog
   m_TagString: Untagged
@@ -247,9 +248,12 @@ MonoBehaviour:
   rb: {fileID: 8752960316129166844}
   agent: {fileID: 8283358427365239879}
   characteristics: {fileID: 3641964356301130776}
+  health: {fileID: 2908905318515902245}
   inventory: {fileID: 0}
   interactions: {fileID: 0}
   vision: {fileID: 6870253844085787069}
+  equipments: {fileID: 0}
+  weapons: {fileID: 0}
   enemiesID:
   - player
 --- !u!195 &8283358427365239879
@@ -315,7 +319,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characteristics:
-    _serializedList: []
+    _serializedList:
+    - Key: max_health
+      Value:
+        curValue: 100
 --- !u!114 &6870253844085787069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,3 +353,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f69a6a1ea70f64b88cc32f505fbb70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2908905318515902245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7823870278877199652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a51a1c72782ee4bb0e8fa02baa2de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  curHealth: 100
