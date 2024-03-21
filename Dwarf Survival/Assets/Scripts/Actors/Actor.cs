@@ -18,6 +18,7 @@ public class Actor : MonoBehaviour, IInitListener, IDeinitListener
     [SerializeField] private ActorInventory inventory;
     [SerializeField] private InteractionsController interactions;
     [SerializeField] private ActorVision vision;
+    [SerializeField] private EquipmentsController equipments;
 
     [Space]
     [SerializeField] private List<string> enemiesID;
@@ -27,6 +28,7 @@ public class Actor : MonoBehaviour, IInitListener, IDeinitListener
     public ActorInventory Inventory { get => inventory; }
     public InteractionsController Interactions { get => interactions; }
     public ActorVision Vision { get => vision; }
+    public EquipmentsController Equipments { get => equipments; }
 
     private void OnValidate()
     {
