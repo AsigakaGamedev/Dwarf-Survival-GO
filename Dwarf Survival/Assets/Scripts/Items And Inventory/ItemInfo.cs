@@ -8,11 +8,16 @@ public class ItemInfo : ScriptableObject
 {
     [ShowAssetPreview, SerializeField] private Sprite cellIcon;
     [ShowAssetPreview, SerializeField] private Sprite moveIcon;
-    [ShowAssetPreview, ShowIf(nameof(isEquipable)), SerializeField] private Sprite equipmentIcon;
+    [ShowAssetPreview, ShowIf(nameof(hasEquipmentIcon)), SerializeField] private Sprite equipmentIcon;
 
     [Space]
     [SerializeField] private bool isEquipable;
     [ShowIf(nameof(isEquipable)), SerializeField] private int equipSlotID;
+
+    [Space]
+    [SerializeField] private bool isWeapon;
+
+    private bool hasEquipmentIcon => isWeapon || isEquipable;
 
     public Sprite CellIcon { get => cellIcon; }
     public Sprite MoveIcon { get => moveIcon; }
@@ -20,4 +25,6 @@ public class ItemInfo : ScriptableObject
 
     public bool IsEquipable { get => isEquipable; }
     public int EquipSlotID { get => equipSlotID; }
+
+    public bool IsWeapon { get => isWeapon; }
 }
