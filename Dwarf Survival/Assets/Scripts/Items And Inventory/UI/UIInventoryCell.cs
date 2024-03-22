@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -8,6 +9,7 @@ public class UIInventoryCell : PoolableObject, IDropHandler
 {
     [Space]
     [SerializeField] private UIMovableItem linkedItem;
+    [SerializeField] private TextMeshProUGUI itemAmountText;
 
     private InventoryCellEntity entity;
 
@@ -31,11 +33,14 @@ public class UIInventoryCell : PoolableObject, IDropHandler
         {
             linkedItem.SetItem(entity.ItemInCell);
             linkedItem.gameObject.SetActive(true);
+            itemAmountText.text = entity.ItemInCell.Amount.ToString();
+            itemAmountText.gameObject.SetActive(true);
         }
         else
         {
             linkedItem.SetItem(null);
             linkedItem.gameObject.SetActive(false);
+            itemAmountText.gameObject.SetActive(false);
         }
     }
 

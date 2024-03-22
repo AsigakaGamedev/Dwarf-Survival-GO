@@ -31,7 +31,7 @@ public class UIMovableItem : UIMovableObject
     protected override void OnEnd(PointerEventData eventData)
     {
         if (linkedItem == null || linkedItem.Info == null) return;
-
+        
         iconImg.sprite = linkedItem.Info.CellIcon;
     }
 }
