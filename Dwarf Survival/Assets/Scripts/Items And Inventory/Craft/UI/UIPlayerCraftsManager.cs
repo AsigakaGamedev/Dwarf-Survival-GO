@@ -21,6 +21,10 @@ public class UIPlayerCraftsManager : MonoBehaviour, IInitListener, IDeinitListen
     [Space]
     [SerializeField] private Button craftSelectedBtn;
 
+    [Header("Needed Craft Items")]
+    [SerializeField] private UICraftNeededItem neededItemPrefab;
+    [SerializeField] private Transform neededItemsContent;
+
     [Space]
     [ReadOnly, SerializeField] private CraftInfo selectedCraftInfo;
 
@@ -31,12 +35,15 @@ public class UIPlayerCraftsManager : MonoBehaviour, IInitListener, IDeinitListen
 
     private List<UICraftRecipe> spawnedRecipies;
 
+    private List<UICraftNeededItem> spawnedNeededItems;
+
     public static UIPlayerCraftsManager Instance;
 
     private void OnDisable()
     {
         possibleCrafts = null;
         resultInventory = null;
+        selectedCraftInfo = null;
         selectedCraftPanel.gameObject.SetActive(false);
     }
 
@@ -53,6 +60,7 @@ public class UIPlayerCraftsManager : MonoBehaviour, IInitListener, IDeinitListen
         }
 
         spawnedRecipies = new List<UICraftRecipe>();
+        spawnedNeededItems = new List<UICraftNeededItem>();
 
         craftSelectedBtn.onClick.AddListener(() =>
         {
@@ -107,6 +115,31 @@ public class UIPlayerCraftsManager : MonoBehaviour, IInitListener, IDeinitListen
         selectedCraftName.text = info.RecipeName;
         selectedCraftDesc.text = info.RecipeDesc;
 
+        foreach (UICraftNeededItem spawnedNItem in spawnedNeededItems)
+        {
+            spawnedNItem.gameObject.SetActive(false);
+        }
+
+        spawnedNeededItems.Clear();
+
+        bool canCraft = true;
+
+        foreach (ItemData neededItem in info.NeededItems)
+        {
+            UICraftNeededItem newNeededItem = poolingManager.GetPoolable(neededItemPrefab);
+            newNeededItem.transform.SetParent(neededItemsContent);
+            newNeededItem.transform.localScale = Vector3.one;
+
+            if (!resultInventory.HasItem(neededItem, out int curAmount))
+            {
+                canCraft = false;
+            }
+           
+            newNeededItem.SetData(neededItem.Info.CellIcon, curAmount, neededItem.RandomAmount);
+            spawnedNeededItems.Add(newNeededItem);
+        }
+
+        craftSelectedBtn.interactable = canCraft;
         selectedCraftPanel.SetActive(true);
     }
 

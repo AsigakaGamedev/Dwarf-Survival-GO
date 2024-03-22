@@ -51,12 +51,15 @@ public abstract class AInventory : MonoBehaviour, IInitListener
         }
     }
 
-    public bool HasItems(ItemData[] items)
+    public bool HasItem(ItemData searchItem, out int amount)
     {
-        foreach (ItemData item in items)
-        {
+        InventoryCellEntity cell = GetCell(searchItem.Info);
+        amount = 0;
 
-        }
+        if (cell == null) return false;
+
+        amount = cell.ItemInCell.Amount;
+        if (cell.ItemInCell.Amount < searchItem.RandomAmount) return false;
 
         return true;
     }
