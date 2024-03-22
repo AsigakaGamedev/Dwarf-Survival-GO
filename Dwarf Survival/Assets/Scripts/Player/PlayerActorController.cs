@@ -73,7 +73,7 @@ public class PlayerActorController : MonoBehaviour, IInitListener, IUpdateListen
     private void OnPlayerCraftOpenInput()
     {
         uiManager.ChangeScreen("craft");
-        UIPlayerCraftsManager.Instance.Open(actor.Inventory.PossibleCrafts, actor.Inventory);
+        UIPlayerCraftsManager.Instance.Open(actor.Inventory.PossibleCrafts, actor.Inventory, "Player");
     }
 
     #endregion

@@ -9,7 +9,7 @@ public class UIPlayerCraftsManager : MonoBehaviour, IInitListener, IDeinitListen
 {
     [SerializeField] private UICraftType[] types;
 
-    [Space]
+    [Header("Recipies")]
     [SerializeField] private UICraftRecipe recipePrefab;
     [SerializeField] private Transform recipiesContent;
 
@@ -24,6 +24,9 @@ public class UIPlayerCraftsManager : MonoBehaviour, IInitListener, IDeinitListen
     [Header("Needed Craft Items")]
     [SerializeField] private UICraftNeededItem neededItemPrefab;
     [SerializeField] private Transform neededItemsContent;
+
+    [Header("Recipies")]
+    [SerializeField] private TextMeshProUGUI placeText;
 
     [Space]
     [ReadOnly, SerializeField] private CraftInfo selectedCraftInfo;
@@ -150,10 +153,12 @@ public class UIPlayerCraftsManager : MonoBehaviour, IInitListener, IDeinitListen
         craftSelectedBtn.interactable = canCraft;
     }
 
-    public void Open(CraftInfo[] possibleCrafts, AInventory resultInventory)
+    public void Open(CraftInfo[] possibleCrafts, AInventory targetInventory, string placeName)
     {
         this.possibleCrafts = possibleCrafts;
-        this.targetInventory = resultInventory;
+        this.targetInventory = targetInventory;
+
+        placeText.text = placeName;
 
         ChangeType(CraftType.Other);
     }

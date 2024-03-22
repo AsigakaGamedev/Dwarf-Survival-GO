@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 7345493905767591873}
   - component: {fileID: -7887117987402801965}
   - component: {fileID: 2653017784068710827}
+  - component: {fileID: 4371360140281775680}
   m_Layer: 12
   m_Name: bonfire_building
   m_TagString: Untagged
@@ -374,7 +375,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outline: {fileID: 2680484045038940091}
   deactivateOnInteract: 0
-  components: []
+  components:
+  - {fileID: 4371360140281775680}
+--- !u!114 &4371360140281775680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6636480872186882599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc0f144d9a10af84ba63eefdbd6b9c70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stationName: Bonfire
+  stationCrafts:
+  - {fileID: 11400000, guid: f8f3e0dcd7e034c41bfba491481453bf, type: 2}
 --- !u!1 &6754673791446437572
 GameObject:
   m_ObjectHideFlags: 0
