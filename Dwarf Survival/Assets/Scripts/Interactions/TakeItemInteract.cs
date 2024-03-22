@@ -8,6 +8,10 @@ public class TakeItemInteract : AInteractionComponent
 
     public override void OnInteract(Actor actor)
     {
-        if (actor.Inventory) actor.Inventory.AddItem(itemData);
+        if (actor.Inventory)
+        {
+            actor.Inventory.AddItem(itemData);
+            Asigaka.UI.UIEffectsManager.Instance.ShowMovableEffect(transform.position, "player_inventory", itemData.Info.MoveIcon);
+        }
     }
 }

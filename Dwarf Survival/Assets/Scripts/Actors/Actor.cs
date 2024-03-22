@@ -109,7 +109,7 @@ public class Actor : MonoBehaviour, IInitListener, IDeinitListener
 
     public void MoveByDir(Vector2 dir)
     {
-        rb.velocity = dir * 3;
+        rb.velocity = 100 * 2 * Time.fixedDeltaTime * dir;
     }
 
     public void MoveAgent(Vector2 targetPoint)
