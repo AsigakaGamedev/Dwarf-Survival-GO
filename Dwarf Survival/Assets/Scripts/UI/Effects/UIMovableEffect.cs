@@ -30,7 +30,7 @@ namespace Asigaka.UI
             moveDir.Normalize();
             rect.position += moveDir * moveSpeed;
 
-            if (Vector3.Distance(rect.position, endPos) <= 4)
+            if (Vector3.Distance(rect.position, endPos) <= moveSpeed * 2)
             {
                 return true;
             }

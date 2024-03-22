@@ -28,6 +28,10 @@ MonoBehaviour:
       CellType: 1
     - TargetHeight: 0.7
       CellType: 0
+    MiningResultObjects:
+    - prefab: {fileID: 112395275934228911, guid: 6ac2458108471a94aa94a8d57990a9db, type: 3}
+      spawnAmount: 1
+      spawnChance: 50
   objects:
   - Prefab: {fileID: 112395275934228911, guid: 6ac2458108471a94aa94a8d57990a9db, type: 3}
     BiomeID: cave

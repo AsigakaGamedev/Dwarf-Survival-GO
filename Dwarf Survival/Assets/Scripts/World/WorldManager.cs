@@ -94,7 +94,7 @@ public class WorldManager : MonoBehaviour, IInitListener, IDeinitListener
                 if (worldObject.NeedRotate) newObject.transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
 
                 WorldCellData randomCell = GetRandomCell(worldObject.BiomeID, worldObject.CellType);
-                newObject.transform.position = new Vector2(randomCell.PosX, randomCell.PosY);
+                newObject.transform.position = new Vector2(randomCell.PosX, randomCell.PosY) + Vector2.one / 2;
             }
         }
 
@@ -172,6 +172,17 @@ public class WorldManager : MonoBehaviour, IInitListener, IDeinitListener
             groundTilemap.SetTile(tilePos, biomes[miningCell.BiomeID].Info.GroundTile);
             wallsTilemap.SetTile(tilePos, null);
             wallsTilemapCollider.enabled = true;
+
+            foreach (ObjectSpawnData mineResult in biomes[miningCell.BiomeID].Info.MiningResultObjects)
+            {
+                for (int i = 0; i < mineResult.SpawnAmount; i++)
+                {
+                    if (!mineResult.CanSpawn()) continue;
+
+                    PoolableObject spawnedResult = poolingManager.GetPoolable(mineResult.Prefab);
+                    spawnedResult.transform.position = (Vector3)tilePos + Vector3.one / 2;
+                }
+            }
         }
 
         return true;

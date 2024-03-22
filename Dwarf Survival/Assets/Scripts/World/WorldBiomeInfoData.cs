@@ -18,6 +18,9 @@ public struct WorldBiomeInfoData
 
     [Space]
     public WorldBiomePointData[] Points;
+
+    [Space]
+    public ObjectSpawnData[] MiningResultObjects;
 }
 
 [System.Serializable]
