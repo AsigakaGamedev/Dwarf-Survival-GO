@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class ItemEntity
 {
     [SerializeField] private ItemInfo info;
     [SerializeField] private int amount;
+
+    public Action<int> onAmountChange;
 
     public ItemEntity(ItemData data)
     {
@@ -21,5 +24,11 @@ public class ItemEntity
     }
 
     public ItemInfo Info { get => info; set => info = value; }
-    public int Amount { get => amount; set => amount = value; }
+    public int Amount { get => amount;
+        set
+        {
+            amount = value;
+            onAmountChange?.Invoke(amount);
+        }
+    }
 }

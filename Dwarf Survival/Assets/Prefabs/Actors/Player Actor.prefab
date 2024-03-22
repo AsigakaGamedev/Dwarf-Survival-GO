@@ -373,7 +373,8 @@ MonoBehaviour:
     amountRange: {x: 1, y: 1}
   - info: {fileID: 11400000, guid: 1e693bc2d67fa8146a59a66dfbc1f5e2, type: 2}
     amountRange: {x: 1, y: 1}
-  cells: []
+  - info: {fileID: 11400000, guid: 6343f9eefb5e49d4baced6053716711a, type: 2}
+    amountRange: {x: 1, y: 1}
 --- !u!114 &7736019347785914835
 MonoBehaviour:
   m_ObjectHideFlags: 0

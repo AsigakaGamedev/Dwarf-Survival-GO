@@ -11,8 +11,7 @@ public abstract class AInventory : MonoBehaviour, IInitListener
     [Header("Items")]
     [SerializeField] private ItemData[] startItems;
 
-    [Space]
-    [ReadOnly, SerializeField] protected List<InventoryCellEntity> cells;
+    protected List<InventoryCellEntity> cells;
 
     public List<InventoryCellEntity> Cells { get => cells; }
     public CraftInfo[] PossibleCrafts { get => possibleCrafts; }
