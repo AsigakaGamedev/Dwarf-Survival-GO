@@ -11,6 +11,10 @@ public class CraftInfo : ScriptableObject
     [ShowAssetPreview, SerializeField] private Sprite recipeIcon;
 
     [Space]
+    [SerializeField] private string recipeName;
+    [SerializeField] private string recipeDesc;
+
+    [Space]
     [SerializeField] private CraftType type;
 
     [Space]
@@ -18,6 +22,9 @@ public class CraftInfo : ScriptableObject
     [SerializeField] private ItemData[] resultItems;
 
     public Sprite RecipeIcon { get => recipeIcon; }
+
+    public string RecipeName { get => recipeName; }
+    public string RecipeDesc { get => recipeDesc; }
 
     public CraftType Type { get => type; }
 

@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f9834c6e3dd39144844d79ed4d375ec, type: 3}
   m_Name: stone_1
   m_EditorClassIdentifier: 
-  recipeIcon: {fileID: -64774034021574184, guid: 06dbb04a0edd5774b8143e4e5de78639, type: 3}
+  recipeIcon: {fileID: -5428206428529569624, guid: 76547c7be8af27c4580b2ab1b09e661f, type: 3}
+  recipeName: "\u041A\u0430\u043C\u0435\u043D\u044C"
+  recipeDesc: "\u041C\u043E\u0436\u043D\u043E \u043A\u0438\u043D\u0443\u0442\u044C
+    \u0432 \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u0447\u0438\u043A\u0430,
+    \u0435\u0441\u043B\u0438 \u0438\u0433\u0440\u0430 \u043D\u0435 \u043F\u043E\u043D\u0440\u0430\u0432\u0438\u0442\u0441\u044F"
   type: 0
   neededItems:
   - info: {fileID: 11400000, guid: 6343f9eefb5e49d4baced6053716711a, type: 2}

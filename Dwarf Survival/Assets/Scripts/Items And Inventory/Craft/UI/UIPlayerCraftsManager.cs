@@ -1,6 +1,9 @@
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIPlayerCraftsManager : MonoBehaviour, IInitListener, IDeinitListener
 {
@@ -9,6 +12,17 @@ public class UIPlayerCraftsManager : MonoBehaviour, IInitListener, IDeinitListen
     [Space]
     [SerializeField] private UICraftRecipe recipePrefab;
     [SerializeField] private Transform recipiesContent;
+
+    [Header("Selected Craft")]
+    [SerializeField] private GameObject selectedCraftPanel;
+    [SerializeField] private TextMeshProUGUI selectedCraftName;
+    [SerializeField] private TextMeshProUGUI selectedCraftDesc;
+
+    [Space]
+    [SerializeField] private Button craftSelectedBtn;
+
+    [Space]
+    [ReadOnly, SerializeField] private CraftInfo selectedCraftInfo;
 
     private ObjectPoolingManager poolingManager;
 
@@ -23,6 +37,7 @@ public class UIPlayerCraftsManager : MonoBehaviour, IInitListener, IDeinitListen
     {
         possibleCrafts = null;
         resultInventory = null;
+        selectedCraftPanel.gameObject.SetActive(false);
     }
 
     public void OnInitialize()
@@ -38,6 +53,11 @@ public class UIPlayerCraftsManager : MonoBehaviour, IInitListener, IDeinitListen
         }
 
         spawnedRecipies = new List<UICraftRecipe>();
+
+        craftSelectedBtn.onClick.AddListener(() =>
+        {
+            CraftSelected();
+        });
     }
 
     public void OnDeinitialize()
@@ -54,6 +74,8 @@ public class UIPlayerCraftsManager : MonoBehaviour, IInitListener, IDeinitListen
     {
         foreach (UICraftRecipe spawned in spawnedRecipies)
         {
+            spawned.onSelectClick -= OnSelectRecipe;
+            spawned.OnDeinitialize();
             spawned.gameObject.SetActive(false);
         }
 
@@ -64,11 +86,28 @@ public class UIPlayerCraftsManager : MonoBehaviour, IInitListener, IDeinitListen
             if (craft.Type != type) continue;
 
             UICraftRecipe newRecipe = poolingManager.GetPoolable(recipePrefab);
+            newRecipe.onSelectClick += OnSelectRecipe;
+            newRecipe.OnInitialize();
             newRecipe.transform.SetParent(recipiesContent);
             newRecipe.transform.localScale = Vector3.one;
             newRecipe.SetInfo(craft);
             spawnedRecipies.Add(newRecipe);
         }
+    }
+
+    private void CraftSelected()
+    {
+        print($"{selectedCraftInfo} crafted");
+    }
+
+    private void OnSelectRecipe(CraftInfo info)
+    {
+        selectedCraftInfo = info;
+
+        selectedCraftName.text = info.RecipeName;
+        selectedCraftDesc.text = info.RecipeDesc;
+
+        selectedCraftPanel.SetActive(true);
     }
 
     public void Open(CraftInfo[] possibleCrafts, AInventory resultInventory)
