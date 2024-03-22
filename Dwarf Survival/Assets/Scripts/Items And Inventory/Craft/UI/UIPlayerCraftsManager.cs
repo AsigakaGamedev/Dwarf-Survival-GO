@@ -31,7 +31,7 @@ public class UIPlayerCraftsManager : MonoBehaviour, IInitListener, IDeinitListen
     private ObjectPoolingManager poolingManager;
 
     private CraftInfo[] possibleCrafts;
-    private AInventory resultInventory;
+    private AInventory targetInventory;
 
     private List<UICraftRecipe> spawnedRecipies;
 
@@ -42,7 +42,7 @@ public class UIPlayerCraftsManager : MonoBehaviour, IInitListener, IDeinitListen
     private void OnDisable()
     {
         possibleCrafts = null;
-        resultInventory = null;
+        targetInventory = null;
         selectedCraftInfo = null;
         selectedCraftPanel.gameObject.SetActive(false);
     }
@@ -105,7 +105,8 @@ public class UIPlayerCraftsManager : MonoBehaviour, IInitListener, IDeinitListen
 
     private void CraftSelected()
     {
-        print($"{selectedCraftInfo} crafted");
+        targetInventory.TryCraft(selectedCraftInfo);
+        UpdateSelectedRecipe();
     }
 
     private void OnSelectRecipe(CraftInfo info)
@@ -115,6 +116,13 @@ public class UIPlayerCraftsManager : MonoBehaviour, IInitListener, IDeinitListen
         selectedCraftName.text = info.RecipeName;
         selectedCraftDesc.text = info.RecipeDesc;
 
+        UpdateSelectedRecipe();
+
+        selectedCraftPanel.SetActive(true);
+    }
+
+    private void UpdateSelectedRecipe()
+    {
         foreach (UICraftNeededItem spawnedNItem in spawnedNeededItems)
         {
             spawnedNItem.gameObject.SetActive(false);
@@ -124,29 +132,28 @@ public class UIPlayerCraftsManager : MonoBehaviour, IInitListener, IDeinitListen
 
         bool canCraft = true;
 
-        foreach (ItemData neededItem in info.NeededItems)
+        foreach (ItemData neededItem in selectedCraftInfo.NeededItems)
         {
             UICraftNeededItem newNeededItem = poolingManager.GetPoolable(neededItemPrefab);
             newNeededItem.transform.SetParent(neededItemsContent);
             newNeededItem.transform.localScale = Vector3.one;
 
-            if (!resultInventory.HasItem(neededItem, out int curAmount))
+            if (!targetInventory.HasItem(neededItem, out int curAmount))
             {
                 canCraft = false;
             }
-           
+
             newNeededItem.SetData(neededItem.Info.CellIcon, curAmount, neededItem.RandomAmount);
             spawnedNeededItems.Add(newNeededItem);
         }
 
         craftSelectedBtn.interactable = canCraft;
-        selectedCraftPanel.SetActive(true);
     }
 
     public void Open(CraftInfo[] possibleCrafts, AInventory resultInventory)
     {
         this.possibleCrafts = possibleCrafts;
-        this.resultInventory = resultInventory;
+        this.targetInventory = resultInventory;
 
         ChangeType(CraftType.Other);
     }

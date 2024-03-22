@@ -51,6 +51,13 @@ public abstract class AInventory : MonoBehaviour, IInitListener
         }
     }
 
+    public void RemoveItem(ItemData itemData)
+    {
+        InventoryCellEntity cell = GetCell(itemData.Info);
+
+        cell.ItemInCell.Amount -= itemData.RandomAmount;
+    }
+
     public bool HasItem(ItemData searchItem, out int amount)
     {
         InventoryCellEntity cell = GetCell(searchItem.Info);
@@ -101,7 +108,35 @@ public abstract class AInventory : MonoBehaviour, IInitListener
 
     #region Craft
 
-    
+    public bool TryCraft(CraftInfo recipe)
+    {
+        if (CanCraft(recipe))
+        {
+            foreach (ItemData neededItem in recipe.NeededItems)
+            {
+                RemoveItem(neededItem);
+            }
+
+            foreach (ItemData resultItem in recipe.ResultItems)
+            {
+                AddItem(resultItem);
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool CanCraft(CraftInfo recipe)
+    {
+        foreach (ItemData neededItem in recipe.NeededItems)
+        {
+            if (!HasItem(neededItem, out int amount)) return false;
+        }
+
+        return true;
+    }
 
     #endregion
 }
