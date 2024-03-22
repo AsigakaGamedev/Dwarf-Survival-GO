@@ -95,9 +95,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5216984417853779616}
+  - component: {fileID: -2691028758219134803}
   - component: {fileID: 744655409840169501}
   - component: {fileID: 2600926962206698055}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: cooper_object_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,6 +121,23 @@ Transform:
   - {fileID: 8008664755643675480}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-2691028758219134803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746376191618750294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d844ac287e6235f45bfaac58e48b0710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMineCapacity: 15
+  miningResults: []
+  mineShakeStrength: 1
+  mineShakeDuration: 1
+  mineCapacity: 0
 --- !u!61 &744655409840169501
 BoxCollider2D:
   m_ObjectHideFlags: 0

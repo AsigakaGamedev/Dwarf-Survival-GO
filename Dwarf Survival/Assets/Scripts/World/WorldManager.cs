@@ -179,8 +179,11 @@ public class WorldManager : MonoBehaviour, IInitListener, IDeinitListener
                 {
                     if (!mineResult.CanSpawn()) continue;
 
-                    PoolableObject spawnedResult = poolingManager.GetPoolable(mineResult.Prefab);
-                    spawnedResult.transform.position = (Vector3)tilePos + Vector3.one / 2;
+                    for (int j = 0; j < mineResult.SpawnAmount; j++)
+                    {
+                        PoolableObject spawnedResult = poolingManager.GetPoolable(mineResult.Prefab);
+                        spawnedResult.transform.position = (Vector3)tilePos + Vector3.one / 2;
+                    }
                 }
             }
         }

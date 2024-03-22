@@ -179,9 +179,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2426260605343894690}
+  - component: {fileID: 2437697288405734755}
   - component: {fileID: 5044668153400794537}
   - component: {fileID: 5909661392727718471}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: crystal_green_object_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,6 +206,23 @@ Transform:
   - {fileID: 3514861056582025023}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2437697288405734755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5074811276010938396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d844ac287e6235f45bfaac58e48b0710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMineCapacity: 25
+  miningResults: []
+  mineShakeStrength: 1
+  mineShakeDuration: 1
+  mineCapacity: 0
 --- !u!114 &5044668153400794537
 MonoBehaviour:
   m_ObjectHideFlags: 0

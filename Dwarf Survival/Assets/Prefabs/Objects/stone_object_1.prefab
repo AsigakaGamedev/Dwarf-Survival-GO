@@ -95,9 +95,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6730877872885806769}
+  - component: {fileID: -2992674214406034125}
   - component: {fileID: 5345790533109509499}
   - component: {fileID: 3737960709294202625}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: stone_object_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,6 +121,29 @@ Transform:
   - {fileID: 5904274548722503235}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-2992674214406034125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8982773804846845059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d844ac287e6235f45bfaac58e48b0710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMineCapacity: 10
+  miningResults:
+  - prefab: {fileID: 112395275934228911, guid: 6ac2458108471a94aa94a8d57990a9db, type: 3}
+    spawnAmount: 1
+    spawnChance: 100
+  - prefab: {fileID: 112395275934228911, guid: 6ac2458108471a94aa94a8d57990a9db, type: 3}
+    spawnAmount: 1
+    spawnChance: 50
+  mineShakeStrength: 1
+  mineShakeDuration: 1
+  mineCapacity: 0
 --- !u!61 &5345790533109509499
 BoxCollider2D:
   m_ObjectHideFlags: 0
