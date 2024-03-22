@@ -5,32 +5,30 @@ using UnityEngine;
 
 public abstract class AInventory : MonoBehaviour, IInitListener
 {
+    [Header("Crafts")]
+    [SerializeField] private CraftInfo[] possibleCrafts;
+
+    [Header("Items")]
     [SerializeField] private ItemData[] startItems;
 
     [Space]
     [ReadOnly, SerializeField] protected List<InventoryCellEntity> cells;
 
     public List<InventoryCellEntity> Cells { get => cells; }
+    public CraftInfo[] PossibleCrafts { get => possibleCrafts; }
 
     public void OnInitialize()
     {
         cells = new List<InventoryCellEntity>();
     }
 
+    #region Items
+
     public void AddStartItems()
     {
         foreach (ItemData startItem in startItems)
         {
             AddItem(startItem);
-        }
-    }
-
-    public void SetCellsCount(int count)
-    {
-        for (int i = 0; i < count; i++)
-        {
-            InventoryCellEntity newCell = new InventoryCellEntity();
-            cells.Add(newCell);
         }
     }
 
@@ -53,6 +51,29 @@ public abstract class AInventory : MonoBehaviour, IInitListener
         }
     }
 
+    public bool HasItems(ItemData[] items)
+    {
+        foreach (ItemData item in items)
+        {
+
+        }
+
+        return true;
+    }
+
+    #endregion
+
+    #region Cells
+
+    public void SetCellsCount(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            InventoryCellEntity newCell = new InventoryCellEntity();
+            cells.Add(newCell);
+        }
+    }
+
     public InventoryCellEntity GetFreeCell()
     {
         foreach (InventoryCellEntity cell in cells)
@@ -72,4 +93,12 @@ public abstract class AInventory : MonoBehaviour, IInitListener
 
         return null;
     }
+
+    #endregion
+
+    #region Craft
+
+    
+
+    #endregion
 }

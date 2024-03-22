@@ -16,6 +16,7 @@ public class InputsManager : MonoBehaviour, IInitListener, IDeinitListener
 
     public Action onInventoryOpen;
     public Action onInteract;
+    public Action onPlayerCraftsOpen;
 
     public static InputsManager Instance;
 
@@ -24,11 +25,6 @@ public class InputsManager : MonoBehaviour, IInitListener, IDeinitListener
         print("Inputs Manager инициализирован");
 
         Instance = this;
-
-        if (inputType == InputType.Desktop)
-        {
-            //StartCoroutine(EUpdateDesktopInputs());
-        }
     }
 
     public void OnDeinitialize()
@@ -44,5 +40,6 @@ public class InputsManager : MonoBehaviour, IInitListener, IDeinitListener
 
         if (Input.GetKeyDown(KeyCode.I)) onInventoryOpen?.Invoke();
         if (Input.GetKeyDown(KeyCode.F)) onInteract?.Invoke();
+        if (Input.GetKeyDown(KeyCode.C)) onPlayerCraftsOpen?.Invoke();
     }
 }

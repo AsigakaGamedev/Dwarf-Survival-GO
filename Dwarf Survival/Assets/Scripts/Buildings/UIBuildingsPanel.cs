@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -13,6 +14,11 @@ public class UIBuildingsPanel : MonoBehaviour, IInitListener, IDeinitListener
 
     [Space]
     [SerializeField] private GameObject buildingsPanel;
+
+    [Header("Selected Building")]
+    [SerializeField] private GameObject selectedBuilding;
+    [SerializeField] private TextMeshProUGUI selectedBuildingName;
+    [SerializeField] private TextMeshProUGUI selectedBuildingDescription;
 
     private BuildingsManager buildingsManager;
     private ObjectPoolingManager poolingManager;

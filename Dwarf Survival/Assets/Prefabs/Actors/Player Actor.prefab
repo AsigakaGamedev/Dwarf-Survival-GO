@@ -361,6 +361,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd05fdcb6f6525843a3db9499db57e22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  possibleCrafts:
+  - {fileID: 11400000, guid: 65d9c4f9008cff84b8da88e3b1f60df2, type: 2}
+  - {fileID: 11400000, guid: c0ea648c68a548b44af40b1104b8d4cb, type: 2}
   startItems:
   - info: {fileID: 11400000, guid: 8bcf0d8cbbd1d4a4c8e226599700ed1e, type: 2}
     amountRange: {x: 1, y: 1}
@@ -1054,3 +1057,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   mineRayDistance: 2
+  miningPower: 1

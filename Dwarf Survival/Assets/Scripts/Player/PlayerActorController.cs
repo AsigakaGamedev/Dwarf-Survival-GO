@@ -25,6 +25,7 @@ public class PlayerActorController : MonoBehaviour, IInitListener, IUpdateListen
         inputs.onAttack += OnAttackInput;
         inputs.onInteract += OnInteractInput;
         inputs.onInventoryOpen += OnInventoryOpenInput;
+        inputs.onPlayerCraftsOpen += OnPlayerCraftOpenInput;
 
         print("Player Actor Controller инициализирован");
     }
@@ -42,6 +43,7 @@ public class PlayerActorController : MonoBehaviour, IInitListener, IUpdateListen
         inputs.onAttack -= OnAttackInput;
         inputs.onInteract -= OnInteractInput;
         inputs.onInventoryOpen -= OnInventoryOpenInput;
+        inputs.onPlayerCraftsOpen -= OnPlayerCraftOpenInput;
     }
 
     #region Inputs
@@ -66,6 +68,12 @@ public class PlayerActorController : MonoBehaviour, IInitListener, IUpdateListen
     private void OnInventoryOpenInput()
     {
         uiManager.ChangeScreen("inventory");
+    }
+
+    private void OnPlayerCraftOpenInput()
+    {
+        uiManager.ChangeScreen("craft");
+        UIPlayerCraftsManager.Instance.Open(actor.Inventory.PossibleCrafts, actor.Inventory);
     }
 
     #endregion
