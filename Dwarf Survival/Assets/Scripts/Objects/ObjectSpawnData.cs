@@ -14,7 +14,8 @@ public struct ObjectSpawnData
 
     public bool CanSpawn()
     {
-        float curChange = Random.Range(0, 100);
-        return curChange >= spawnChance;
+        float curChance = Random.Range(0, 100);
+        Debug.Log($"{curChance}  {spawnChance}  {curChance >= spawnChance}");
+        return curChance >= spawnChance;
     }
 }

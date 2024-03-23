@@ -33,6 +33,8 @@ public class PlayerActorController : MonoBehaviour, IInitListener, IUpdateListen
     public void OnUpdate()
     {
         actor.Interactions.CheckInteractions();
+
+        if (actor.Needs) actor.Needs.UpdateNeeds();
     }
 
     public void OnDeinitialize()

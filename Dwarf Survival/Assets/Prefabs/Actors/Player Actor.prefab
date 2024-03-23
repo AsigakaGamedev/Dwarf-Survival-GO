@@ -168,6 +168,7 @@ GameObject:
   - component: {fileID: 2663528870628309799}
   - component: {fileID: 8239907977075635806}
   - component: {fileID: 7736019347785914835}
+  - component: {fileID: 8027102015193112654}
   m_Layer: 10
   m_Name: Player Actor
   m_TagString: Untagged
@@ -226,6 +227,7 @@ MonoBehaviour:
   vision: {fileID: 0}
   equipments: {fileID: 1173752651190376549}
   weapons: {fileID: 2609030059000748321}
+  needs: {fileID: 8027102015193112654}
   enemiesID: []
 --- !u!50 &7052477000795624155
 Rigidbody2D:
@@ -389,6 +391,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   curHealth: 100
+--- !u!114 &8027102015193112654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754703439877410341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b75b0e8b12a74eb4b85cec3329a09e7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allNeeds:
+    _serializedList:
+    - Key: hunger
+      Value:
+        value: 100
+        maxValue: 100
+        timeValue: -1
 --- !u!1 &1963582003012193556
 GameObject:
   m_ObjectHideFlags: 0
