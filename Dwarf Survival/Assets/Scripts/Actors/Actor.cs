@@ -168,4 +168,9 @@ public class Actor : MonoBehaviour, IInitListener, IDeinitListener
     {
         interactions.TryInteract(this);
     }
+
+    public void Revive()
+    {
+        health.Revive();
+    }
 }

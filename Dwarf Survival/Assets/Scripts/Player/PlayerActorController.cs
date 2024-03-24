@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,10 +13,14 @@ public class PlayerActorController : MonoBehaviour, IInitListener, IUpdateListen
 
     public Actor Actor { get => actor; }
 
+    public Action onDie;
+
     public void OnInitialize()
     {
         actor.OnInitialize();
         actor.ChangeMovementType(true);
+
+        actor.Health.onDie += OnDie;
 
         inputs = InputsManager.Instance;
         uiManager = ServiceLocator.GetService<UIManager>();
@@ -41,11 +46,18 @@ public class PlayerActorController : MonoBehaviour, IInitListener, IUpdateListen
     {
         actor.OnDeinitialize();
 
+        actor.Health.onDie -= OnDie;
+
         inputs.onMove -= OnMoveInput;
         inputs.onAttack -= OnAttackInput;
         inputs.onInteract -= OnInteractInput;
         inputs.onInventoryOpen -= OnInventoryOpenInput;
         inputs.onPlayerCraftsOpen -= OnPlayerCraftOpenInput;
+    }
+
+    public void Revive()
+    {
+        actor.Revive();
     }
 
     #region Inputs
@@ -76,6 +88,15 @@ public class PlayerActorController : MonoBehaviour, IInitListener, IUpdateListen
     {
         uiManager.ChangeScreen("craft");
         UIPlayerCraftsManager.Instance.Open(actor.Inventory.PossibleCrafts, actor.Inventory, "Player");
+    }
+
+    #endregion
+
+    #region
+
+    private void OnDie()
+    {
+        onDie?.Invoke();
     }
 
     #endregion

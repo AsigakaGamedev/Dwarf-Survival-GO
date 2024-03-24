@@ -12,7 +12,11 @@ public class HealthController : MonoBehaviour
     [ReadOnly, SerializeField] private float curHealth;
 
     [Header("Corpse")]
-    [SerializeField] private PoolableObject corpsePrefab; 
+    [SerializeField] private PoolableObject corpsePrefab;
+
+    private PoolableObject corpseInstance;
+
+    private bool isDead;
 
     public Action<float> onMaxHealthChange;
     public Action<float> onHealthChange;
@@ -44,14 +48,34 @@ public class HealthController : MonoBehaviour
     [Button("Kill", EButtonEnableMode.Playmode)]
     public void Kill()
     {
+        if (isDead) return;
+
+        isDead = true;
+
         curHealth = 0;
-        onHealthChange?.Invoke(maxHealth);
+        onHealthChange?.Invoke(curHealth);
         onDie?.Invoke();
 
         if (corpsePrefab)
         {
-            PoolableObject corpse = ServiceLocator.GetService<ObjectPoolingManager>().GetPoolable(corpsePrefab);
-            corpse.transform.position = transform.position;
+            corpseInstance = ServiceLocator.GetService<ObjectPoolingManager>().GetPoolable(corpsePrefab);
+            corpseInstance.transform.position = transform.position;
+        }
+    }
+
+    [Button("Revive", EButtonEnableMode.Playmode)]
+    public void Revive()
+    {
+        if (!isDead) return;
+
+        isDead = false;
+
+        curHealth = maxHealth;
+        onHealthChange?.Invoke(curHealth);
+
+        if (corpseInstance)
+        {
+            corpseInstance.gameObject.SetActive(false);
         }
     }
 }

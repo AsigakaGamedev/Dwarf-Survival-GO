@@ -11,6 +11,9 @@ public class PlayerManager : MonoBehaviour, IInitListener, IUpdateListener, IDei
     [Space]
     [ReadOnly, SerializeField] private PlayerActorController playerInstance;
 
+    [Space]
+    [ReadOnly, SerializeField] private Vector2 spawnPoint;
+
     private WorldManager worldManager;
     private CameraManager cameraManager;
 
@@ -26,9 +29,9 @@ public class PlayerManager : MonoBehaviour, IInitListener, IUpdateListener, IDei
         cameraManager = CameraManager.Instance;
 
         WorldCellData spawnCell = worldManager.GetRandomCell(playerSpawnBiome, WorldCellType.Ground);
-        playerInstance = Instantiate(playerPrefab, new Vector2(spawnCell.PosX + 0.5f, spawnCell.PosY + 0.5f), playerPrefab.transform.rotation, transform);
-        playerInstance.OnInitialize();
-        cameraManager.SetCameraTarget(playerInstance.transform);
+        spawnPoint = new Vector2(spawnCell.PosX + 0.5f, spawnCell.PosY + 0.5f);
+
+        SpawnPlayer();
 
         print("Player Manager инициализирован");
     }
@@ -43,5 +46,35 @@ public class PlayerManager : MonoBehaviour, IInitListener, IUpdateListener, IDei
         Instance = null;
 
         playerInstance.OnDeinitialize();
+        playerInstance.onDie -= OnPlayerDie;
+    }
+
+    private void SpawnPlayer()
+    {
+        if (!playerInstance)
+        {
+            playerInstance = Instantiate(playerPrefab, spawnPoint, playerPrefab.transform.rotation, transform);
+            playerInstance.OnInitialize();
+            cameraManager.SetCameraTarget(playerInstance.transform);
+            playerInstance.onDie += OnPlayerDie;
+        }
+        else
+        {
+            playerInstance.transform.position = spawnPoint;
+            playerInstance.gameObject.SetActive(true);
+        }
+    }
+
+    private void OnPlayerDie()
+    {
+        StartCoroutine(ERespawnPlayer());
+    }
+
+    private IEnumerator ERespawnPlayer()
+    {
+        yield return new WaitForSeconds(4);
+
+        SpawnPlayer();
+        playerInstance.Revive();
     }
 }
