@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UIBuildingItem : PoolableObject, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class UIBuildingItem : PoolableObject, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
     [Space]
     [SerializeField] private Image iconImg;
@@ -16,6 +16,7 @@ public class UIBuildingItem : PoolableObject, IBeginDragHandler, IDragHandler, I
     public Action<UIBuildingItem> onBeginDrag;
     public Action<UIBuildingItem> onDrag;
     public Action<UIBuildingItem> onEndDrag;
+    public Action<UIBuildingItem> onClick;
 
     public BuildingObject LinkedPrefab { get => linkedPrefab; }
     public Image IconImg { get => iconImg; }
@@ -44,5 +45,10 @@ public class UIBuildingItem : PoolableObject, IBeginDragHandler, IDragHandler, I
     public void OnEndDrag(PointerEventData eventData)
     {
         onEndDrag?.Invoke(this);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        onClick?.Invoke(this);
     }
 }

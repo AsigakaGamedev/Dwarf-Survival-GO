@@ -354,8 +354,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolID: bonfire_building
+  buildingName: Bonfire
+  buildingDesc: Bonfire Description
   icon: {fileID: 4883416523192465857, guid: ecc40d3c201a89741a03ac6d3ec88678, type: 3}
   type: 0
+  neededItems:
+  - info: {fileID: 11400000, guid: 6343f9eefb5e49d4baced6053716711a, type: 2}
+    amountRange: {x: 2, y: 2}
   mainCollider: {fileID: 7345493905767591873}
   planningObj: {fileID: 4580345778576998472}
   deactivatedObj: {fileID: 5766336083747105268}

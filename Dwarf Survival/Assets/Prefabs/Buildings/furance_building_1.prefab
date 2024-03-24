@@ -353,8 +353,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolID: furance_building_1
+  buildingName: Stone Furance
+  buildingDesc: Stone Furance Descriiption
   icon: {fileID: 7159645934141440684, guid: 36d9e65c57b2e5f4ebcd163887d9633b, type: 3}
   type: 1
+  neededItems:
+  - info: {fileID: 11400000, guid: 6343f9eefb5e49d4baced6053716711a, type: 2}
+    amountRange: {x: 1, y: 1}
+  - info: {fileID: 11400000, guid: 3e5399cb7541149449e5d8f1139c2652, type: 2}
+    amountRange: {x: 2, y: 2}
   mainCollider: {fileID: 7345493905767591873}
   planningObj: {fileID: 4580345778576998472}
   deactivatedObj: {fileID: 5766336083747105268}
@@ -374,6 +381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outline: {fileID: 2680484045038940091}
   deactivateOnInteract: 0
+  components: []
 --- !u!1 &6754673791446437572
 GameObject:
   m_ObjectHideFlags: 0

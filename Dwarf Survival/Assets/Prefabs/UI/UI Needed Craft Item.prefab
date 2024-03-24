@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 2478380209405634479}
   - component: {fileID: 4802178611273667479}
   - component: {fileID: 386776869654921944}
-  - component: {fileID: 7457638237465482149}
+  - component: {fileID: 6345969636626905604}
   m_Layer: 0
   m_Name: UI Needed Craft Item
   m_TagString: Untagged
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7457638237465482149
+--- !u!114 &6345969636626905604
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1320102778139874201}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 531e23adcd6368d458df6262eaccd21d, type: 3}
+  m_Script: {fileID: 11500000, guid: b182eeb35d6be134a8d634c731317292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   poolID: ui_needed_craft_item

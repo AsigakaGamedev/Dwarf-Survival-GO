@@ -20,16 +20,23 @@ public class UIBuildingsPanel : MonoBehaviour, IInitListener, IDeinitListener
     [SerializeField] private TextMeshProUGUI selectedBuildingName;
     [SerializeField] private TextMeshProUGUI selectedBuildingDescription;
 
+    [Space]
+    [SerializeField] private UICraftNeededItem neededItemPrefab;
+    [SerializeField] private Transform neededItemsContent;
+
     private BuildingsManager buildingsManager;
     private ObjectPoolingManager poolingManager;
+    private AInventory playerInventory;
 
     private List<UIBuildingItem> spawnedListItems;
+    private List<UICraftNeededItem> spawnedNeededItems;
 
     private EventSystem eventSystem;
 
     private void OnEnable()
     {
         buildingsPanel.SetActive(false);
+        selectedBuilding.SetActive(false);
     }
 
     public void OnInitialize()
@@ -40,6 +47,9 @@ public class UIBuildingsPanel : MonoBehaviour, IInitListener, IDeinitListener
         poolingManager = ServiceLocator.GetService<ObjectPoolingManager>();
 
         spawnedListItems = new List<UIBuildingItem>();
+        spawnedNeededItems = new List<UICraftNeededItem>();
+
+        playerInventory = PlayerManager.Instance.PlayerInstance.Actor.Inventory;
 
         foreach (var type in typesBtns)
         {
@@ -66,6 +76,7 @@ public class UIBuildingsPanel : MonoBehaviour, IInitListener, IDeinitListener
             spawnedItem.onBeginDrag -= OnBeginDrag;
             spawnedItem.onDrag -= OnDrag;
             spawnedItem.onEndDrag -= OnEndDrag;
+            spawnedItem.onClick -= OnClick;
             spawnedItem.gameObject.SetActive(false);
         }
 
@@ -83,12 +94,14 @@ public class UIBuildingsPanel : MonoBehaviour, IInitListener, IDeinitListener
                 newListItem.onBeginDrag += OnBeginDrag;
                 newListItem.onDrag += OnDrag;
                 newListItem.onEndDrag += OnEndDrag;
+                newListItem.onClick += OnClick;
 
                 spawnedListItems.Add(newListItem);
             }
         }
 
         buildingsPanel.SetActive(true);
+        selectedBuilding.SetActive(false);
     }
 
     private void OnBeginDrag(UIBuildingItem buildingItem)
@@ -126,6 +139,34 @@ public class UIBuildingsPanel : MonoBehaviour, IInitListener, IDeinitListener
         else
         {
             buildingsManager.ConstructSelectedPrefab();
+        }
+    }
+
+    private void OnClick(UIBuildingItem buildingItem)
+    {
+        selectedBuilding.SetActive(true);
+
+        BuildingObject prefab = buildingItem.LinkedPrefab;
+        selectedBuildingName.text = prefab.BuildingName;
+        selectedBuildingDescription.text = prefab.BuildingDesc;
+
+        foreach (UICraftNeededItem spawnedItem in spawnedNeededItems)
+        {
+            spawnedItem.gameObject.SetActive(false);
+        }
+
+        spawnedNeededItems.Clear();
+
+        foreach (ItemData neededItem in prefab.NeededItems)
+        {
+            UICraftNeededItem newUIItem = poolingManager.GetPoolable(neededItemPrefab);
+            newUIItem.transform.SetParent(neededItemsContent);
+            newUIItem.transform.localScale = Vector3.one;
+
+            playerInventory.HasItem(neededItem, out int curAmount);
+
+            newUIItem.SetData(neededItem.Info.CellIcon, curAmount, neededItem.RandomAmount); 
+            spawnedNeededItems.Add(newUIItem);
         }
     }
 }

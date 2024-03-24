@@ -8,8 +8,16 @@ public enum BuildingState { Planning, Deactivated, Activated}
 public class BuildingObject : PoolableObject
 {
     [Space]
+    [SerializeField] private string buildingName;
+    [SerializeField] private string buildingDesc;
+
+    [Space]
+    [Space]
     [SerializeField] private Sprite icon;
     [SerializeField] private BuildingType type;
+
+    [Space]
+    [SerializeField] private ItemData[] neededItems;
 
     [Space]
     [SerializeField] private Collider2D mainCollider;
@@ -24,6 +32,11 @@ public class BuildingObject : PoolableObject
 
     public Sprite Icon { get => icon; }
     public BuildingType Type { get => type; }
+
+    public string BuildingName { get => buildingName; }
+    public string BuildingDesc { get => buildingDesc; }
+
+    public ItemData[] NeededItems { get => neededItems; }
 
     public void SetState(BuildingState newState)
     {

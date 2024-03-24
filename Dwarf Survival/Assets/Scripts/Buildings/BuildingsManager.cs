@@ -13,6 +13,7 @@ public class BuildingsManager : MonoBehaviour, IInitListener, IDeinitListener
     [ReadOnly, SerializeField] private BuildingObject selectedBuilding;
 
     private ObjectPoolingManager poolingManager;
+    private AInventory playerInventory;
     private Camera mainCamera;
 
     public static BuildingsManager Instance;
@@ -24,6 +25,7 @@ public class BuildingsManager : MonoBehaviour, IInitListener, IDeinitListener
         Instance = this;
 
         poolingManager = ServiceLocator.GetService<ObjectPoolingManager>();
+        playerInventory = PlayerManager.Instance.PlayerInstance.Actor.Inventory;
         mainCamera = Camera.main;
 
         print("Buildings Manager инициализирован");
@@ -63,7 +65,27 @@ public class BuildingsManager : MonoBehaviour, IInitListener, IDeinitListener
     {
         if (!selectedBuilding) return;
 
-        selectedBuilding.SetState(BuildingState.Deactivated);
-        selectedBuilding = null;
+        if (CanCraftSelected())
+        {
+            selectedBuilding.SetState(BuildingState.Deactivated);
+            selectedBuilding = null;
+        }
+        else
+        {
+            selectedBuilding.gameObject.SetActive(false);
+            selectedBuilding = null;
+        }
+    }
+
+    private bool CanCraftSelected()
+    {
+        if (!selectedBuilding) return false;
+
+        foreach (ItemData neededItem in selectedBuilding.NeededItems)
+        {
+            if (!playerInventory.HasItem(neededItem, out int amount)) return false;
+        }
+
+        return true;
     }
 }
