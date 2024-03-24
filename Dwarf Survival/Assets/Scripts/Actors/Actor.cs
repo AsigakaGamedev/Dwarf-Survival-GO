@@ -34,6 +34,7 @@ public class Actor : MonoBehaviour, IInitListener, IDeinitListener
     public EquipmentsController Equipments { get => equipments; }
     public WeaponsController Weapons { get => weapons; }
     public NeedsController Needs { get => needs; }
+    public HealthController Health { get => health; }
 
     private void OnValidate()
     {
