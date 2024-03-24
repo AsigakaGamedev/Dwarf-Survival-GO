@@ -11,8 +11,12 @@ public class HealthController : MonoBehaviour
     [Space]
     [ReadOnly, SerializeField] private float curHealth;
 
+    [Header("Corpse")]
+    [SerializeField] private PoolableObject corpsePrefab; 
+
     public Action<float> onMaxHealthChange;
     public Action<float> onHealthChange;
+    public Action onDie;
 
     public float MaxHealth { get => maxHealth; }
     public float CurHealth { get => curHealth; }
@@ -31,8 +35,23 @@ public class HealthController : MonoBehaviour
         if (curHealth < 0)
         {
             curHealth = 0;
+            Kill();
         }
 
         onHealthChange?.Invoke(maxHealth);
+    }
+
+    [Button("Kill", EButtonEnableMode.Playmode)]
+    public void Kill()
+    {
+        curHealth = 0;
+        onHealthChange?.Invoke(maxHealth);
+        onDie?.Invoke();
+
+        if (corpsePrefab)
+        {
+            PoolableObject corpse = ServiceLocator.GetService<ObjectPoolingManager>().GetPoolable(corpsePrefab);
+            corpse.transform.position = transform.position;
+        }
     }
 }

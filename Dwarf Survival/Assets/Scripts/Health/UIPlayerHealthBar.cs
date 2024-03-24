@@ -13,8 +13,8 @@ public class UIPlayerHealthBar : MonoBehaviour, IInitListener, IDeinitListener
     {
         health = PlayerManager.Instance.PlayerInstance.Actor.Health;
 
-        OnHealthChange(health.CurHealth);
         OnMaxHealthChange(health.MaxHealth);
+        OnHealthChange(health.CurHealth);
 
         health.onHealthChange += OnHealthChange;
         health.onMaxHealthChange += OnMaxHealthChange;

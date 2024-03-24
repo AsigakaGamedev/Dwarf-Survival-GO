@@ -391,6 +391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   curHealth: 100
+  corpsePrefab: {fileID: -3407362046955521546, guid: df6cd12be97b8e74c8b307f5f7e3b969, type: 3}
 --- !u!114 &8027102015193112654
 MonoBehaviour:
   m_ObjectHideFlags: 0

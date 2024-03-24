@@ -83,6 +83,7 @@ public class Actor : MonoBehaviour, IInitListener, IDeinitListener
         if (health)
         {
             health.SetMaxHealth(characteristics["max_health"].Value);
+            health.onDie += OnDie;
         }
     }
 
@@ -91,6 +92,11 @@ public class Actor : MonoBehaviour, IInitListener, IDeinitListener
         if (vision)
         {
             vision.OnDeinitialize();
+        }
+
+        if (health)
+        {
+            health.onDie -= OnDie;
         }
     }
 
@@ -145,6 +151,15 @@ public class Actor : MonoBehaviour, IInitListener, IDeinitListener
     public void Attack(Vector2 dir)
     {
         if (weapons) weapons.TryAttack(dir);
+    }
+
+    #endregion
+
+    #region Listeners
+
+    private void OnDie()
+    {
+        gameObject.SetActive(false);
     }
 
     #endregion
