@@ -119,6 +119,11 @@ public class Actor : MonoBehaviour, IInitListener, IDeinitListener
         agent.SetDestination(targetPoint);
     }
 
+    public void ChangeIsStopped(bool value)
+    {
+        agent.isStopped = value;
+    }
+
     #endregion
 
     #region Combat 

@@ -232,6 +232,7 @@ MonoBehaviour:
   vision: {fileID: 8462071626204867852}
   equipments: {fileID: 0}
   weapons: {fileID: 0}
+  needs: {fileID: 0}
   enemiesID:
   - player
 --- !u!195 &8283358427365239879
@@ -353,6 +354,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f69a6a1ea70f64b88cc32f505fbb70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackDistance: 1.5
+  attackTimerDelay: 2
 --- !u!114 &5529500310395734585
 MonoBehaviour:
   m_ObjectHideFlags: 0
