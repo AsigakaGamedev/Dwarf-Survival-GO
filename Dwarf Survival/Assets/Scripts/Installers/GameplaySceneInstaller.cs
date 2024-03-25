@@ -16,6 +16,7 @@ public class GameplaySceneInstaller : MonoInstaller
     [SerializeField] private UIPlayerCraftsManager uiPlayerCrafts;
     [SerializeField] private UIEffectsManager uiEffectsManager;
     [SerializeField] private UIInventoriesManager uiInventoriesManager;
+    [SerializeField] private UIRecyclingManager uiRecyclingManager;
 
     public override void InstallBindings()
     {
@@ -29,5 +30,6 @@ public class GameplaySceneInstaller : MonoInstaller
         Container.Bind<UIPlayerCraftsManager>().FromInstance(uiPlayerCrafts).AsSingle();
         Container.Bind<UIEffectsManager>().FromInstance(uiEffectsManager).AsSingle();
         Container.Bind<UIInventoriesManager>().FromInstance(uiInventoriesManager).AsSingle();
+        Container.Bind<UIRecyclingManager>().FromInstance(uiRecyclingManager).AsSingle();
     }
 }

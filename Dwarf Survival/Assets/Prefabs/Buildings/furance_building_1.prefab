@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 7345493905767591873}
   - component: {fileID: -7887117987402801965}
   - component: {fileID: 2653017784068710827}
+  - component: {fileID: -8079454580169332413}
   m_Layer: 12
   m_Name: furance_building_1
   m_TagString: Untagged
@@ -381,7 +382,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outline: {fileID: 2680484045038940091}
   deactivateOnInteract: 0
-  components: []
+  components:
+  - {fileID: -8079454580169332413}
+--- !u!114 &-8079454580169332413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6636480872186882599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e02c69463acd774cac1f8e0b471896b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recyclingModifier: 1
+  inputCellsCount: 1
+  outputCellsCount: 1
+  recipies: []
+  inputCells: []
+  outputCells: []
+  fuelCell:
+    itemInCell:
+      info: {fileID: 0}
+      amount: 0
 --- !u!1 &6754673791446437572
 GameObject:
   m_ObjectHideFlags: 0

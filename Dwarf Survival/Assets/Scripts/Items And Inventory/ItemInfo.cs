@@ -17,6 +17,10 @@ public class ItemInfo : ScriptableObject
     [Space]
     [SerializeField] private bool isWeapon;
 
+    [Space]
+    [SerializeField] private bool isFuel;
+    [ShowIf(nameof(isFuel)), SerializeField] private int fuelCapacity;
+
     private bool hasEquipmentIcon => isWeapon || isEquipable;
 
     public Sprite CellIcon { get => cellIcon; }
@@ -27,4 +31,7 @@ public class ItemInfo : ScriptableObject
     public int EquipSlotID { get => equipSlotID; }
 
     public bool IsWeapon { get => isWeapon; }
+
+    public bool IsFuel { get => isFuel; }
+    public int FuelCapacity { get => fuelCapacity; }
 }

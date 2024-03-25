@@ -22,7 +22,7 @@ public class UIInventoryCell : PoolableObject, IDropHandler
         UpdateCell();
     }
 
-    public void SetItemParen(Transform dragParent)
+    public void SetItemParent(Transform dragParent)
     {
         linkedItem.SetParents(transform, dragParent);
     }

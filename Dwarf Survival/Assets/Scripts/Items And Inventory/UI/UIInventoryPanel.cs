@@ -38,7 +38,7 @@ public class UIInventoryPanel : MonoBehaviour
             newCell.transform.SetParent(cellsContent);
             newCell.transform.localScale = Vector3.one;
             newCell.SetEntity(cellEntity);
-            newCell.SetItemParen(itemDragParent);
+            newCell.SetItemParent(itemDragParent);
             spawnedCells.Add(newCell);
         }
     }

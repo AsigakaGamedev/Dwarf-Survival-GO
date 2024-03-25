@@ -9,6 +9,8 @@ public class ItemEntity
     [SerializeField] private ItemInfo info;
     [SerializeField] private int amount;
 
+    private int fuelCapacity;
+
     public Action<int> onAmountChange;
 
     public ItemEntity(ItemData data)
@@ -21,6 +23,15 @@ public class ItemEntity
     {
         this.info = info;
         this.amount = amount;
+
+        if (info.IsFuel)
+        {
+            fuelCapacity = info.FuelCapacity;
+        }
+        else
+        {
+            fuelCapacity = -1;
+        }
     }
 
     public ItemInfo Info { get => info; set => info = value; }
