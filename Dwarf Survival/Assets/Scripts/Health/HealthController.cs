@@ -14,6 +14,10 @@ public class HealthController : MonoBehaviour
     [Header("Corpse")]
     [SerializeField] private PoolableObject corpsePrefab;
 
+    [Header("Death Drop")]
+    [SerializeField] private bool hasDeathDrop;
+    [ShowIf(nameof(hasDeathDrop)), SerializeField] private ObjectSpawnData[] droppableObjects;
+
     private PoolableObject corpseInstance;
 
     private bool isDead;
@@ -56,10 +60,26 @@ public class HealthController : MonoBehaviour
         onHealthChange?.Invoke(curHealth);
         onDie?.Invoke();
 
+        ObjectPoolingManager poolingManager = ServiceLocator.GetService<ObjectPoolingManager>();
+
         if (corpsePrefab)
         {
-            corpseInstance = ServiceLocator.GetService<ObjectPoolingManager>().GetPoolable(corpsePrefab);
+            corpseInstance = poolingManager.GetPoolable(corpsePrefab);
             corpseInstance.transform.position = transform.position;
+        }
+
+        if (hasDeathDrop)
+        {
+            foreach (ObjectSpawnData deathDrop in droppableObjects)
+            {
+                if (!deathDrop.CanSpawn()) continue;
+
+                for (int i = 0; i < deathDrop.SpawnAmount; i++)
+                {
+                    PoolableObject newDroppedObj = poolingManager.GetPoolable(deathDrop.Prefab);
+                    newDroppedObj.transform.position = transform.position;
+                }
+            }
         }
     }
 
