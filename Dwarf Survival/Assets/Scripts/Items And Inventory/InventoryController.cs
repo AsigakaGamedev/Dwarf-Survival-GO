@@ -45,7 +45,7 @@ public class InventoryController : MonoBehaviour
 
             if (targetCell != null)
             {
-                targetCell.ItemInCell = new ItemEntity(data);
+                targetCell.TryAddItem(new ItemEntity(data));
             }
         }
     }

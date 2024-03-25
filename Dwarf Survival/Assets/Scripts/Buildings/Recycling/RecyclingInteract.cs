@@ -36,7 +36,7 @@ public class RecyclingInteract : AInteractionComponent
     {
         inputCells = new InventoryCellEntity[inputCellsCount];
         outputCells = new InventoryCellEntity[outputCellsCount];
-        fuelCell = new InventoryCellEntity();
+        fuelCell = new InventoryCellEntity(InventoryCellType.OnlyFuel);
 
         for (int i = 0; i < inputCellsCount; i++)
         {

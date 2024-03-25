@@ -49,8 +49,14 @@ public class UIInventoryCell : PoolableObject, IDropHandler
         if (eventData.pointerDrag.TryGetComponent(out UIMovableItem droppedItem))
         {
             ItemEntity transferItem = droppedItem.LinkedItem;
-            droppedItem.LinkedCell.Entity.ItemInCell = linkedItem.LinkedItem;
-            entity.ItemInCell = transferItem;
+
+            
+            if (droppedItem.LinkedCell.Entity.CanAddItem(linkedItem.LinkedItem) && 
+                entity.CanAddItem(transferItem))
+            {
+                droppedItem.LinkedCell.Entity.TryAddItem(linkedItem.LinkedItem);
+                entity.TryAddItem(transferItem);
+            }
 
             droppedItem.LinkedCell.UpdateCell();
             UpdateCell();

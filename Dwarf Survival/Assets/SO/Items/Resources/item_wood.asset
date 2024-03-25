@@ -18,3 +18,5 @@ MonoBehaviour:
   isEquipable: 0
   equipSlotID: 0
   isWeapon: 0
+  isFuel: 1
+  fuelCapacity: 2

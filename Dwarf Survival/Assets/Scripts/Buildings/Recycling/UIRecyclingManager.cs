@@ -71,8 +71,6 @@ public class UIRecyclingManager : MonoBehaviour
         }
 
         spawnedFuelCell.SetEntity(recyclingObject.FuelCell);
-
-        print($"{recyclingObject.gameObject} переработчик открыт");
     }
 
     private void ClearCells()
