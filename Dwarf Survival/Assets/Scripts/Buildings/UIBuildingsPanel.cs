@@ -28,7 +28,7 @@ public class UIBuildingsPanel : MonoBehaviour
     private BuildingsManager buildingsManager;
     private ObjectPoolingManager poolingManager;
     private PlayerManager playerManager;
-    private AInventory playerInventory;
+    private InventoryController playerInventory;
 
     private List<UIBuildingItem> spawnedListItems;
     private List<UICraftNeededItem> spawnedNeededItems;

@@ -12,15 +12,20 @@ public class UIInventoriesManager : MonoBehaviour
     [Button]
     public void FindAllPanels()
     {
-        List<UIInventoryPanel> allPanels = GetComponentsInChildren<UIInventoryPanel>().ToList();
+        UIInventoryPanel[] allPanels = GetComponentsInChildren<UIInventoryPanel>(true);
 
         foreach (UIInventoryPanel panel in allPanels)
         {
-            if (!inventoryPanels.ContainsValue(panel))
+            if (panel is not UIPlayerInventoryPanel && !inventoryPanels.ContainsValue(panel))
             {
-                inventoryPanels.Add("", panel);
+                inventoryPanels.Add($"panel {inventoryPanels.Count}", panel);
             }
         }
+    }
+
+    private void OnValidate()
+    {
+        FindAllPanels();
     }
 
     private void Awake()
@@ -29,5 +34,10 @@ public class UIInventoriesManager : MonoBehaviour
         {
             panel.Init();
         }
+    }
+
+    public UIInventoryPanel GetPanel(string key)
+    {
+        return inventoryPanels[key];
     }
 }

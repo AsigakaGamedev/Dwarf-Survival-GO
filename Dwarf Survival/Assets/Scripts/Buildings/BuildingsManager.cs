@@ -16,7 +16,7 @@ public class BuildingsManager : MonoBehaviour
 
     private ObjectPoolingManager poolingManager;
     private PlayerManager playerManager;
-    private AInventory playerInventory;
+    private InventoryController playerInventory;
     private Camera mainCamera;
 
     public BuildingObject[] AllBuildingsPrefabs { get => allBuildingsPrefabs; }

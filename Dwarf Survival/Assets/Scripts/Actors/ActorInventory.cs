@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActorInventory : AInventory
+public class ActorInventory : InventoryController
 {
 
 }

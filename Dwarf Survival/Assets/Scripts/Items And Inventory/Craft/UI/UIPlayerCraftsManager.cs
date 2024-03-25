@@ -35,7 +35,7 @@ public class UIPlayerCraftsManager : MonoBehaviour
     private ObjectPoolingManager poolingManager;
 
     private CraftInfo[] possibleCrafts;
-    private AInventory targetInventory;
+    private InventoryController targetInventory;
 
     private List<UICraftRecipe> spawnedRecipies;
 
@@ -150,7 +150,7 @@ public class UIPlayerCraftsManager : MonoBehaviour
         craftSelectedBtn.interactable = canCraft;
     }
 
-    public void Open(CraftInfo[] possibleCrafts, AInventory targetInventory, string placeName)
+    public void Open(CraftInfo[] possibleCrafts, InventoryController targetInventory, string placeName)
     {
         this.possibleCrafts = possibleCrafts;
         this.targetInventory = targetInventory;

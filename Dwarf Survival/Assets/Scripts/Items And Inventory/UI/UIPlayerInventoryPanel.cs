@@ -7,13 +7,13 @@ using Zenject;
 public class UIPlayerInventoryPanel : UIInventoryPanel
 {
     private PlayerManager playerManager;
-    private AInventory playerInventory;
+    private InventoryController playerInventory;
 
     private void OnEnable()
     {
         if (playerInventory)
         {
-            ShowInventory(playerInventory);
+            ShowInventory(playerInventory.Cells);
         }
     }
 
@@ -22,6 +22,11 @@ public class UIPlayerInventoryPanel : UIInventoryPanel
     {
         this.playerManager = playerManager;
         this.playerManager.onPlayerSpawn += OnPlayerSpawn;
+    }
+
+    private void Awake()
+    {
+        Init();
     }
 
     private void OnDestroy()

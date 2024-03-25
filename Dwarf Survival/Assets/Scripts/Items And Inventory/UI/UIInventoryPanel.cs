@@ -23,7 +23,7 @@ public class UIInventoryPanel : MonoBehaviour
         spawnedCells = new List<UIInventoryCell>();
     }
 
-    public void ShowInventory(AInventory inventory)
+    public void ShowInventory(List<InventoryCellEntity> cells)
     {
         foreach (UIInventoryCell spawned in spawnedCells)
         {
@@ -32,7 +32,7 @@ public class UIInventoryPanel : MonoBehaviour
 
         spawnedCells.Clear();
 
-        foreach (InventoryCellEntity cellEntity in inventory.Cells)
+        foreach (InventoryCellEntity cellEntity in cells)
         {
             UIInventoryCell newCell = poolingManager.GetPoolable(cellPrefab);
             newCell.transform.SetParent(cellsContent);
