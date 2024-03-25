@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal.Profiling.Memory.Experimental;
@@ -11,6 +12,8 @@ public class InventoryCellEntity
     [SerializeField] private ItemEntity itemInCell;
 
     private InventoryCellType cellType;
+
+    public Action<ItemEntity> onItemChange;
 
     public InventoryCellEntity()
     {
@@ -36,6 +39,7 @@ public class InventoryCellEntity
         }
 
         itemInCell = newItem;
+        onItemChange?.Invoke(itemInCell);
 
         if (itemInCell != null) itemInCell.onAmountChange += OnItemAmountChange;
 

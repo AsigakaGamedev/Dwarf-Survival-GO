@@ -17,9 +17,14 @@ public class UIInventoryCell : PoolableObject, IDropHandler
 
     public void SetEntity(InventoryCellEntity entity)
     {
-        this.entity = entity;
+        if (this.entity != null)
+        {
+            this.entity.onItemChange -= UpdateCell;
+        }
 
-        UpdateCell();
+        this.entity = entity;
+        this.entity.onItemChange += UpdateCell;
+        UpdateCell(this.entity.ItemInCell);
     }
 
     public void SetItemParent(Transform dragParent)
@@ -27,13 +32,13 @@ public class UIInventoryCell : PoolableObject, IDropHandler
         linkedItem.SetParents(transform, dragParent);
     }
 
-    public void UpdateCell()
+    public void UpdateCell(ItemEntity itemEntity)
     {
-        if (entity.ItemInCell != null && entity.ItemInCell.Info)
+        if (itemEntity != null && itemEntity.Info)
         {
-            linkedItem.SetItem(entity.ItemInCell);
+            linkedItem.SetItem(itemEntity);
             linkedItem.gameObject.SetActive(true);
-            itemAmountText.text = entity.ItemInCell.Amount.ToString();
+            itemAmountText.text = itemEntity.Amount.ToString();
             itemAmountText.gameObject.SetActive(true);
         }
         else
@@ -50,7 +55,6 @@ public class UIInventoryCell : PoolableObject, IDropHandler
         {
             ItemEntity transferItem = droppedItem.LinkedItem;
 
-            
             if (droppedItem.LinkedCell.Entity.CanAddItem(linkedItem.LinkedItem) && 
                 entity.CanAddItem(transferItem))
             {
@@ -58,8 +62,6 @@ public class UIInventoryCell : PoolableObject, IDropHandler
                 entity.TryAddItem(transferItem);
             }
 
-            droppedItem.LinkedCell.UpdateCell();
-            UpdateCell();
             droppedItem.OnEndDrag(null);
             linkedItem.OnEndDrag(null);
         }
