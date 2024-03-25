@@ -2,6 +2,7 @@
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEditor.SceneManagement;
+using Assets.UI;
 
 [CustomEditor(typeof(UIEffectsManager))]
 public class EffectsManagerEditor : Editor

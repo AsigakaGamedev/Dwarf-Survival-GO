@@ -3,6 +3,7 @@ using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace Asigaka.UI
 {
@@ -20,9 +21,14 @@ namespace Asigaka.UI
         private ObjectPoolingManager poolingManager;
         private Camera mainCamera;
 
+        [Inject]
+        private void Construct(ObjectPoolingManager poolingManager)
+        {
+            this.poolingManager = poolingManager;
+        }
+
         private void Start()
         {
-            poolingManager = ServiceLocator.GetService<ObjectPoolingManager>();
             mainCamera = Camera.main;
 
             activeMovableEffects = new List<UIMovableEffect>();

@@ -3,6 +3,7 @@ using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class MineableObject : MonoBehaviour
 {
@@ -23,10 +24,14 @@ public class MineableObject : MonoBehaviour
 
     private bool canShake;
 
+    [Inject]
+    private void Construct(ObjectPoolingManager poolingManager)
+    {
+        this.poolingManager = poolingManager;
+    }
+
     private void Start()
     {
-        poolingManager = ServiceLocator.GetService<ObjectPoolingManager>();
-
         canShake = true;
         mineCapacity = maxMineCapacity;
     }

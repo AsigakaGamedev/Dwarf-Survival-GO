@@ -36,12 +36,14 @@ public class UIBuildingsPanel : MonoBehaviour
     private EventSystem eventSystem;
 
     [Inject]
-    public void Construct(BuildingsManager buildingsManager, PlayerManager playerManager)
+    public void Construct(BuildingsManager buildingsManager, PlayerManager playerManager, ObjectPoolingManager poolingManager)
     {
         this.buildingsManager = buildingsManager;
 
         this.playerManager = playerManager;
         this.playerManager.onPlayerSpawn += OnPlayerSpawn;
+
+        this.poolingManager = poolingManager;
     }
 
     private void OnEnable()
@@ -53,8 +55,6 @@ public class UIBuildingsPanel : MonoBehaviour
     private void Start()
     {
         eventSystem = EventSystem.current;
-
-        poolingManager = ServiceLocator.GetService<ObjectPoolingManager>();
 
         spawnedListItems = new List<UIBuildingItem>();
         spawnedNeededItems = new List<UICraftNeededItem>();

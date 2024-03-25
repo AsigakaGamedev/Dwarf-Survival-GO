@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class HealthController : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class HealthController : MonoBehaviour
     [SerializeField] private bool hasDeathDrop;
     [ShowIf(nameof(hasDeathDrop)), SerializeField] private ObjectSpawnData[] droppableObjects;
 
+    private ObjectPoolingManager poolingManager;
     private PoolableObject corpseInstance;
 
     private bool isDead;
@@ -28,6 +30,12 @@ public class HealthController : MonoBehaviour
 
     public float MaxHealth { get => maxHealth; }
     public float CurHealth { get => curHealth; }
+
+    [Inject]
+    private void Construct(ObjectPoolingManager poolingManager)
+    {
+        this.poolingManager = poolingManager;
+    }
 
     public void SetMaxHealth(float maxHealth)
     {
@@ -59,8 +67,6 @@ public class HealthController : MonoBehaviour
         curHealth = 0;
         onHealthChange?.Invoke(curHealth);
         onDie?.Invoke();
-
-        ObjectPoolingManager poolingManager = ServiceLocator.GetService<ObjectPoolingManager>();
 
         if (corpsePrefab)
         {

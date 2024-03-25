@@ -22,10 +22,12 @@ public class BuildingsManager : MonoBehaviour
     public BuildingObject[] AllBuildingsPrefabs { get => allBuildingsPrefabs; }
 
     [Inject]
-    public void Construct(PlayerManager playerManager)
+    private void Construct(PlayerManager playerManager, ObjectPoolingManager poolingManager)
     {
         this.playerManager = playerManager;
         this.playerManager.onPlayerSpawn += OnPlayerSpawn;
+
+        this.poolingManager = poolingManager;
     }
 
     private void OnDestroy()
@@ -43,7 +45,6 @@ public class BuildingsManager : MonoBehaviour
 
     private void Start()
     {
-        poolingManager = ServiceLocator.GetService<ObjectPoolingManager>();
         mainCamera = Camera.main;
     }
 
