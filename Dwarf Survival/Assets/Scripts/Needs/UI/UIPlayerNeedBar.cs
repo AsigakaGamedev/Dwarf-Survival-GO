@@ -2,27 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
-public class UIPlayerNeedBar : MonoBehaviour, IInitListener, IDeinitListener
+public class UIPlayerNeedBar : MonoBehaviour
 {
     [SerializeField] private string needID;
     [SerializeField] private Slider needSlider;
 
+    private PlayerManager playerManager;
     private NeedEntity needEntity;
 
-    public void OnInitialize()
+    [Inject]
+    public void Construct(PlayerManager playerManager)
     {
-        needEntity = PlayerManager.Instance.PlayerInstance.Actor.Needs[needID];
+        this.playerManager = playerManager;
+        this.playerManager.onPlayerSpawn += OnPlayerSpawn;
+    }
+
+    private void OnDestroy()
+    {
+        if (playerManager)
+        {
+            playerManager.onPlayerSpawn -= OnPlayerSpawn;
+        }
+    }
+
+    private void OnPlayerSpawn(PlayerActorController playerActor)
+    {
+        if (needEntity != null)
+        {
+            needEntity.onValueChange -= OnNeedValueChange;
+        }
+
+        needEntity = playerActor.Actor.Needs[needID];
 
         needEntity.onValueChange += OnNeedValueChange;
 
         OnNeedValueChange(needEntity.Value);
         OnNeedMaxValueChange(needEntity.MaxValue);
-    }
-
-    public void OnDeinitialize()
-    {
-        needEntity.onValueChange -= OnNeedValueChange;
     }
 
     private void OnNeedValueChange(float value)

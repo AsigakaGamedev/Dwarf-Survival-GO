@@ -2,6 +2,7 @@ using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class AIWalkAround : AIActorState
 {
@@ -13,11 +14,15 @@ public class AIWalkAround : AIActorState
 
     private WorldManager worldManager;
 
+    [Inject]
+    private void Construct(WorldManager worldManager)
+    {
+        this.worldManager = worldManager;
+    }
+
     public override void OnInit(Actor actor)
     {
         base.OnInit(actor);
-
-        worldManager = WorldManager.Instance;
     }
 
     public override void OnEnterState()

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
-public class UIInventoryPanel : MonoBehaviour, IInitListener
+public class UIInventoryPanel : MonoBehaviour
 {
     [SerializeField] private UIInventoryCell cellPrefab;
     [SerializeField] private Transform cellsContent;
@@ -11,9 +12,14 @@ public class UIInventoryPanel : MonoBehaviour, IInitListener
     private ObjectPoolingManager poolingManager;
     private List<UIInventoryCell> spawnedCells;
 
-    public void OnInitialize()
+    [Inject]
+    public void Construct(ObjectPoolingManager poolingManager)
     {
-        poolingManager = ServiceLocator.GetService<ObjectPoolingManager>();
+        this.poolingManager = poolingManager;
+    }
+
+    public void Init()
+    {
         spawnedCells = new List<UIInventoryCell>();
     }
 

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class UIInventoriesManager : MonoBehaviour, IInitListener
+public class UIInventoriesManager : MonoBehaviour
 {
     [SerializeField] private SerializedDictionary<string, UIInventoryPanel> inventoryPanels;
 
@@ -23,11 +23,11 @@ public class UIInventoriesManager : MonoBehaviour, IInitListener
         }
     }
 
-    public void OnInitialize()
+    private void Awake()
     {
         foreach (var panel in inventoryPanels.Values)
         {
-            panel.OnInitialize();
+            panel.Init();
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(CharacteristicsController))]
-public class Actor : MonoBehaviour, IInitListener, IDeinitListener
+public class Actor : MonoBehaviour
 {
     [SerializeField] private string id;
 
@@ -64,7 +64,7 @@ public class Actor : MonoBehaviour, IInitListener, IDeinitListener
 
         if (inventory)
         {
-            inventory.OnInitialize();
+            inventory.Init();
             inventory.SetCellsCount((int)characteristics["cells_count"].Value);
             inventory.AddStartItems();
         }
@@ -72,7 +72,7 @@ public class Actor : MonoBehaviour, IInitListener, IDeinitListener
         if (vision)
         {
             vision.Actor = this;
-            vision.OnInitialize();
+            vision.Init();
         }
 
         if (weapons)
@@ -91,7 +91,7 @@ public class Actor : MonoBehaviour, IInitListener, IDeinitListener
     {
         if (vision)
         {
-            vision.OnDeinitialize();
+            vision.Kill();
         }
 
         if (health)

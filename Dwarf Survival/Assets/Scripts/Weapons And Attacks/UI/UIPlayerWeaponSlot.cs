@@ -3,12 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Zenject;
 
 public class UIPlayerWeaponSlot : MonoBehaviour, IDropHandler
 {
     [SerializeField] private Image weaponImg;
 
+    private PlayerManager playerManager;
     private WeaponsController weaponsController;
+
+    [Inject]
+    public void Construct(PlayerManager playerManager)
+    {
+        this.playerManager = playerManager;
+        this.playerManager.onPlayerSpawn += OnPlayerSpawn;
+    }
+
+    private void OnDestroy()
+    {
+        if (playerManager)
+        {
+            playerManager.onPlayerSpawn -= OnPlayerSpawn;
+        }
+    }
+
+    private void OnPlayerSpawn(PlayerActorController playerActor)
+    {
+        weaponImg.gameObject.SetActive(false);
+        weaponsController = playerActor.Actor.Weapons;
+    }
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -24,15 +47,6 @@ public class UIPlayerWeaponSlot : MonoBehaviour, IDropHandler
                 weaponImg.sprite = info.EquipmentIcon;
                 weaponImg.gameObject.SetActive(true);
             }
-        }
-    }
-
-    private void OnEnable()
-    {
-        if (!weaponsController && PlayerManager.Instance)
-        {
-            weaponsController = PlayerManager.Instance.PlayerInstance.Actor.Weapons;
-            weaponImg.gameObject.SetActive(false);
         }
     }
 }

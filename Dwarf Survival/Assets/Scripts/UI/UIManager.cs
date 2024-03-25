@@ -2,8 +2,9 @@ using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
-public class UIManager : MonoBehaviour, IInitListener, IDeinitListener
+public class UIManager : MonoBehaviour
 {
     [SerializeField] private string startScreen;
     [SerializeField] private UIScreen[] screens;
@@ -11,17 +12,7 @@ public class UIManager : MonoBehaviour, IInitListener, IDeinitListener
     [Space]
     [ReadOnly, SerializeField] private UIScreen curScreen;
 
-    private void OnEnable()
-    {
-        ServiceLocator.AddService(this);
-    }
-
-    private void OnDisable()
-    {
-        ServiceLocator.RemoveService(this);
-    }
-
-    public void OnInitialize()
+    private void Start()
     {
         foreach (UIScreen screen in screens)
         {
@@ -29,11 +20,6 @@ public class UIManager : MonoBehaviour, IInitListener, IDeinitListener
         }
 
         ChangeScreen(startScreen);
-    }
-
-    public void OnDeinitialize()
-    {
-
     }
 
     private UIScreen GetScreen(string screenName)
@@ -57,6 +43,5 @@ public class UIManager : MonoBehaviour, IInitListener, IDeinitListener
 
         curScreen = nextScreen;
         curScreen.ShowScreen();
-        Cursor.lockState = curScreen.CursorLockMode;
     }
 }

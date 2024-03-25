@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Asigaka.UI
 {
-    public class UIEffectsManager : MonoBehaviour, IInitListener, IUpdateListener, IDeinitListener
+    public class UIEffectsManager : MonoBehaviour
     {
         [SerializeField] private Transform effectsContent;
         [SerializeField] private SerializedDictionary<string, RectTransform> effectTargets;
@@ -20,19 +20,15 @@ namespace Asigaka.UI
         private ObjectPoolingManager poolingManager;
         private Camera mainCamera;
 
-        public static UIEffectsManager Instance;
-
-        public void OnInitialize()
+        private void Start()
         {
-            Instance = this;
-
             poolingManager = ServiceLocator.GetService<ObjectPoolingManager>();
             mainCamera = Camera.main;
 
             activeMovableEffects = new List<UIMovableEffect>();
         }
 
-        public void OnUpdate()
+        private void Update()
         {
             for (int i = 0; i < activeMovableEffects.Count; i++)
             {
@@ -43,11 +39,6 @@ namespace Asigaka.UI
                     effect.gameObject.SetActive(false);
                 }
             }
-        }
-
-        public void OnDeinitialize()
-        {
-            Instance = null;
         }
 
         public void ShowMovableEffect(Vector3 spawnPos, string targetKey, Sprite effectSprite)

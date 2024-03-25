@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum InputType { Desktop, Mobile }
 
-public class InputsManager : MonoBehaviour, IInitListener, IDeinitListener
+public class InputsManager : MonoBehaviour
 {
     [SerializeField] private InputType inputType;
 
@@ -17,20 +17,6 @@ public class InputsManager : MonoBehaviour, IInitListener, IDeinitListener
     public Action onInventoryOpen;
     public Action onInteract;
     public Action onPlayerCraftsOpen;
-
-    public static InputsManager Instance;
-
-    public void OnInitialize()
-    {
-        print("Inputs Manager инициализирован");
-
-        Instance = this;
-    }
-
-    public void OnDeinitialize()
-    {
-        Instance = null;
-    }
 
     private void Update()
     {

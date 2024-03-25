@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponsController : MonoBehaviour, IInitListener
+public class WeaponsController : MonoBehaviour
 {
     [SerializeField] private SerializedDictionary<ItemInfo, WeaponModel> allWeapons;
 
@@ -16,7 +16,7 @@ public class WeaponsController : MonoBehaviour, IInitListener
     {
         foreach (WeaponModel weapon in allWeapons.Values)
         {
-            weapon.OnInitialize();
+            weapon.Init();
         }
     }
 

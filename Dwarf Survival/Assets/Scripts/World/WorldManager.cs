@@ -3,13 +3,13 @@ using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
-using UnityEditor.Presets;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Zenject;
 
 public enum WorldCellType { Ground, Wall }
 
-public class WorldManager : MonoBehaviour, IInitListener, IDeinitListener
+public class WorldManager : MonoBehaviour
 {
     [Expandable, SerializeField] private WorldPreset currentPreset;
 
@@ -25,22 +25,17 @@ public class WorldManager : MonoBehaviour, IInitListener, IDeinitListener
 
     private ObjectPoolingManager poolingManager;
 
-    public static WorldManager Instance;
-
-    public void OnInitialize()
+    [Inject]
+    public void Construct(ObjectPoolingManager poolingManager)
     {
-        poolingManager = ServiceLocator.GetService<ObjectPoolingManager>();
+        this.poolingManager = poolingManager;
+    }
 
-        Instance = this;
-
+    private void Start()
+    {
         GenerateCurrent();
 
         print("World Manager инициализирован");
-    }
-
-    public void OnDeinitialize()
-    {
-        Instance = null;
     }
 
     #region Generating

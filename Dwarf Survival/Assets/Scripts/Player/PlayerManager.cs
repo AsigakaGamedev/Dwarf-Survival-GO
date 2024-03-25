@@ -1,9 +1,11 @@
 using NaughtyAttributes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
-public class PlayerManager : MonoBehaviour, IInitListener, IUpdateListener, IDeinitListener
+public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private PlayerActorController playerPrefab;
     [SerializeField] private string playerSpawnBiome = "cave";
@@ -16,18 +18,22 @@ public class PlayerManager : MonoBehaviour, IInitListener, IUpdateListener, IDei
 
     private WorldManager worldManager;
     private CameraManager cameraManager;
+    private DiContainer diContainer;
+
+    public Action<PlayerActorController> onPlayerSpawn;
 
     public PlayerActorController PlayerInstance { get => playerInstance; }
 
-    public static PlayerManager Instance;
-
-    public void OnInitialize()
+    [Inject]
+    private void Construct(WorldManager worldManager, CameraManager cameraManager, DiContainer diContainer)
     {
-        Instance = this;
+        this.worldManager = worldManager;
+        this.cameraManager = cameraManager;
+        this.diContainer = diContainer;
+    }
 
-        worldManager = WorldManager.Instance;
-        cameraManager = CameraManager.Instance;
-
+    private void Start()
+    {
         WorldCellData spawnCell = worldManager.GetRandomCell(playerSpawnBiome, WorldCellType.Ground);
         spawnPoint = new Vector2(spawnCell.PosX + 0.5f, spawnCell.PosY + 0.5f);
 
@@ -36,16 +42,10 @@ public class PlayerManager : MonoBehaviour, IInitListener, IUpdateListener, IDei
         print("Player Manager инициализирован");
     }
 
-    public void OnUpdate()
+    private void OnDestroy()
     {
-        playerInstance.OnUpdate();
-    }
+        if (!playerInstance) return;
 
-    public void OnDeinitialize()
-    {
-        Instance = null;
-
-        playerInstance.OnDeinitialize();
         playerInstance.onDie -= OnPlayerDie;
     }
 
@@ -53,10 +53,10 @@ public class PlayerManager : MonoBehaviour, IInitListener, IUpdateListener, IDei
     {
         if (!playerInstance)
         {
-            playerInstance = Instantiate(playerPrefab, spawnPoint, playerPrefab.transform.rotation, transform);
-            playerInstance.OnInitialize();
+            playerInstance = diContainer.InstantiatePrefabForComponent<PlayerActorController>(playerPrefab, spawnPoint, playerPrefab.transform.rotation, transform);
             cameraManager.SetCameraTarget(playerInstance.transform);
             playerInstance.onDie += OnPlayerDie;
+            onPlayerSpawn?.Invoke(playerInstance);
         }
         else
         {

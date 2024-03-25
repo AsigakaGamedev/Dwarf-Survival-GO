@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AInventory : MonoBehaviour, IInitListener
+public abstract class AInventory : MonoBehaviour
 {
     [Header("Crafts")]
     [SerializeField] private CraftInfo[] possibleCrafts;
@@ -16,7 +16,7 @@ public abstract class AInventory : MonoBehaviour, IInitListener
     public List<InventoryCellEntity> Cells { get => cells; }
     public CraftInfo[] PossibleCrafts { get => possibleCrafts; }
 
-    public void OnInitialize()
+    public void Init()
     {
         cells = new List<InventoryCellEntity>();
     }

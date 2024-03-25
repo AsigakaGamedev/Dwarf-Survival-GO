@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class MiningTileAttack : AAttack
 {
@@ -10,9 +11,10 @@ public class MiningTileAttack : AAttack
 
     private WorldManager worldManager;
 
-    public override void OnInit()
+    [Inject]
+    private void Construct(WorldManager worldManager)
     {
-        worldManager = WorldManager.Instance;
+        this.worldManager = worldManager;
     }
 
     public override void OnAttack(Vector2 dir)

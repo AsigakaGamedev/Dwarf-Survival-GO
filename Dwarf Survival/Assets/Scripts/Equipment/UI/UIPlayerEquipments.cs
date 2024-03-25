@@ -1,23 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class UIPlayerEquipments : MonoBehaviour
 {
     [SerializeField] private UIEquipmentSlot[] slots;
 
+    private PlayerManager playerManager;
     private EquipmentsController playerEquipments;
 
-    private void OnEnable()
+    [Inject]
+    public void Construct(PlayerManager playerManager)
     {
-        if (!playerEquipments && PlayerManager.Instance)
-        {
-            playerEquipments = PlayerManager.Instance.PlayerInstance.Actor.Equipments;
+        this.playerManager = playerManager;
+        this.playerManager.onPlayerSpawn += OnPlayerSpawn;
+    }
 
-            foreach (var slot in slots)
-            {
-                slot.SetController(playerEquipments);
-            }
+    private void OnDestroy()
+    {
+        if (playerManager)
+        {
+            playerManager.onPlayerSpawn -= OnPlayerSpawn;
+        }
+    }
+
+    private void OnPlayerSpawn(PlayerActorController playerActor)
+    {
+        playerEquipments = playerActor.Actor.Equipments;
+
+        foreach (var slot in slots)
+        {
+            slot.SetController(playerEquipments);
         }
     }
 }

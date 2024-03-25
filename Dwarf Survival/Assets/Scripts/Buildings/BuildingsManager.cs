@@ -1,11 +1,13 @@
 using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using Zenject;
 
 public enum BuildingType { Other, Craft, Defence }
 
-public class BuildingsManager : MonoBehaviour, IInitListener, IDeinitListener
+public class BuildingsManager : MonoBehaviour
 {
     [SerializeField] private BuildingObject[] allBuildingsPrefabs;
 
@@ -13,27 +15,36 @@ public class BuildingsManager : MonoBehaviour, IInitListener, IDeinitListener
     [ReadOnly, SerializeField] private BuildingObject selectedBuilding;
 
     private ObjectPoolingManager poolingManager;
+    private PlayerManager playerManager;
     private AInventory playerInventory;
     private Camera mainCamera;
 
-    public static BuildingsManager Instance;
-
     public BuildingObject[] AllBuildingsPrefabs { get => allBuildingsPrefabs; }
 
-    public void OnInitialize()
+    [Inject]
+    public void Construct(PlayerManager playerManager)
     {
-        Instance = this;
-
-        poolingManager = ServiceLocator.GetService<ObjectPoolingManager>();
-        playerInventory = PlayerManager.Instance.PlayerInstance.Actor.Inventory;
-        mainCamera = Camera.main;
-
-        print("Buildings Manager инициализирован");
+        this.playerManager = playerManager;
+        this.playerManager.onPlayerSpawn += OnPlayerSpawn;
     }
 
-    public void OnDeinitialize()
+    private void OnDestroy()
     {
-        Instance = null;
+        if (playerManager)
+        {
+            playerManager.onPlayerSpawn -= OnPlayerSpawn;
+        }
+    }
+
+    private void OnPlayerSpawn(PlayerActorController playerActor)
+    {
+        playerInventory = playerActor.Actor.Inventory;
+    }
+
+    private void Start()
+    {
+        poolingManager = ServiceLocator.GetService<ObjectPoolingManager>();
+        mainCamera = Camera.main;
     }
 
     public void SelectBuildingPrefab(BuildingObject prefab)

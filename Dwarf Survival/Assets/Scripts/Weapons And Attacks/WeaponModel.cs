@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponModel : MonoBehaviour, IInitListener
+public class WeaponModel : MonoBehaviour
 {
     [SerializeField] private AttacksHandler attackHandler;
 
-    public void OnInitialize()
+    public void Init()
     {
         attackHandler.OnInitialize();
     }

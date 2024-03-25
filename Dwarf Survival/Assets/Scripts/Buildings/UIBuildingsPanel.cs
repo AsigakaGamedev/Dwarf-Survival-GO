@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Zenject;
 
-public class UIBuildingsPanel : MonoBehaviour, IInitListener, IDeinitListener
+public class UIBuildingsPanel : MonoBehaviour
 {
     [SerializeField] private UIBuildingsType[] typesBtns;
 
@@ -26,6 +27,7 @@ public class UIBuildingsPanel : MonoBehaviour, IInitListener, IDeinitListener
 
     private BuildingsManager buildingsManager;
     private ObjectPoolingManager poolingManager;
+    private PlayerManager playerManager;
     private AInventory playerInventory;
 
     private List<UIBuildingItem> spawnedListItems;
@@ -33,23 +35,29 @@ public class UIBuildingsPanel : MonoBehaviour, IInitListener, IDeinitListener
 
     private EventSystem eventSystem;
 
+    [Inject]
+    public void Construct(BuildingsManager buildingsManager, PlayerManager playerManager)
+    {
+        this.buildingsManager = buildingsManager;
+
+        this.playerManager = playerManager;
+        this.playerManager.onPlayerSpawn += OnPlayerSpawn;
+    }
+
     private void OnEnable()
     {
         buildingsPanel.SetActive(false);
         selectedBuilding.SetActive(false);
     }
 
-    public void OnInitialize()
+    private void Start()
     {
         eventSystem = EventSystem.current;
 
-        buildingsManager = BuildingsManager.Instance;
         poolingManager = ServiceLocator.GetService<ObjectPoolingManager>();
 
         spawnedListItems = new List<UIBuildingItem>();
         spawnedNeededItems = new List<UICraftNeededItem>();
-
-        playerInventory = PlayerManager.Instance.PlayerInstance.Actor.Inventory;
 
         foreach (var type in typesBtns)
         {
@@ -57,16 +65,19 @@ public class UIBuildingsPanel : MonoBehaviour, IInitListener, IDeinitListener
         }
 
         OnTypeChange(BuildingType.Other);
-
-        print("UI Buildings Panel инициализирован");
     }
 
-    public void OnDeinitialize()
+    private void OnDestroy()
     {
-        foreach (var type in typesBtns)
+        if (playerManager)
         {
-            type.onTypeChange -= OnTypeChange;
+            playerManager.onPlayerSpawn -= OnPlayerSpawn;
         }
+    }
+
+    private void OnPlayerSpawn(PlayerActorController playerActor)
+    {
+        playerInventory = playerActor.Actor.Inventory;
     }
 
     private void OnTypeChange(BuildingType type)

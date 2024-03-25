@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
-public class UIPlayerCraftsManager : MonoBehaviour, IInitListener, IDeinitListener
+public class UIPlayerCraftsManager : MonoBehaviour
 {
     [SerializeField] private UICraftType[] types;
 
@@ -40,7 +41,11 @@ public class UIPlayerCraftsManager : MonoBehaviour, IInitListener, IDeinitListen
 
     private List<UICraftNeededItem> spawnedNeededItems;
 
-    public static UIPlayerCraftsManager Instance;
+    [Inject]
+    public void Construct(ObjectPoolingManager poolingManager)
+    {
+        this.poolingManager = poolingManager;
+    }
 
     private void OnDisable()
     {
@@ -50,15 +55,11 @@ public class UIPlayerCraftsManager : MonoBehaviour, IInitListener, IDeinitListen
         selectedCraftPanel.gameObject.SetActive(false);
     }
 
-    public void OnInitialize()
+    private void Start()
     {
-        Instance = this;
-
-        poolingManager = ServiceLocator.GetService<ObjectPoolingManager>();
-
         foreach (var type in types)
         {
-            type.OnInitialize();
+            type.Init();
             type.onTypeChange += ChangeType;
         }
 
@@ -71,10 +72,8 @@ public class UIPlayerCraftsManager : MonoBehaviour, IInitListener, IDeinitListen
         });
     }
 
-    public void OnDeinitialize()
+    private void OnDestroy()
     {
-        Instance = null;
-
         foreach (var type in types)
         {
             type.onTypeChange -= ChangeType;
@@ -86,7 +85,6 @@ public class UIPlayerCraftsManager : MonoBehaviour, IInitListener, IDeinitListen
         foreach (UICraftRecipe spawned in spawnedRecipies)
         {
             spawned.onSelectClick -= OnSelectRecipe;
-            spawned.OnDeinitialize();
             spawned.gameObject.SetActive(false);
         }
 
@@ -98,7 +96,6 @@ public class UIPlayerCraftsManager : MonoBehaviour, IInitListener, IDeinitListen
 
             UICraftRecipe newRecipe = poolingManager.GetPoolable(recipePrefab);
             newRecipe.onSelectClick += OnSelectRecipe;
-            newRecipe.OnInitialize();
             newRecipe.transform.SetParent(recipiesContent);
             newRecipe.transform.localScale = Vector3.one;
             newRecipe.SetInfo(craft);

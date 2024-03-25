@@ -2,29 +2,25 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
-public class PlayerActorController : MonoBehaviour, IInitListener, IUpdateListener, IDeinitListener
+public class PlayerActorController : MonoBehaviour
 {
     [SerializeField] private Actor actor;
 
     private InputsManager inputs;
     private UIManager uiManager;
     private Camera mainCamera;
+    private UIPlayerCraftsManager uiPlayerCrafts;
 
     public Actor Actor { get => actor; }
 
     public Action onDie;
 
-    public void OnInitialize()
+    [Inject]
+    public void Construct(InputsManager inputs, UIManager uiManager, UIPlayerCraftsManager uiPlayerCrafts)
     {
-        actor.OnInitialize();
-        actor.ChangeMovementType(true);
-
-        actor.Health.onDie += OnDie;
-
-        inputs = InputsManager.Instance;
-        uiManager = ServiceLocator.GetService<UIManager>();
-        mainCamera = Camera.main;
+        this.inputs = inputs;
 
         inputs.onMove += OnMoveInput;
         inputs.onAttack += OnAttackInput;
@@ -32,17 +28,28 @@ public class PlayerActorController : MonoBehaviour, IInitListener, IUpdateListen
         inputs.onInventoryOpen += OnInventoryOpenInput;
         inputs.onPlayerCraftsOpen += OnPlayerCraftOpenInput;
 
-        print("Player Actor Controller инициализирован");
+        this.uiManager = uiManager;
+        this.uiPlayerCrafts = uiPlayerCrafts;
     }
 
-    public void OnUpdate()
+    private void Start()
+    {
+        actor.OnInitialize();
+        actor.ChangeMovementType(true);
+
+        actor.Health.onDie += OnDie;
+
+        mainCamera = Camera.main;
+    }
+
+    private void Update()
     {
         actor.Interactions.CheckInteractions();
 
         if (actor.Needs) actor.Needs.UpdateNeeds();
     }
 
-    public void OnDeinitialize()
+    private void OnDestroy()
     {
         actor.OnDeinitialize();
 
@@ -87,7 +94,7 @@ public class PlayerActorController : MonoBehaviour, IInitListener, IUpdateListen
     private void OnPlayerCraftOpenInput()
     {
         uiManager.ChangeScreen("craft");
-        UIPlayerCraftsManager.Instance.Open(actor.Inventory.PossibleCrafts, actor.Inventory, "Player");
+        uiPlayerCrafts.Open(actor.Inventory.PossibleCrafts, actor.Inventory, "Player");
     }
 
     #endregion

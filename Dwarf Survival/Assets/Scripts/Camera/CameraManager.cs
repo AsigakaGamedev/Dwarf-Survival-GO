@@ -3,21 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraManager : MonoBehaviour, IInitListener, IDeinitListener
+public class CameraManager : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
-
-    public static CameraManager Instance;
-
-    public void OnInitialize()
-    {
-        Instance = this;
-    }
-
-    public void OnDeinitialize()
-    {
-        Instance = null;
-    }
 
     public void SetCameraTarget(Transform target)
     {

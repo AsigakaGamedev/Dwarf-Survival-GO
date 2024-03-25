@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActorVision : MonoBehaviour, IInitListener, IDeinitListener
+public class ActorVision : MonoBehaviour
 {
     [SerializeField] private LayerMask enemiesLayer;
     [SerializeField] private float enemiesCheckRange;
@@ -23,14 +23,14 @@ public class ActorVision : MonoBehaviour, IInitListener, IDeinitListener
         Gizmos.DrawWireSphere(transform.position, enemiesCheckRange);
     }
 
-    public void OnInitialize()
+    public void Init()
     {
         enemies = new List<Actor>();
 
         StartCoroutine(ECheckEnemies());
     }
 
-    public void OnDeinitialize()
+    public void Kill()
     {
         StopCoroutine(ECheckEnemies());
     }
