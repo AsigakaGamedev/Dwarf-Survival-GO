@@ -11,7 +11,7 @@ public class AttacksHandler : MonoBehaviour
 
     private bool canAttack;
 
-    public void OnInitialize()
+    public void Init()
     {
         canAttack = true;
 

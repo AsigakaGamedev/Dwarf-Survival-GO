@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AIPursueAndAttackEnemy : AIActorState
 {
+    [SerializeField] private AttacksHandler attacksHandler;
     [SerializeField] private float attackDistance = 1.1f;
     [SerializeField] private float waitBeforeAttackDelay = 2;
 
@@ -18,6 +19,7 @@ public class AIPursueAndAttackEnemy : AIActorState
     {
         base.OnInit(actor);
 
+        attacksHandler.Init();
         vision = actor.Vision;
         hasWaitBeforeAttack = false;
     }
@@ -53,6 +55,10 @@ public class AIPursueAndAttackEnemy : AIActorState
 
         if (Vector3.Distance(transform.position, target.position) <= attackDistance)
         {
+            Vector2 dirToEnemy = target.position - transform.position;
+            dirToEnemy.Normalize();
+            attacksHandler.TryAttack(dirToEnemy);
+
             actor.ChangeIsStopped(true);
             hasWaitBeforeAttack = true;
             Invoke(nameof(OnWaitBeforeAttackEnd), waitBeforeAttackDelay);

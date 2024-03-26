@@ -8,7 +8,7 @@ public class WeaponModel : MonoBehaviour
 
     public void Init()
     {
-        attackHandler.OnInitialize();
+        attackHandler.Init();
     }
 
     public bool TryAttack(Vector2 dir)

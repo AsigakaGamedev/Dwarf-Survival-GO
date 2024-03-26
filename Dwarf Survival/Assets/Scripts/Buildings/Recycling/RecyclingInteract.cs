@@ -49,6 +49,11 @@ public class RecyclingInteract : AInteractionComponent
         }
     }
 
+    private void OnDestroy()
+    {
+        
+    }
+
     public override void OnInteract(Actor actor)
     {
         uiRecyclingManager.OpenRecyclingObject(this);

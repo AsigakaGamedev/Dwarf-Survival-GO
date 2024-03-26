@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1860049384055190880}
   - component: {fileID: 4863527863643565840}
   m_Layer: 0
-  m_Name: Square
+  m_Name: visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,6 +86,72 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6503856574355602745
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9194908094550880131}
+  - component: {fileID: 3901205579759651334}
+  - component: {fileID: 138341053151684221}
+  m_Layer: 10
+  m_Name: attacks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9194908094550880131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6503856574355602745}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8625415751496456172}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3901205579759651334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6503856574355602745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3900e12fba9f97b4a9e041c05d9bc09f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allAttacks:
+  - {fileID: 138341053151684221}
+  attackDelay: 2
+--- !u!114 &138341053151684221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6503856574355602745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5068da1ba01e87a4ebd9b1d6895eef92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagableLayers:
+    serializedVersion: 2
+    m_Bits: 1024
+  damageRadius: 1.5
+  damageValue: 10
+  ignoredCollider: {fileID: 5126642856562177113}
 --- !u!1 &7823870278877199652
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,6 +194,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1860049384055190880}
+  - {fileID: 9194908094550880131}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!58 &5126642856562177113
@@ -354,8 +421,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f69a6a1ea70f64b88cc32f505fbb70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attacksHandler: {fileID: 3901205579759651334}
   attackDistance: 1.5
-  attackTimerDelay: 2
+  waitBeforeAttackDelay: 2
 --- !u!114 &5529500310395734585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,3 +438,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   curHealth: 100
+  corpsePrefab: {fileID: 0}
+  hasDeathDrop: 0
+  droppableObjects: []

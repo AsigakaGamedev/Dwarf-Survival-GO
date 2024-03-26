@@ -42,19 +42,19 @@ public class HealthController : MonoBehaviour
         this.maxHealth = maxHealth;
         curHealth = maxHealth;
         onMaxHealthChange?.Invoke(maxHealth);
+        onHealthChange?.Invoke(curHealth);
     }
 
     public void Damage(float damage)
     {
         curHealth -= damage;
+        onHealthChange?.Invoke(curHealth);
 
-        if (curHealth < 0)
+        if (curHealth <= 0)
         {
             curHealth = 0;
             Kill();
         }
-
-        onHealthChange?.Invoke(maxHealth);
     }
 
     [Button("Kill", EButtonEnableMode.Playmode)]
