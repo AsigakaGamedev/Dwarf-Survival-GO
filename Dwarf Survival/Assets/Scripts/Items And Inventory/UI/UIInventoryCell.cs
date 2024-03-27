@@ -60,17 +60,27 @@ public class UIInventoryCell : PoolableObject, IDropHandler
     {
         if (eventData.pointerDrag.TryGetComponent(out UIMovableItem droppedItem))
         {
-            ItemEntity transferItem = droppedItem.LinkedItem;
-
-            if (droppedItem.LinkedCell.Entity.CanAddItem(linkedItem.LinkedItem) && 
-                entity.CanAddItem(transferItem))
-            {
-                droppedItem.LinkedCell.Entity.TryAddItem(linkedItem.LinkedItem);
-                entity.TryAddItem(transferItem);
-            }
-
             droppedItem.OnEndDrag(null);
             linkedItem.OnEndDrag(null);
+
+            InventoryCellEntity droppedCell = droppedItem.LinkedCell.Entity;
+
+            ItemEntity transferItem = droppedItem.LinkedItem;
+
+            if (!droppedCell.CanAddItem(linkedItem.LinkedItem) ||
+                !entity.CanAddItem(transferItem)) return;
+
+            if (droppedCell.ItemInCell != null && 
+                entity.ItemInCell != null &&
+                droppedCell.ItemInCell.Info == entity.ItemInCell.Info)
+            {
+                droppedCell.TryAddItem(null);
+                entity.TryAddItem(transferItem);
+                return;
+            }
+
+            droppedCell.TryAddItem(linkedItem.LinkedItem);
+            entity.TryAddItem(transferItem);
         }
     }
 }

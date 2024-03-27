@@ -53,6 +53,8 @@ public class RecyclingInteract : AInteractionComponent
         fuelCell = new InventoryCellEntity(InventoryCellType.OnlyFuel);
 
         inputCell.onItemChange += OnInputItemChange;
+        outputCell.onItemChange += OnOutputItemChange;
+        fuelCell.onItemChange += OnFuelItemChange;
     }
 
     private void Update()
@@ -78,6 +80,8 @@ public class RecyclingInteract : AInteractionComponent
     private void OnDestroy()
     {
         inputCell.onItemChange -= OnInputItemChange;
+        outputCell.onItemChange -= OnOutputItemChange;
+        fuelCell.onItemChange -= OnFuelItemChange;
     }
 
     public override void OnInteract(Actor actor)
@@ -90,6 +94,8 @@ public class RecyclingInteract : AInteractionComponent
     {
         OnInputItemChange(inputCell.ItemInCell);
     }
+
+    #region Cells Listeners
 
     private void OnInputItemChange(ItemEntity item)
     {
@@ -106,6 +112,39 @@ public class RecyclingInteract : AInteractionComponent
             RecyclingProgress = 0;
         }
     }
+
+    private void OnOutputItemChange(ItemEntity item)
+    {
+        if (item == null || item.Info == recipies[curRecipeIndex].OutputItem.Info)
+        {
+            if (curRecipeIndex == -1)
+            {
+                TryRecyclingInputItem();
+            }
+
+            return;
+        }
+
+        curRecipeIndex = -1;
+        RecyclingProgress = 0;
+    }
+
+    private void OnFuelItemChange(ItemEntity item)
+    {
+        if (item == null || item.Info == null)
+        {
+            curRecipeIndex = -1;
+            RecyclingProgress = 0;
+            return;
+        }
+        else if (curRecipeIndex == -1 && inputCell.ItemInCell != null)
+        {
+            TryRecyclingInputItem();
+            return;
+        }
+    }
+
+    #endregion
 
     private bool TryGetRecipe(ItemInfo inputInfo, out int recyclingRecipeIndex)
     {
