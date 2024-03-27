@@ -2,20 +2,18 @@ using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 public class UIRecyclingManager : MonoBehaviour
 {
     [SerializeField] private UIInventoryCell cellPrefab;
     [SerializeField] private Transform itemDragParent;
+    [SerializeField] private Slider recyclingProgressSlider;
 
     [Space]
     [SerializeField] private Transform inputCellsContent;
-
-    [Space]
     [SerializeField] private Transform outputCellsContent;
-
-    [Space]
     [SerializeField] private Transform fuelCellsContent;
 
     [Space]
@@ -23,8 +21,8 @@ public class UIRecyclingManager : MonoBehaviour
 
     private ObjectPoolingManager poolingManager;
 
-    private List<UIInventoryCell> spawnedInputCells;
-    private List<UIInventoryCell> spawnedOutputCells;
+    private UIInventoryCell spawnedInputCells;
+    private UIInventoryCell spawnedOutputCells;
     private UIInventoryCell spawnedFuelCell;
 
     [Inject]
@@ -33,60 +31,46 @@ public class UIRecyclingManager : MonoBehaviour
         this.poolingManager = poolingManager;
     }
 
-    private void Start()
+    private void Awake()
     {
-        spawnedInputCells = new List<UIInventoryCell>();
-        spawnedOutputCells = new List<UIInventoryCell>();
+        recyclingProgressSlider.value = 0;
+        recyclingProgressSlider.minValue = 0;
+        recyclingProgressSlider.maxValue = 100;
 
         spawnedFuelCell = poolingManager.GetPoolable(cellPrefab);
         spawnedFuelCell.transform.SetParent(fuelCellsContent);
         spawnedFuelCell.transform.localScale = Vector3.one;
         spawnedFuelCell.SetItemParent(itemDragParent);
+
+        spawnedInputCells = poolingManager.GetPoolable(cellPrefab);
+        spawnedInputCells.transform.SetParent(inputCellsContent);
+        spawnedInputCells.transform.localScale = Vector3.one;
+        spawnedInputCells.SetItemParent(itemDragParent);
+
+        spawnedOutputCells = poolingManager.GetPoolable(cellPrefab);
+        spawnedOutputCells.transform.SetParent(outputCellsContent);
+        spawnedOutputCells.transform.localScale = Vector3.one;
+        spawnedOutputCells.SetItemParent(itemDragParent);
+    }
+
+    private void OnRecyclingProgressChange(float progress)
+    {
+        recyclingProgressSlider.value = progress;   
     }
 
     public void OpenRecyclingObject(RecyclingInteract recyclingObject)
     {
-        ClearCells();
+        if (curRecyclingObject)
+        {
+            curRecyclingObject.onRecyclingProgressChange -= OnRecyclingProgressChange;
+        }
 
         curRecyclingObject = recyclingObject;
-
-        foreach (InventoryCellEntity inputCell in recyclingObject.InputCells)
-        {
-            UIInventoryCell newInputCell = poolingManager.GetPoolable(cellPrefab);
-            newInputCell.transform.SetParent(inputCellsContent);
-            newInputCell.transform.localScale = Vector3.one;
-            newInputCell.SetEntity(inputCell);
-            newInputCell.SetItemParent(itemDragParent);
-            spawnedInputCells.Add(newInputCell);
-        }
-
-        foreach (InventoryCellEntity outputCell in recyclingObject.OutputCells)
-        {
-            UIInventoryCell newOutputCell = poolingManager.GetPoolable(cellPrefab);
-            newOutputCell.transform.SetParent(outputCellsContent);
-            newOutputCell.transform.localScale = Vector3.one;
-            newOutputCell.SetEntity(outputCell);
-            newOutputCell.SetItemParent(itemDragParent);
-            spawnedOutputCells.Add(newOutputCell);
-        }
+        curRecyclingObject.onRecyclingProgressChange += OnRecyclingProgressChange;
+        recyclingProgressSlider.value = curRecyclingObject.RecyclingProgress;
 
         spawnedFuelCell.SetEntity(recyclingObject.FuelCell);
-    }
-
-    private void ClearCells()
-    {
-        foreach (UIInventoryCell spawnedInputCell in spawnedInputCells)
-        {
-            spawnedInputCell.gameObject.SetActive(false);
-        }
-
-        spawnedInputCells.Clear();
-
-        foreach (UIInventoryCell spawnedOutputCell in spawnedOutputCells)
-        {
-            spawnedOutputCell.gameObject.SetActive(false);
-        }
-
-        spawnedOutputCells.Clear();
+        spawnedInputCells.SetEntity(recyclingObject.InputCell);
+        spawnedOutputCells.SetEntity(recyclingObject.OutputCell);
     }
 }

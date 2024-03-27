@@ -128,6 +128,8 @@ public class Actor : MonoBehaviour
 
     public void ChangeIsStopped(bool value)
     {
+        if (!agent.enabled) return;
+
         agent.isStopped = value;
     }
 

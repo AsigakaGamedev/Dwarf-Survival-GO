@@ -14,6 +14,7 @@ public class InventoryCellEntity
     private InventoryCellType cellType;
 
     public Action<ItemEntity> onItemChange;
+    public Action<int> onItemAmountChange;
 
     public InventoryCellEntity()
     {
@@ -35,6 +36,12 @@ public class InventoryCellEntity
 
         if (itemInCell != null)
         {
+            if (newItem != null && itemInCell.Info == newItem.Info)
+            {
+                itemInCell.Amount += newItem.Amount;
+                return true;
+            }
+
             itemInCell.onAmountChange -= OnItemAmountChange;
         }
 
@@ -60,6 +67,10 @@ public class InventoryCellEntity
         if (amount <= 0)
         {
             TryAddItem(null);
+        }
+        else
+        {
+            onItemAmountChange?.Invoke(amount);
         }
     }
 }

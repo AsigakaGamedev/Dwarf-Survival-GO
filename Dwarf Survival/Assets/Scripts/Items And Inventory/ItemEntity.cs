@@ -15,8 +15,13 @@ public class ItemEntity
 
     public ItemEntity(ItemData data)
     {
-        this.info = data.Info;
-        this.amount = data.RandomAmount;
+        info = data.Info;
+        amount = data.RandomAmount;
+
+        if (info.IsFuel)
+            fuelCapacity = info.FuelCapacity;
+        else
+            fuelCapacity = -1;
     }
 
     public ItemEntity(ItemInfo info, int amount)
@@ -25,13 +30,9 @@ public class ItemEntity
         this.amount = amount;
 
         if (info.IsFuel)
-        {
             fuelCapacity = info.FuelCapacity;
-        }
         else
-        {
             fuelCapacity = -1;
-        }
     }
 
     public ItemInfo Info { get => info; set => info = value; }
@@ -40,6 +41,18 @@ public class ItemEntity
         {
             amount = value;
             onAmountChange?.Invoke(amount);
+        }
+    }
+
+    public int FuelCapacity { get => fuelCapacity;
+        set
+        {
+            fuelCapacity = value;
+
+            if (fuelCapacity <= 0)
+            {
+                Amount--;
+            }
         }
     }
 }

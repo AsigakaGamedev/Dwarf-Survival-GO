@@ -55,7 +55,7 @@ public class UIPlayerCraftsManager : MonoBehaviour
         selectedCraftPanel.gameObject.SetActive(false);
     }
 
-    private void Start()
+    private void Awake()
     {
         foreach (var type in types)
         {

@@ -20,10 +20,12 @@ public class UIInventoryCell : PoolableObject, IDropHandler
         if (this.entity != null)
         {
             this.entity.onItemChange -= UpdateCell;
+            this.entity.onItemAmountChange -= UpdateAmount;
         }
 
         this.entity = entity;
         this.entity.onItemChange += UpdateCell;
+        this.entity.onItemAmountChange += UpdateAmount;
         UpdateCell(this.entity.ItemInCell);
     }
 
@@ -47,6 +49,11 @@ public class UIInventoryCell : PoolableObject, IDropHandler
             linkedItem.gameObject.SetActive(false);
             itemAmountText.gameObject.SetActive(false);
         }
+    }
+
+    private void UpdateAmount(int amount)
+    {
+        itemAmountText.text = amount.ToString();
     }
 
     public void OnDrop(PointerEventData eventData)

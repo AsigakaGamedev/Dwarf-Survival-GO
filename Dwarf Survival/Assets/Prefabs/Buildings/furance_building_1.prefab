@@ -397,15 +397,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recyclingModifier: 1
-  inputCellsCount: 1
-  outputCellsCount: 1
-  recipies: []
-  inputCells: []
-  outputCells: []
+  recipies:
+  - inputItem:
+      info: {fileID: 11400000, guid: 3e5399cb7541149449e5d8f1139c2652, type: 2}
+      amountRange: {x: 1, y: 1}
+    outputItem:
+      info: {fileID: 11400000, guid: 1e693bc2d67fa8146a59a66dfbc1f5e2, type: 2}
+      amountRange: {x: 1, y: 1}
+  inputCell:
+    itemInCell:
+      info: {fileID: 0}
+      amount: 0
+  outputCell:
+    itemInCell:
+      info: {fileID: 0}
+      amount: 0
   fuelCell:
     itemInCell:
       info: {fileID: 0}
       amount: 0
+  recyclingProgress: 0
+  curRecipeIndex: 0
 --- !u!1 &6754673791446437572
 GameObject:
   m_ObjectHideFlags: 0

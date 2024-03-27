@@ -3,14 +3,9 @@ using UnityEngine;
 [System.Serializable]
 public struct RecyclingRecipeData
 {
-    [SerializeField] private float recyclingTime;
+    [SerializeField] private ItemData inputItem;
+    [SerializeField] private ItemData outputItem;
 
-    [Space]
-    [SerializeField] private ItemData[] inputItems;
-    [SerializeField] private ItemData[] outputItems;
-
-    public float RecyclingTime { get => recyclingTime; }
-
-    public ItemData[] InputItems { get => inputItems; }
-    public ItemData[] OutputItems { get => outputItems; }
+    public ItemData InputItem { get => inputItem; }
+    public ItemData OutputItem { get => outputItem; }
 }
