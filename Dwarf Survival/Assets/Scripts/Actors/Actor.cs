@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -85,6 +86,12 @@ public class Actor : MonoBehaviour
             health.SetMaxHealth(characteristics["max_health"].Value);
             health.onDie += OnDie;
         }
+
+        if (equipments)
+        {
+            equipments.onEquip += OnEquipItem;
+            equipments.onDequip += OnDequipItem;
+        }
     }
 
     public void OnDeinitialize()
@@ -97,6 +104,12 @@ public class Actor : MonoBehaviour
         if (health)
         {
             health.onDie -= OnDie;
+        }
+
+        if (equipments)
+        {
+            equipments.onEquip -= OnEquipItem;
+            equipments.onDequip -= OnDequipItem;
         }
     }
 
@@ -162,6 +175,28 @@ public class Actor : MonoBehaviour
     private void OnDie()
     {
         gameObject.SetActive(false);
+    }
+
+    private void OnEquipItem(ItemEntity entity)
+    {
+        foreach ((string key, float value) in entity.Info.ChangingCharacteristics)
+        {
+            if (characteristics.TryGetCharacteristic(key, out CharacteristicEntity characteristic))
+            {
+                characteristic.Value += value;
+            }
+        }
+    }
+
+    private void OnDequipItem(ItemEntity entity)
+    {
+        foreach ((string key, float value) in entity.Info.ChangingCharacteristics)
+        {
+            if (characteristics.TryGetCharacteristic(key, out CharacteristicEntity characteristic))
+            {
+                characteristic.Value -= value;
+            }
+        }
     }
 
     #endregion

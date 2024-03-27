@@ -17,3 +17,10 @@ MonoBehaviour:
   equipmentIcon: {fileID: 1164585677716319106, guid: 06dbb04a0edd5774b8143e4e5de78639, type: 3}
   isEquipable: 1
   equipSlotID: 0
+  changingCharacteristics:
+    _serializedList:
+    - Key: max_health
+      Value: 15
+  isWeapon: 0
+  isFuel: 0
+  fuelCapacity: 0

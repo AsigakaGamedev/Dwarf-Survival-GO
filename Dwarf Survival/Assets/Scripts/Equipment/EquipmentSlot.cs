@@ -11,11 +11,11 @@ public class EquipmentSlot : MonoBehaviour
     [Space]
     [SerializeField] private SerializedDictionary<ItemInfo, EquipmentModel> models;
 
-    [Space]
-    [ReadOnly, SerializeField] private ItemEntity equipedEntity;
-    [ReadOnly, SerializeField] private EquipmentModel equipedModel;
+    private ItemEntity equipedEntity;
+    private EquipmentModel equipedModel;
 
     public int Id { get => id; }
+    public ItemEntity EquipedEntity { get => equipedEntity; }
 
     [Button]
     public void PreInitialize()
@@ -33,9 +33,19 @@ public class EquipmentSlot : MonoBehaviour
     {
         equipedEntity = equipableItem;
 
-        if (equipedModel) equipedModel.OnDeqiup();
+        DequipCurrent();
 
         equipedModel = models[equipedEntity.Info];
         equipedModel.OnEquip();
+    }
+
+    public void DequipCurrent()
+    {
+        if (equipedModel)
+        {
+            equipedModel.OnDeqiup();
+            equipedModel = null;
+            equipedEntity = null;
+        }
     }
 }

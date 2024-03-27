@@ -1,3 +1,4 @@
+using AYellowpaper.SerializedCollections;
 using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,18 +7,20 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="Items/Info")]
 public class ItemInfo : ScriptableObject
 {
+    [Header("Main")]
     [ShowAssetPreview, SerializeField] private Sprite cellIcon;
     [ShowAssetPreview, SerializeField] private Sprite moveIcon;
     [ShowAssetPreview, ShowIf(nameof(hasEquipmentIcon)), SerializeField] private Sprite equipmentIcon;
 
-    [Space]
+    [Header("Equipment")]
     [SerializeField] private bool isEquipable;
     [ShowIf(nameof(isEquipable)), SerializeField] private int equipSlotID;
+    [ShowIf(nameof(isEquipable)), SerializeField] private SerializedDictionary<string, float> changingCharacteristics;
 
-    [Space]
+    [Header("Weapon")]
     [SerializeField] private bool isWeapon;
 
-    [Space]
+    [Header("Fuel")]
     [SerializeField] private bool isFuel;
     [ShowIf(nameof(isFuel)), SerializeField] private int fuelCapacity;
 
@@ -29,6 +32,7 @@ public class ItemInfo : ScriptableObject
 
     public bool IsEquipable { get => isEquipable; }
     public int EquipSlotID { get => equipSlotID; }
+    public SerializedDictionary<string, float> ChangingCharacteristics { get => changingCharacteristics; }
 
     public bool IsWeapon { get => isWeapon; }
 

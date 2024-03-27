@@ -13,6 +13,20 @@ public class CharacteristicsController : MonoBehaviour
         characteristics.TryAdd(id, entity);
     }
 
+    public bool TryGetCharacteristic(string key, out CharacteristicEntity characteristic)
+    {
+        if (characteristics.ContainsKey(key))
+        {
+            characteristic = characteristics[key];
+            return true;
+        }
+        else
+        {
+            characteristic = null;
+            return false;
+        }
+    }
+
     public CharacteristicEntity this[string id]
     {
         get { return characteristics[id]; }

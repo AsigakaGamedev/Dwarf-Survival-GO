@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UIEquipmentSlot : MonoBehaviour, IDropHandler
+public class UIEquipmentSlot : MonoBehaviour, IDropHandler, IPointerClickHandler
 {
     [SerializeField] private int slotID;
 
@@ -33,6 +33,14 @@ public class UIEquipmentSlot : MonoBehaviour, IDropHandler
                 equipmentImg.sprite = info.EquipmentIcon;
                 equipmentImg.gameObject.SetActive(true);
             }
+        }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (equipmentController.TryDequip(slotID))
+        {
+            equipmentImg.gameObject.SetActive(false);
         }
     }
 }
