@@ -23,6 +23,7 @@ public class Actor : MonoBehaviour
     [SerializeField] private EquipmentsController equipments;
     [SerializeField] private WeaponsController weapons;
     [SerializeField] private NeedsController needs;
+    [SerializeField] private BuffsController buffs;
 
     [Space]
     [SerializeField] private List<string> enemiesID;
@@ -36,6 +37,7 @@ public class Actor : MonoBehaviour
     public WeaponsController Weapons { get => weapons; }
     public NeedsController Needs { get => needs; }
     public HealthController Health { get => health; }
+    public BuffsController Buffs { get => buffs; }
 
     private void OnValidate()
     {
@@ -92,6 +94,13 @@ public class Actor : MonoBehaviour
             equipments.onEquip += OnEquipItem;
             equipments.onDequip += OnDequipItem;
         }
+
+        if (buffs)
+        {
+            buffs.Init();
+            buffs.onBuffAdd += OnBuffAdd;
+            buffs.onBuffRemove += OnBuffRemove;
+        }
     }
 
     public void OnDeinitialize()
@@ -110,6 +119,12 @@ public class Actor : MonoBehaviour
         {
             equipments.onEquip -= OnEquipItem;
             equipments.onDequip -= OnDequipItem;
+        }
+
+        if (buffs)
+        {
+            buffs.onBuffAdd -= OnBuffAdd;
+            buffs.onBuffRemove -= OnBuffRemove;
         }
     }
 
@@ -191,6 +206,28 @@ public class Actor : MonoBehaviour
     private void OnDequipItem(ItemEntity entity)
     {
         foreach ((string key, float value) in entity.Info.ChangingCharacteristics)
+        {
+            if (characteristics.TryGetCharacteristic(key, out CharacteristicEntity characteristic))
+            {
+                characteristic.Value -= value;
+            }
+        }
+    }
+
+    private void OnBuffAdd(BuffData buffData)
+    {
+        foreach ((string key, float value) in buffData.Characteristics)
+        {
+            if (characteristics.TryGetCharacteristic(key, out CharacteristicEntity characteristic))
+            {
+                characteristic.Value += value;
+            }
+        }
+    }
+
+    private void OnBuffRemove(BuffData buffData)
+    {
+        foreach ((string key, float value) in buffData.Characteristics)
         {
             if (characteristics.TryGetCharacteristic(key, out CharacteristicEntity characteristic))
             {

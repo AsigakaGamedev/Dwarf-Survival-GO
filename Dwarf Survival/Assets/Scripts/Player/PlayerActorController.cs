@@ -44,6 +44,7 @@ public class PlayerActorController : MonoBehaviour
 
     private void Update()
     {
+        actor.Buffs.UpdateBuffs();
         actor.Interactions.CheckInteractions();
 
         if (actor.Needs) actor.Needs.UpdateNeeds();

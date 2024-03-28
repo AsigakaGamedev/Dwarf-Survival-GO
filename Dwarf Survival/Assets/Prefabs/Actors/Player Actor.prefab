@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: 8239907977075635806}
   - component: {fileID: 7736019347785914835}
   - component: {fileID: 8027102015193112654}
+  - component: {fileID: 4645364242224832136}
   m_Layer: 10
   m_Name: Player Actor
   m_TagString: Untagged
@@ -228,6 +229,7 @@ MonoBehaviour:
   equipments: {fileID: 1173752651190376549}
   weapons: {fileID: 2609030059000748321}
   needs: {fileID: 8027102015193112654}
+  buffs: {fileID: 4645364242224832136}
   enemiesID: []
 --- !u!50 &7052477000795624155
 Rigidbody2D:
@@ -415,6 +417,19 @@ MonoBehaviour:
         value: 100
         maxValue: 100
         timeValue: -1
+--- !u!114 &4645364242224832136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754703439877410341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4b96f7639e43a141ba014d708a74040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  liveBuffs: []
 --- !u!1 &1963582003012193556
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,6 +652,7 @@ MonoBehaviour:
     m_Bits: 1024
   damageRadius: 2
   damageValue: 5
+  ignoredCollider: {fileID: 0}
 --- !u!1 &5306312785400244936
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,10 +799,6 @@ MonoBehaviour:
   id: 2
   models:
     _serializedList: []
-  equipedEntity:
-    info: {fileID: 0}
-    amount: 0
-  equipedModel: {fileID: 0}
 --- !u!1 &5910746520490693409
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,10 +849,6 @@ MonoBehaviour:
     _serializedList:
     - Key: {fileID: 11400000, guid: 8bcf0d8cbbd1d4a4c8e226599700ed1e, type: 2}
       Value: {fileID: 2940420165595212369}
-  equipedEntity:
-    info: {fileID: 0}
-    amount: 0
-  equipedModel: {fileID: 0}
 --- !u!1 &8073989220846714182
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,10 +899,6 @@ MonoBehaviour:
     _serializedList:
     - Key: {fileID: 11400000, guid: c79d6229d14404140a334e03ac42c96f, type: 2}
       Value: {fileID: 5822734981800996992}
-  equipedEntity:
-    info: {fileID: 0}
-    amount: 0
-  equipedModel: {fileID: 0}
 --- !u!1 &8258921248805691958
 GameObject:
   m_ObjectHideFlags: 0
