@@ -131,7 +131,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 208506d613ad1e549a2d8dec8a957415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetEvolutionPoints: 200
+  targetEvolutionPoints: 3500
+  baseObjects:
+  - prefab: {fileID: 2040965218900927825, guid: 41c522df087ac24449dd599838d57e57, type: 3}
+    maxCount: 25
+    productionCost: 10
+    SpawnedCount: 0
 --- !u!1 &4853195027402086232
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,10 +203,14 @@ MonoBehaviour:
   - {fileID: 2014616209413924416}
   - {fileID: 1291202557814645640}
   - {fileID: 8967287989601141184}
-  evolutionPointsPerTime: 15
   currentLevel: {fileID: 0}
   currentLevelIndex: 0
+  evolutionPointsPerTime: 1
   earnedEvolutionPoints: 0
+  productionPointsPerTime: 1
+  earnedProductionPoints: 0
+  spawnableObjectsDict:
+    _serializedList: []
 --- !u!58 &8233991384650499346
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -370,6 +379,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetEvolutionPoints: 0
+  baseObjects:
+  - prefab: {fileID: 2040965218900927825, guid: 41c522df087ac24449dd599838d57e57, type: 3}
+    maxCount: 2
+    productionCost: 10
+    SpawnedCount: 0
 --- !u!1 &7551177016087793496
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,7 +429,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 208506d613ad1e549a2d8dec8a957415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetEvolutionPoints: 100
+  targetEvolutionPoints: 1000
+  baseObjects:
+  - prefab: {fileID: 2040965218900927825, guid: 41c522df087ac24449dd599838d57e57, type: 3}
+    maxCount: 5
+    productionCost: 10
+    SpawnedCount: 0
 --- !u!1 &9091747664701343512
 GameObject:
   m_ObjectHideFlags: 0
