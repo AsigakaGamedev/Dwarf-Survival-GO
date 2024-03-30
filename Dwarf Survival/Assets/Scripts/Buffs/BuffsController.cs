@@ -9,8 +9,8 @@ public class BuffsController : MonoBehaviour
 {
     [SerializeField] private SerializedDictionary<string, BuffEntity> liveBuffs;
 
-    public Action<BuffData> onBuffAdd;
-    public Action<BuffData> onBuffRemove;
+    public Action<BuffEntity> onBuffAdd;
+    public Action<BuffEntity> onBuffRemove;
 
     public void Init()
     {
@@ -28,7 +28,7 @@ public class BuffsController : MonoBehaviour
 
                 if (value.LifeTime <= 0)
                 {
-                    onBuffRemove?.Invoke(value.Data);
+                    onBuffRemove?.Invoke(value);
                     liveBuffs.Remove(id);
                 }
             }
@@ -38,9 +38,11 @@ public class BuffsController : MonoBehaviour
 
     public void AddBuff(BuffData newBuff)
     {
-        if (liveBuffs.TryAdd(newBuff.Id, new BuffEntity(newBuff)))
+        if (!liveBuffs.ContainsKey(newBuff.ID))
         {
-            onBuffAdd?.Invoke(newBuff);
+            BuffEntity newBuffEntity = new BuffEntity(newBuff);
+            liveBuffs.Add(newBuff.ID, newBuffEntity);
+            onBuffAdd?.Invoke(newBuffEntity);
         }
     }
 }
@@ -48,12 +50,23 @@ public class BuffsController : MonoBehaviour
 [System.Serializable] 
 public class BuffEntity
 {
+    private float lifeTime;
+
     public BuffData Data;
-    public float LifeTime;
+
+    public Action<float> onLifeTimeChange;
+
+    public float LifeTime { get => lifeTime; 
+        set
+        {
+            lifeTime = value;
+            onLifeTimeChange?.Invoke(lifeTime);
+        }
+    }
 
     public BuffEntity(BuffData data)
     {
         Data = data;
-        LifeTime = data.LifeTime;
+        lifeTime = data.LifeTime;
     }
 }

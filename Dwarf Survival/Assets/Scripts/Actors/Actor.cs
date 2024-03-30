@@ -216,9 +216,9 @@ public class Actor : MonoBehaviour
         }
     }
 
-    private void OnBuffAdd(BuffData buffData)
+    private void OnBuffAdd(BuffEntity buffData)
     {
-        foreach ((string key, float value) in buffData.Characteristics)
+        foreach ((string key, float value) in buffData.Data.Characteristics)
         {
             if (characteristics.TryGetCharacteristic(key, out CharacteristicEntity characteristic))
             {
@@ -227,9 +227,9 @@ public class Actor : MonoBehaviour
         }
     }
 
-    private void OnBuffRemove(BuffData buffData)
+    private void OnBuffRemove(BuffEntity buffData)
     {
-        foreach ((string key, float value) in buffData.Characteristics)
+        foreach ((string key, float value) in buffData.Data.Characteristics)
         {
             if (characteristics.TryGetCharacteristic(key, out CharacteristicEntity characteristic))
             {
