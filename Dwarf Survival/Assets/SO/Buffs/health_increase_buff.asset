@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: health_increase_buff
   m_EditorClassIdentifier: 
   buffData:
+    id: health_increase
     lifeTime: 5
     characteristics:
       _serializedList:

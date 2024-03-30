@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName ="Buff Info")]
+[CreateAssetMenu(menuName ="Buff")]
 public class BuffInfo : ScriptableObject
 {
     [SerializeField] private BuffData buffData;

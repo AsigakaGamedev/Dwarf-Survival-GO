@@ -1,3 +1,4 @@
+using AYellowpaper.SerializedCollections;
 using ModestTree;
 using System;
 using System.Collections;
@@ -6,33 +7,41 @@ using UnityEngine;
 
 public class BuffsController : MonoBehaviour
 {
-    [SerializeField] private List<BuffEntity> liveBuffs;
+    [SerializeField] private SerializedDictionary<string, BuffEntity> liveBuffs;
 
     public Action<BuffData> onBuffAdd;
     public Action<BuffData> onBuffRemove;
 
     public void Init()
     {
-        liveBuffs = new List<BuffEntity>();
+        liveBuffs = new SerializedDictionary<string, BuffEntity>();
     }
 
     public void UpdateBuffs()
     {
-        for (int i = 0; i < liveBuffs.Count; i++)
+        //Да костыль, а что вы мне сделаете?
+        try
         {
-            liveBuffs[i].LifeTime -= Time.deltaTime;
-
-            if (liveBuffs[i].LifeTime <= 0)
+            foreach ((string id, BuffEntity value) in liveBuffs)
             {
-                liveBuffs.RemoveAt(i);
+                value.LifeTime -= Time.deltaTime;
+
+                if (value.LifeTime <= 0)
+                {
+                    onBuffRemove?.Invoke(value.Data);
+                    liveBuffs.Remove(id);
+                }
             }
         }
+        catch { }
     }
 
     public void AddBuff(BuffData newBuff)
     {
-        liveBuffs.Add(new BuffEntity(newBuff));
-        onBuffAdd?.Invoke(newBuff);
+        if (liveBuffs.TryAdd(newBuff.Id, new BuffEntity(newBuff)))
+        {
+            onBuffAdd?.Invoke(newBuff);
+        }
     }
 }
 

@@ -26,6 +26,7 @@ public class HealthController : MonoBehaviour
 
     public Action<float> onMaxHealthChange;
     public Action<float> onHealthChange;
+    public Action<BuffData> onHealthChangeBuff;
     public Action onDie;
 
     public float MaxHealth { get => maxHealth; }
@@ -55,6 +56,12 @@ public class HealthController : MonoBehaviour
             curHealth = 0;
             Kill();
         }
+    }
+
+    public void Damage(float damage, BuffData buff)
+    {
+        onHealthChangeBuff?.Invoke(buff);
+        Damage(damage);
     }
 
     [Button("Kill", EButtonEnableMode.Playmode)]

@@ -87,6 +87,7 @@ public class Actor : MonoBehaviour
         {
             health.SetMaxHealth(characteristics["max_health"].Value);
             health.onDie += OnDie;
+            health.onHealthChangeBuff += OnHealthChangeAddBuff;
         }
 
         if (equipments)
@@ -113,6 +114,7 @@ public class Actor : MonoBehaviour
         if (health)
         {
             health.onDie -= OnDie;
+            health.onHealthChangeBuff -= OnHealthChangeAddBuff;
         }
 
         if (equipments)
@@ -234,6 +236,13 @@ public class Actor : MonoBehaviour
                 characteristic.Value -= value;
             }
         }
+    }
+
+    private void OnHealthChangeAddBuff(BuffData buff)
+    {
+        if (!buffs) return;
+
+        buffs.AddBuff(buff);
     }
 
     #endregion
