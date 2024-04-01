@@ -1,18 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
-public class GlobalInstaller : MonoBehaviour
+public class GlobalInstaller : MonoInstaller
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private LoadingManager loadingManager;
 
-    // Update is called once per frame
-    void Update()
+    public override void InstallBindings()
     {
-        
+        Container.Bind<LoadingManager>().FromInstance(loadingManager);
     }
 }

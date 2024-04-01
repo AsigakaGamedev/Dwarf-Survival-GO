@@ -5,8 +5,11 @@ using Zenject;
 
 public class MainMenuInstaller : MonoInstaller
 {
+    [Header("UI")]
+    [SerializeField] private UIManager uiManager;
+
     public override void InstallBindings()
     {
-        
+        Container.Bind<UIManager>().FromInstance(uiManager);
     }
 }
