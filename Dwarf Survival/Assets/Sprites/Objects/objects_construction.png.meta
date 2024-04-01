@@ -189,7 +189,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -243,10 +243,10 @@ TextureImporter:
       name: objects_construction_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 351
-        width: 6
-        height: 65
+        x: 6
+        y: 1216
+        width: 4
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -264,10 +264,10 @@ TextureImporter:
       name: objects_construction_1
       rect:
         serializedVersion: 2
-        x: 27
-        y: 351
-        width: 6
-        height: 65
+        x: 22
+        y: 1216
+        width: 4
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -285,10 +285,10 @@ TextureImporter:
       name: objects_construction_2
       rect:
         serializedVersion: 2
-        x: 43
-        y: 351
-        width: 6
-        height: 65
+        x: 38
+        y: 1216
+        width: 4
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -306,10 +306,10 @@ TextureImporter:
       name: objects_construction_3
       rect:
         serializedVersion: 2
-        x: 59
-        y: 351
-        width: 6
-        height: 65
+        x: 54
+        y: 1216
+        width: 4
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -327,10 +327,10 @@ TextureImporter:
       name: objects_construction_4
       rect:
         serializedVersion: 2
-        x: 64
-        y: 321
-        width: 16
-        height: 30
+        x: 70
+        y: 1216
+        width: 4
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -348,10 +348,10 @@ TextureImporter:
       name: objects_construction_5
       rect:
         serializedVersion: 2
-        x: 75
-        y: 351
-        width: 6
-        height: 65
+        x: 86
+        y: 1216
+        width: 4
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -369,10 +369,10 @@ TextureImporter:
       name: objects_construction_6
       rect:
         serializedVersion: 2
-        x: 80
-        y: 321
-        width: 16
-        height: 30
+        x: 102
+        y: 1216
+        width: 4
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -390,10 +390,10 @@ TextureImporter:
       name: objects_construction_7
       rect:
         serializedVersion: 2
-        x: 91
-        y: 351
-        width: 6
-        height: 65
+        x: 118
+        y: 1216
+        width: 4
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -411,10 +411,10 @@ TextureImporter:
       name: objects_construction_8
       rect:
         serializedVersion: 2
-        x: 107
-        y: 351
-        width: 6
-        height: 65
+        x: 134
+        y: 1216
+        width: 4
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -432,10 +432,10 @@ TextureImporter:
       name: objects_construction_9
       rect:
         serializedVersion: 2
-        x: 123
-        y: 351
-        width: 6
-        height: 65
+        x: 150
+        y: 1216
+        width: 4
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -453,10 +453,10 @@ TextureImporter:
       name: objects_construction_10
       rect:
         serializedVersion: 2
-        x: 139
-        y: 351
-        width: 6
-        height: 65
+        x: 166
+        y: 1216
+        width: 4
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -474,10 +474,10 @@ TextureImporter:
       name: objects_construction_11
       rect:
         serializedVersion: 2
-        x: 155
-        y: 351
-        width: 6
-        height: 65
+        x: 182
+        y: 1216
+        width: 4
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -495,10 +495,10 @@ TextureImporter:
       name: objects_construction_12
       rect:
         serializedVersion: 2
-        x: 160
-        y: 321
-        width: 16
-        height: 30
+        x: 200
+        y: 1207
+        width: 32
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -516,10 +516,10 @@ TextureImporter:
       name: objects_construction_13
       rect:
         serializedVersion: 2
-        x: 171
-        y: 351
-        width: 6
-        height: 65
+        x: 245
+        y: 1223
+        width: 22
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -537,10 +537,10 @@ TextureImporter:
       name: objects_construction_14
       rect:
         serializedVersion: 2
-        x: 176
-        y: 321
-        width: 16
-        height: 30
+        x: 277
+        y: 1223
+        width: 22
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -558,10 +558,10 @@ TextureImporter:
       name: objects_construction_15
       rect:
         serializedVersion: 2
-        x: 187
-        y: 351
-        width: 389
-        height: 65
+        x: 305
+        y: 1218
+        width: 14
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -579,10 +579,10 @@ TextureImporter:
       name: objects_construction_16
       rect:
         serializedVersion: 2
-        x: 256
-        y: 321
-        width: 16
-        height: 30
+        x: 321
+        y: 1218
+        width: 14
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -600,10 +600,10 @@ TextureImporter:
       name: objects_construction_17
       rect:
         serializedVersion: 2
-        x: 272
-        y: 321
-        width: 16
-        height: 30
+        x: 341
+        y: 1223
+        width: 22
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -621,10 +621,10 @@ TextureImporter:
       name: objects_construction_18
       rect:
         serializedVersion: 2
-        x: 352
-        y: 321
-        width: 16
-        height: 30
+        x: 373
+        y: 1223
+        width: 22
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -642,10 +642,10 @@ TextureImporter:
       name: objects_construction_19
       rect:
         serializedVersion: 2
-        x: 368
-        y: 321
-        width: 16
-        height: 30
+        x: 401
+        y: 1218
+        width: 14
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -663,10 +663,10 @@ TextureImporter:
       name: objects_construction_20
       rect:
         serializedVersion: 2
-        x: 448
-        y: 321
-        width: 16
-        height: 30
+        x: 417
+        y: 1218
+        width: 14
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -684,10 +684,10 @@ TextureImporter:
       name: objects_construction_21
       rect:
         serializedVersion: 2
-        x: 464
-        y: 321
-        width: 16
-        height: 30
+        x: 437
+        y: 1223
+        width: 22
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -705,10 +705,10 @@ TextureImporter:
       name: objects_construction_22
       rect:
         serializedVersion: 2
-        x: 544
-        y: 321
-        width: 16
-        height: 30
+        x: 469
+        y: 1223
+        width: 22
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -726,10 +726,10 @@ TextureImporter:
       name: objects_construction_23
       rect:
         serializedVersion: 2
-        x: 560
-        y: 321
-        width: 16
-        height: 30
+        x: 497
+        y: 1218
+        width: 14
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -747,10 +747,10 @@ TextureImporter:
       name: objects_construction_24
       rect:
         serializedVersion: 2
-        x: 4
-        y: 326
-        width: 24
-        height: 18
+        x: 513
+        y: 1218
+        width: 14
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -768,9 +768,9 @@ TextureImporter:
       name: objects_construction_25
       rect:
         serializedVersion: 2
-        x: 36
-        y: 326
-        width: 24
+        x: 533
+        y: 1223
+        width: 22
         height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -789,10 +789,10 @@ TextureImporter:
       name: objects_construction_26
       rect:
         serializedVersion: 2
-        x: 100
-        y: 326
-        width: 24
-        height: 20
+        x: 565
+        y: 1223
+        width: 22
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -810,10 +810,10 @@ TextureImporter:
       name: objects_construction_27
       rect:
         serializedVersion: 2
-        x: 132
-        y: 326
-        width: 24
-        height: 20
+        x: 593
+        y: 1218
+        width: 14
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -831,10 +831,10 @@ TextureImporter:
       name: objects_construction_28
       rect:
         serializedVersion: 2
-        x: 196
-        y: 326
-        width: 24
-        height: 20
+        x: 609
+        y: 1218
+        width: 14
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -852,10 +852,10 @@ TextureImporter:
       name: objects_construction_29
       rect:
         serializedVersion: 2
-        x: 228
-        y: 326
-        width: 24
-        height: 20
+        x: 629
+        y: 1223
+        width: 22
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -873,10 +873,10 @@ TextureImporter:
       name: objects_construction_30
       rect:
         serializedVersion: 2
-        x: 292
-        y: 326
-        width: 24
-        height: 20
+        x: 661
+        y: 1223
+        width: 22
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -894,10 +894,10 @@ TextureImporter:
       name: objects_construction_31
       rect:
         serializedVersion: 2
-        x: 324
-        y: 326
-        width: 24
-        height: 20
+        x: 689
+        y: 1218
+        width: 14
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -915,10 +915,10 @@ TextureImporter:
       name: objects_construction_32
       rect:
         serializedVersion: 2
-        x: 388
-        y: 326
-        width: 24
-        height: 20
+        x: 705
+        y: 1218
+        width: 14
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -936,10 +936,10 @@ TextureImporter:
       name: objects_construction_33
       rect:
         serializedVersion: 2
-        x: 420
-        y: 326
-        width: 24
-        height: 20
+        x: 725
+        y: 1223
+        width: 22
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -957,10 +957,10 @@ TextureImporter:
       name: objects_construction_34
       rect:
         serializedVersion: 2
-        x: 484
-        y: 326
-        width: 24
-        height: 20
+        x: 757
+        y: 1223
+        width: 22
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -978,10 +978,10 @@ TextureImporter:
       name: objects_construction_35
       rect:
         serializedVersion: 2
-        x: 516
-        y: 326
-        width: 24
-        height: 20
+        x: 785
+        y: 1218
+        width: 14
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -999,10 +999,10 @@ TextureImporter:
       name: objects_construction_36
       rect:
         serializedVersion: 2
-        x: 0
-        y: 287
-        width: 97
-        height: 26
+        x: 801
+        y: 1218
+        width: 14
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1020,10 +1020,10 @@ TextureImporter:
       name: objects_construction_37
       rect:
         serializedVersion: 2
-        x: 97
-        y: 287
-        width: 30
-        height: 33
+        x: 816
+        y: 1220
+        width: 80
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1041,10 +1041,10 @@ TextureImporter:
       name: objects_construction_38
       rect:
         serializedVersion: 2
-        x: 128
-        y: 288
-        width: 17
-        height: 16
+        x: 898
+        y: 1216
+        width: 28
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1058,10 +1058,451 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: objects_construction_39
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 1234
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68f1d0a63d45a0a47930bd4dbcb3246a
+      internalID: -1285077923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objects_construction_40
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 1224
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0368682330997be4886d278b3bf82a12
+      internalID: 874881376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objects_construction_41
+      rect:
+        serializedVersion: 2
+        x: 962
+        y: 1221
+        width: 12
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa2c3ba26251e194ab58d8a64a0e0afa
+      internalID: 481830418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objects_construction_42
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 1221
+        width: 12
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0116efbdb31d3334389818ef15a906d7
+      internalID: 1708411053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objects_construction_43
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 1218
+        width: 10
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c76baccbd53372e40b897a4432cf9439
+      internalID: 13251242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objects_construction_44
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 1223
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba72acf53a39ec4438f1cda801ab32fa
+      internalID: 501870467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objects_construction_45
+      rect:
+        serializedVersion: 2
+        x: 1026
+        y: 1220
+        width: 28
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55552e8bf036ea246b1043e92d51335c
+      internalID: 588626914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objects_construction_46
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 1222
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66231b56c20497040b4cb9d244a674a2
+      internalID: 1930010854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objects_construction_47
+      rect:
+        serializedVersion: 2
+        x: 929
+        y: 1217
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7525d84a9fb815743b07163f42f029e0
+      internalID: -1404411103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objects_construction_48
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 1184
+        width: 4
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ddabb5e6091cdc4f85603d4c254a6e3
+      internalID: 244942333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objects_construction_49
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 1185
+        width: 4
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 990cd0104759447458d09e75af6c4474
+      internalID: 301192930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objects_construction_50
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 1184
+        width: 4
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51667f8ab7a620b448f48a6e716428c4
+      internalID: -1645372103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objects_construction_51
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 1184
+        width: 4
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebe904e927d3ef94095dac4b2c3ddaa3
+      internalID: -1332813434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objects_construction_52
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 1184
+        width: 4
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51be3513fff5bfd4087f8a9b948af334
+      internalID: 789226327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objects_construction_53
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 1184
+        width: 4
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fffcc8ebd8527a24881edcc7e1900ec4
+      internalID: -1058756984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objects_construction_54
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 1184
+        width: 4
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f38b7cd40f1a66428bdfeb94337875d
+      internalID: 1206187982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objects_construction_55
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 1184
+        width: 4
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed2f328161318524d8edf9f2a401b420
+      internalID: 1521253939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objects_construction_56
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 1184
+        width: 4
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45eeea2774b8c744b938b8cb28573f58
+      internalID: -388464498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objects_construction_57
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 1184
+        width: 4
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69b19a73103e59a45a77930028643d7b
+      internalID: -1191237060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objects_construction_58
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 1184
+        width: 4
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea3db925c1427f244850f551da27041d
+      internalID: -686690909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: objects_construction_59
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 1184
+        width: 4
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88ca4df1668391c4496f7138aa259cd4
+      internalID: 1213048208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 99164189da5bf2a4b819870418231469
     internalID: 0
     vertices: []
     indices: 
@@ -1102,8 +1543,29 @@ TextureImporter:
       objects_construction_36: 8237482639353903408
       objects_construction_37: -3436431008268083279
       objects_construction_38: -832898126476466608
+      objects_construction_39: -1285077923
       objects_construction_4: 3506814263351673664
+      objects_construction_40: 874881376
+      objects_construction_41: 481830418
+      objects_construction_42: 1708411053
+      objects_construction_43: 13251242
+      objects_construction_44: 501870467
+      objects_construction_45: 588626914
+      objects_construction_46: 1930010854
+      objects_construction_47: -1404411103
+      objects_construction_48: 244942333
+      objects_construction_49: 301192930
       objects_construction_5: 6006061501600230099
+      objects_construction_50: -1645372103
+      objects_construction_51: -1332813434
+      objects_construction_52: 789226327
+      objects_construction_53: -1058756984
+      objects_construction_54: 1206187982
+      objects_construction_55: 1521253939
+      objects_construction_56: -388464498
+      objects_construction_57: -1191237060
+      objects_construction_58: -686690909
+      objects_construction_59: 1213048208
       objects_construction_6: -8698660203816886535
       objects_construction_7: -1162501126253521769
       objects_construction_8: -9114836757244510993

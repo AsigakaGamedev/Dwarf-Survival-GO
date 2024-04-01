@@ -10,4 +10,9 @@ public class MobileInputsManager : InputsManager
     [Space]
     [SerializeField] private Button interactBtn;
     [SerializeField] private Button attackBtn;
+
+    private void Update()
+    {
+        onMove?.Invoke(new Vector2(moveJoystick.Horizontal, moveJoystick.Vertical));
+    }
 }

@@ -2526,6 +2526,7 @@ GameObject:
   - component: {fileID: 4409819888180707048}
   - component: {fileID: 9103683872012331672}
   - component: {fileID: 2393826337203355503}
+  - component: {fileID: 3326715854105761414}
   m_Layer: 0
   m_Name: '[Desktop Game UI]'
   m_TagString: Untagged
@@ -2613,6 +2614,18 @@ MonoBehaviour:
     _serializedList:
     - Key: container
       Value: {fileID: 725917283437742930}
+--- !u!114 &3326715854105761414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5538288586314497513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff62b0bb341a664cbf54e8baa1ef880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5867494383479224810
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,6 +20,9 @@ public class GameplaySceneInstaller : MonoInstaller
     [SerializeField] private UIInventoriesManager uiInventoriesManager;
     [SerializeField] private UIRecyclingManager uiRecyclingManager;
 
+    [Header("Test")]
+    [SerializeField] private bool bootstrapOnstart;
+
     public WorldManager WorldManager { get => worldManager; }
     public PlayerManager PlayerManager { get => playerManager; }
 
@@ -41,6 +44,18 @@ public class GameplaySceneInstaller : MonoInstaller
         Container.Bind<UIRecyclingManager>().FromInstance(uiRecyclingManager).AsSingle();
 
         Instance = this;
+    }
+
+    public override void Start()
+    {
+        base.Start();
+
+        if (bootstrapOnstart)
+        {
+            worldManager.GenerateWorld();
+            worldManager.GenerateObjects();
+            playerManager.FirstSpawnPlayer();
+        }
     }
 
     private void OnDestroy()

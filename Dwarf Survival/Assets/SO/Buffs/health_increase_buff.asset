@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffData:
     id: health_increase
-    icon: {fileID: -1393458340566893849, guid: c32dd096d243c06468aa179d649d89fe, type: 3}
+    icon: {fileID: -1042489477, guid: c32dd096d243c06468aa179d649d89fe, type: 3}
     lifeTime: 5
     characteristics:
       _serializedList:
