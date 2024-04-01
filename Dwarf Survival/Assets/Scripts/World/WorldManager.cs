@@ -31,16 +31,9 @@ public class WorldManager : MonoBehaviour
         this.poolingManager = poolingManager;
     }
 
-    private void Start()
-    {
-        GenerateCurrent();
-
-        print("World Manager инициализирован");
-    }
-
     #region Generating
 
-    private void GenerateCurrent()
+    public void GenerateWorld()
     {
         print("Генерация тайлов...");
 
@@ -77,7 +70,10 @@ public class WorldManager : MonoBehaviour
                 biome.Cells.Add(worldCells[x, y]);
             }
         }
+    }
 
+    public void GenerateObjects()
+    {
         print("Генерация объектов...");
 
         foreach (WorldObjectData worldObject in currentPreset.Objects)
@@ -85,15 +81,13 @@ public class WorldManager : MonoBehaviour
             for (int i = 0; i < worldObject.StartCount; i++)
             {
                 PoolableObject newObject = poolingManager.GetPoolable(worldObject.Prefab, worldObject.StartCount);
-                
+
                 if (worldObject.NeedRotate) newObject.transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
 
                 WorldCellData randomCell = GetRandomCell(worldObject.BiomeID, worldObject.CellType);
                 newObject.transform.position = new Vector2(randomCell.PosX, randomCell.PosY) + Vector2.one / 2;
             }
         }
-
-        print("Мир сгенерировался");
     }
 
     #endregion

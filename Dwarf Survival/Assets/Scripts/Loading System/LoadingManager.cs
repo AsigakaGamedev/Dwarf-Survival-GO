@@ -15,21 +15,21 @@ public class LoadingManager : MonoBehaviour
     public Action<float> onLoadingProgressUpd;
     public Action<string> onLoadingTextUpd;
 
-    public async Task LoadSceneAsync(string sceneName)
+    public void LoadSceneAsync(string sceneName)
     {
-        await LoadSceneAsyncTask(sceneName, null, null);
+        StartCoroutine(ELoadSceneAsyncTask(sceneName, null, null));
     }
 
-    public async Task LoadSceneAsync(string sceneName, LoadingTask[] startTasks, LoadingTask[] endTasks)
+    public void LoadSceneAsync(string sceneName, LoadingAction[] startTasks, LoadingAction[] endTasks)
     {
-        await LoadSceneAsyncTask(sceneName, startTasks, endTasks);
+        StartCoroutine(ELoadSceneAsyncTask(sceneName, startTasks, endTasks));
     }
 
-    private async Task LoadSceneAsyncTask(string sceneName, LoadingTask[] startTasks, LoadingTask[] finishTasks)
+    private IEnumerator ELoadSceneAsyncTask(string sceneName, LoadingAction[] startTasks, LoadingAction[] finishTasks)
     {
         onLoadingStart?.Invoke();
 
-        await LoadTasks(startTasks);
+        LoadTasks(startTasks);
 
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
         onLoadingTextUpd?.Invoke("Загрузка сцены");
@@ -37,48 +37,43 @@ public class LoadingManager : MonoBehaviour
         while (!asyncLoad.isDone)
         {
             float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
-
             onLoadingProgressUpd?.Invoke(progress);
-
-            await Task.Yield();
+            yield return null;
         }
 
-        await LoadTasks(finishTasks);
+        LoadTasks(finishTasks);
 
         onLoadingFinish?.Invoke();
     }
 
-    private async Task LoadTasks(LoadingTask[] tasks)
+    private void LoadTasks(LoadingAction[] tasks)
     {
         if (tasks == null) return;
 
         onLoadingProgressUpd?.Invoke(0);
         onLoadingTextUpd?.Invoke("Загрузка сервисов");
-        await Task.Delay(1000);
+
         float progressStep = 1f / tasks.Length;
         float tasksProgress = 0;
 
-        foreach (LoadingTask task in tasks)
+        foreach (LoadingAction task in tasks)
         {
-            print(1);
             onLoadingTextUpd?.Invoke(task.HintText);
-            print(2);
-            await Task.Run(task.Action);
-            print(3);
+            task.Action();
             tasksProgress += progressStep;
             onLoadingProgressUpd?.Invoke(tasksProgress);
         }
     }
 }
 
-public struct LoadingTask
+public struct LoadingAction
 {
     public Action Action;
     public string HintText;
 
-    public LoadingTask(string hintText, Action task)
+    public LoadingAction(string hintText, Action action)
     {
         HintText = hintText;
-        Action = task;
+        Action = action;
     }
 }

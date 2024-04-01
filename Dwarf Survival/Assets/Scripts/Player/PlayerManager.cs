@@ -32,21 +32,19 @@ public class PlayerManager : MonoBehaviour
         this.diContainer = diContainer;
     }
 
-    private void Start()
-    {
-        WorldCellData spawnCell = worldManager.GetRandomCell(playerSpawnBiome, WorldCellType.Ground);
-        spawnPoint = new Vector2(spawnCell.PosX + 0.5f, spawnCell.PosY + 0.5f);
-
-        SpawnPlayer();
-
-        print("Player Manager инициализирован");
-    }
-
     private void OnDestroy()
     {
         if (!playerInstance) return;
 
         playerInstance.onDie -= OnPlayerDie;
+    }
+
+    public void FirstSpawnPlayer()
+    {
+        WorldCellData spawnCell = worldManager.GetRandomCell(playerSpawnBiome, WorldCellType.Ground);
+        spawnPoint = new Vector2(spawnCell.PosX + 0.5f, spawnCell.PosY + 0.5f);
+
+        SpawnPlayer();
     }
 
     private void SpawnPlayer()

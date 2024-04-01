@@ -23,36 +23,39 @@ public class UIWorldCreator : MonoBehaviour
 
     private void Awake()
     {
-        createWorldBtn.onClick.AddListener(async () =>
+        createWorldBtn.onClick.AddListener(() =>
         {
-            LoadingTask[] startLoadingTasks = new LoadingTask[]
+            LoadingAction[] startLoadingTasks = new LoadingAction[]
             {
                
             };
 
-            LoadingTask generateWorldTask = new LoadingTask("World Generating", () =>
+            LoadingAction generateWorldTask = new LoadingAction("World Generating", () =>
             {
-
+                WorldManager worldManager = GameplaySceneInstaller.Instance.WorldManager;
+                worldManager.GenerateWorld();
             });
 
-            LoadingTask generateObjectsTask = new LoadingTask("Objects Generating", () =>
+            LoadingAction generateObjectsTask = new LoadingAction("Objects Generating", () =>
             {
-
+                WorldManager worldManager = GameplaySceneInstaller.Instance.WorldManager;
+                worldManager.GenerateObjects();
             });
 
-            LoadingTask generatePlayerTask = new LoadingTask("Aznor Generating", () =>
+            LoadingAction generatePlayerTask = new LoadingAction("Aznor Generating", () =>
             {
-
+                PlayerManager playerManager = GameplaySceneInstaller.Instance.PlayerManager;
+                playerManager.FirstSpawnPlayer();
             });
 
-            LoadingTask[] endLoadingTasks = new LoadingTask[]
+            LoadingAction[] endLoadingTasks = new LoadingAction[]
             {
                 generateWorldTask,
                 generateObjectsTask,
                 generatePlayerTask
             };
 
-            await loadingManager.LoadSceneAsync(gameSceneName, startLoadingTasks, endLoadingTasks);
+            loadingManager.LoadSceneAsync(gameSceneName, startLoadingTasks, endLoadingTasks);
         });
     }
 }
