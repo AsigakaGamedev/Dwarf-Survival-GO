@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1122410759392702169}
   - component: {fileID: 3350251193185760573}
-  - component: {fileID: 5079692368107047502}
   - component: {fileID: 3647170533468332458}
+  - component: {fileID: 4428154072860128401}
   m_Layer: 15
   m_Name: wood_1_object
   m_TagString: Untagged
@@ -58,8 +58,21 @@ MonoBehaviour:
   mineShakeStrength: 1
   mineShakeDuration: 1
   mineCapacity: 0
---- !u!61 &5079692368107047502
-BoxCollider2D:
+--- !u!114 &3647170533468332458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570160764933939752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f8b60b7b2013d46a0402b5a8ca6e13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolID: wood_1_object
+--- !u!70 &4428154072860128401
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -92,31 +105,9 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0032577515, y: 0.0065250397}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.53678894, y: 1.4305916}
-  m_EdgeRadius: 0
---- !u!114 &3647170533468332458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 570160764933939752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7f8b60b7b2013d46a0402b5a8ca6e13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolID: wood_1_object
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.5, y: 1.51}
+  m_Direction: 0
 --- !u!1 &7053171776466848468
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,7 +183,7 @@ SpriteRenderer:
   m_SortingLayerID: 594187753
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: -8826684393124196471, guid: 60e05b901b8225c458957b0f73159878, type: 3}
+  m_Sprite: {fileID: 5461490942927906461, guid: 60e05b901b8225c458957b0f73159878, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

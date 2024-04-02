@@ -13,6 +13,10 @@ public class ItemEntity
 
     public Action<int> onAmountChange;
 
+    public Action<ItemEntity> onUse;
+    public Action<ItemEntity> onEquip;
+    public Action<ItemEntity> onDrop;
+
     public ItemEntity(ItemData data)
     {
         info = data.Info;
@@ -54,5 +58,22 @@ public class ItemEntity
                 Amount--;
             }
         }
+    }
+
+    public void Use()
+    {
+        onUse?.Invoke(this);
+        Amount--;
+    }
+
+    public void Equip()
+    {
+        onEquip?.Invoke(this);
+    }
+
+    public void Drop()
+    {
+        onDrop?.Invoke(this);
+        Amount--;
     }
 }

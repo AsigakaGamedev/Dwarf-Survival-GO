@@ -12,11 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0cff115f8f29734e95a6ee9cbb72bd4, type: 3}
   m_Name: item_wood
   m_EditorClassIdentifier: 
-  cellIcon: {fileID: -1363453295, guid: 76547c7be8af27c4580b2ab1b09e661f, type: 3}
-  moveIcon: {fileID: 781351225, guid: 76547c7be8af27c4580b2ab1b09e661f, type: 3}
+  nameKey: Wood
+  descKey: Super Wood
+  cellIcon: {fileID: 8069547862873273568, guid: 76547c7be8af27c4580b2ab1b09e661f, type: 3}
+  moveIcon: {fileID: -8297164604188563192, guid: 76547c7be8af27c4580b2ab1b09e661f, type: 3}
   equipmentIcon: {fileID: 0}
   isEquipable: 0
   equipSlotID: 0
+  changingCharacteristics:
+    _serializedList: []
   isWeapon: 0
   isFuel: 1
   fuelCapacity: 2
+  isUsable: 0
+  useBuffsDatas:
+    id: 
+    icon: {fileID: 0}
+    lifeTime: 0
+    characteristics:
+      _serializedList: []
+  useBuffsInfos: {fileID: 0}

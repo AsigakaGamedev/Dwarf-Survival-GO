@@ -15,13 +15,14 @@ public class GameplaySceneInstaller : MonoInstaller
 
     [Header("UI")]
     [SerializeField] private UIManager uiManager;
+    [SerializeField] private UIPopupsManager popupsManager;
     [SerializeField] private UIPlayerCraftsManager uiPlayerCrafts;
     [SerializeField] private UIEffectsManager uiEffectsManager;
     [SerializeField] private UIInventoriesManager uiInventoriesManager;
     [SerializeField] private UIRecyclingManager uiRecyclingManager;
 
     [Header("Test")]
-    [SerializeField] private bool bootstrapOnstart;
+    [SerializeField] private bool bootstrapOnStart;
 
     public WorldManager WorldManager { get => worldManager; }
     public PlayerManager PlayerManager { get => playerManager; }
@@ -38,6 +39,7 @@ public class GameplaySceneInstaller : MonoInstaller
         Container.Bind<ObjectPoolingManager>().FromInstance(poolingManager).AsSingle();
         
         Container.Bind<UIManager>().FromInstance(uiManager).AsSingle();
+        Container.Bind<UIPopupsManager>().FromInstance(popupsManager).AsSingle();
         Container.Bind<UIPlayerCraftsManager>().FromInstance(uiPlayerCrafts).AsSingle();
         Container.Bind<UIEffectsManager>().FromInstance(uiEffectsManager).AsSingle();
         Container.Bind<UIInventoriesManager>().FromInstance(uiInventoriesManager).AsSingle();
@@ -50,7 +52,7 @@ public class GameplaySceneInstaller : MonoInstaller
     {
         base.Start();
 
-        if (bootstrapOnstart)
+        if (bootstrapOnStart)
         {
             worldManager.GenerateWorld();
             worldManager.GenerateObjects();
