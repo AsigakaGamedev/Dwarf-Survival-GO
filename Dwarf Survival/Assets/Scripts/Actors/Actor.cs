@@ -70,6 +70,9 @@ public class Actor : MonoBehaviour
             inventory.Init();
             inventory.SetCellsCount((int)characteristics["cells_count"].Value);
             inventory.AddStartItems();
+
+            inventory.onItemUse += OnItemUse;
+            inventory.onItemEquip += OnItemEquip;
         }
 
         if (vision)
@@ -106,6 +109,12 @@ public class Actor : MonoBehaviour
 
     public void OnDeinitialize()
     {
+        if (inventory)
+        {
+            inventory.onItemUse -= OnItemUse;
+            inventory.onItemEquip -= OnItemEquip;
+        }
+
         if (vision)
         {
             vision.Kill();
@@ -243,6 +252,29 @@ public class Actor : MonoBehaviour
         if (!buffs) return;
 
         buffs.AddBuff(buff);
+    }
+
+    private void OnItemUse(ItemEntity item)
+    {
+        ItemInfo info = item.Info; 
+
+        foreach ((string key, float value) in info.ChangingNeeds)
+        {
+            if (needs.TryGetNeed(key, out NeedEntity need))
+            {
+                need.Value += value;
+            }
+        }
+
+        foreach (BuffInfo buffInfo in info.UseBuffsInfos)
+        {
+            buffs.AddBuff(buffInfo.BuffData);
+        }
+    }
+
+    private void OnItemEquip(ItemEntity item)
+    {
+        equipments.TryEquip(item);
     }
 
     #endregion

@@ -1,4 +1,5 @@
 using AYellowpaper.SerializedCollections;
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,7 @@ public struct BuffData
     [SerializeField] private string id;
 
     [Space]
-    [SerializeField] private Sprite icon; 
+    [ShowAssetPreview, SerializeField] private Sprite icon; 
 
     [Space]
     [SerializeField] private float lifeTime;

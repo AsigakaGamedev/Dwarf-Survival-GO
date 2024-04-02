@@ -15,6 +15,18 @@ public class NeedsController : MonoBehaviour
         }
     }
 
+    public bool TryGetNeed(string key, out NeedEntity need)
+    {
+        if (allNeeds.ContainsKey(key))
+        {
+            need = allNeeds[key];
+            return true;
+        }
+
+        need = null;
+        return false;
+    }
+
     public NeedEntity this[string id]
     {
         get { return allNeeds[id]; }

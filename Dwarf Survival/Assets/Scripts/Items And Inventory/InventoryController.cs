@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,12 +14,25 @@ public class InventoryController : MonoBehaviour
 
     protected List<InventoryCellEntity> cells;
 
+    public Action<ItemEntity> onItemUse;
+    public Action<ItemEntity> onItemEquip;
+
     public List<InventoryCellEntity> Cells { get => cells; }
     public CraftInfo[] PossibleCrafts { get => possibleCrafts; }
 
     public void Init()
     {
         cells = new List<InventoryCellEntity>();
+    }
+
+    private void OnDestroy()
+    {
+        foreach (InventoryCellEntity cell in cells)
+        {
+            cell.onItemUse -= OnItemUse;
+            cell.onItemEquip -= OnItemEquip;
+            cell.onItemDrop -= OnItemDrop;
+        }
     }
 
     #region Items
@@ -80,6 +94,10 @@ public class InventoryController : MonoBehaviour
         {
             InventoryCellEntity newCell = new InventoryCellEntity();
             cells.Add(newCell);
+
+            newCell.onItemUse += OnItemUse;
+            newCell.onItemEquip += OnItemEquip;
+            newCell.onItemDrop += OnItemDrop;
         }
     }
 
@@ -135,6 +153,25 @@ public class InventoryController : MonoBehaviour
         }
 
         return true;
+    }
+
+    #endregion
+
+    #region Listeners
+
+    private void OnItemUse(ItemEntity item)
+    {
+        onItemUse?.Invoke(item);
+    }
+
+    private void OnItemEquip(ItemEntity item)
+    {
+        onItemEquip?.Invoke(item);
+    }
+
+    private void OnItemDrop(ItemEntity item)
+    {
+        print("Выкинул");
     }
 
     #endregion

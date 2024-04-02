@@ -14,6 +14,9 @@ public class InventoryCellEntity
     private InventoryCellType cellType;
 
     public Action<ItemEntity> onItemChange;
+    public Action<ItemEntity> onItemUse;
+    public Action<ItemEntity> onItemDrop;
+    public Action<ItemEntity> onItemEquip;
     public Action<int> onItemAmountChange;
 
     public InventoryCellEntity()
@@ -43,12 +46,21 @@ public class InventoryCellEntity
             }
 
             itemInCell.onAmountChange -= OnItemAmountChange;
+            itemInCell.onUse -= OnItemUse;
+            itemInCell.onEquip -= OnItemEquip;
+            itemInCell.onDrop -= OnItemDrop;
         }
 
         itemInCell = newItem;
         onItemChange?.Invoke(itemInCell);
 
-        if (itemInCell != null) itemInCell.onAmountChange += OnItemAmountChange;
+        if (itemInCell != null)
+        {
+            itemInCell.onAmountChange += OnItemAmountChange;
+            itemInCell.onUse += OnItemUse;
+            itemInCell.onEquip += OnItemEquip;
+            itemInCell.onDrop += OnItemDrop;
+        }
 
         return true;
     }
@@ -62,15 +74,30 @@ public class InventoryCellEntity
         return true;
     }
 
+    #region Listeners
+
     private void OnItemAmountChange(int amount)
     {
         if (amount <= 0)
-        {
             TryAddItem(null);
-        }
         else
-        {
             onItemAmountChange?.Invoke(amount);
-        }
     }
+
+    private void OnItemUse(ItemEntity item)
+    {
+        onItemUse?.Invoke(item);
+    }
+
+    private void OnItemDrop(ItemEntity item)
+    {
+        onItemDrop?.Invoke(item);
+    }
+
+    private void OnItemEquip(ItemEntity item)
+    {
+        onItemEquip?.Invoke(item);
+    }
+
+    #endregion
 }

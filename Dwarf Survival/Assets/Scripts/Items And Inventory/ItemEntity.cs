@@ -63,7 +63,11 @@ public class ItemEntity
     public void Use()
     {
         onUse?.Invoke(this);
-        Amount--;
+        
+        if (info.RemoveOnUse)
+        {
+            Amount--;
+        }
     }
 
     public void Equip()

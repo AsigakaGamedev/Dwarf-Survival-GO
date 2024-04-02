@@ -30,8 +30,14 @@ public class ItemInfo : ScriptableObject
 
     [Header("Use")]
     [SerializeField] private bool isUsable;
-    [SerializeField] private BuffData useBuffsDatas;
-    [SerializeField] private BuffInfo useBuffsInfos;
+    [ShowIf(nameof(isUsable)), SerializeField] private bool removeOnUse = true;
+
+    [Space]
+    //[ShowIf(nameof(isUsable)), SerializeField] private BuffData[] useBuffsDatas;
+    [ShowIf(nameof(isUsable)), SerializeField] private BuffInfo[] useBuffsInfos;
+
+    [Space]
+    [ShowIf(nameof(isUsable)), SerializeField] private SerializedDictionary<string, float> changingNeeds;
 
     private bool hasEquipmentIcon => isWeapon || isEquipable;
 
@@ -52,6 +58,10 @@ public class ItemInfo : ScriptableObject
     public int FuelCapacity { get => fuelCapacity; }
 
     public bool IsUsable { get => isUsable; }
-    public BuffData UseBuffsDatas { get => useBuffsDatas; }
-    public BuffInfo UseBuffsInfos { get => useBuffsInfos; }
+    public bool RemoveOnUse { get => removeOnUse; }
+
+    //public BuffData[] UseBuffsDatas { get => useBuffsDatas; }
+    public BuffInfo[] UseBuffsInfos { get => useBuffsInfos; }
+
+    public SerializedDictionary<string, float> ChangingNeeds { get => changingNeeds; }
 }
