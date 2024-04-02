@@ -13,6 +13,7 @@ public class MobileInputsManager : InputsManager
     [SerializeField] private Button attackBtn;
 
     private PlayerManager playerManager;
+    private PlayerActorController playerActor;
 
     [Inject]
     private void Construct(PlayerManager playerManager)
@@ -52,6 +53,24 @@ public class MobileInputsManager : InputsManager
 
     private void OnPlayerSpawn(PlayerActorController playerActor)
     {
+        if (this.playerActor)
+        {
+            this.playerActor.Actor.Interactions.onInteractFind -= OnInteractFind;
+            this.playerActor.Actor.Interactions.onInteractLose -= OnInteractLose;
+        }
 
+        this.playerActor = playerActor;
+        this.playerActor.Actor.Interactions.onInteractFind += OnInteractFind;
+        this.playerActor.Actor.Interactions.onInteractLose += OnInteractLose;
+    }
+
+    private void OnInteractFind(InteractableObject interactable)
+    {
+        interactBtn.gameObject.SetActive(true);
+    }
+
+    private void OnInteractLose(InteractableObject interactable)
+    {
+        interactBtn.gameObject.SetActive(false);
     }
 }

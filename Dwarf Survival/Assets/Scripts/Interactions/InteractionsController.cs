@@ -12,6 +12,9 @@ public class InteractionsController : MonoBehaviour
     [Space]
     [ReadOnly, SerializeField] private InteractableObject selectedInteractable;
 
+    public Action<InteractableObject> onInteractFind;
+    public Action<InteractableObject> onInteractLose;
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
@@ -39,6 +42,7 @@ public class InteractionsController : MonoBehaviour
                     }
 
                     selectedInteractable = newInteract;
+                    onInteractFind?.Invoke(selectedInteractable);
                     selectedInteractable.ShowOutline();
                     return;
                 }
@@ -47,6 +51,7 @@ public class InteractionsController : MonoBehaviour
         
         if (selectedInteractable)
         {
+            onInteractLose?.Invoke(selectedInteractable);
             selectedInteractable.HideOutline();
             selectedInteractable = null;
         }
@@ -56,6 +61,7 @@ public class InteractionsController : MonoBehaviour
     {
         if (!selectedInteractable) return;
 
+        onInteractLose?.Invoke(selectedInteractable);
         selectedInteractable.Interact(actor);
         selectedInteractable.HideOutline();
         selectedInteractable = null;
