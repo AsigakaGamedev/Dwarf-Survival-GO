@@ -225,12 +225,12 @@ TextureImporter:
       name: Furance_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 454
-        width: 45
-        height: 51
+        x: 0
+        y: 448
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -246,12 +246,12 @@ TextureImporter:
       name: Furance_2
       rect:
         serializedVersion: 2
-        x: 1
-        y: 390
-        width: 45
-        height: 51
+        x: 48
+        y: 384
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -267,12 +267,12 @@ TextureImporter:
       name: Furance_4
       rect:
         serializedVersion: 2
-        x: 49
-        y: 390
-        width: 45
-        height: 51
+        x: 144
+        y: 384
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -288,12 +288,12 @@ TextureImporter:
       name: Furance_6
       rect:
         serializedVersion: 2
-        x: 97
-        y: 390
-        width: 45
-        height: 51
+        x: 240
+        y: 384
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -309,12 +309,12 @@ TextureImporter:
       name: Furance_8
       rect:
         serializedVersion: 2
-        x: 145
-        y: 390
-        width: 45
-        height: 51
+        x: 0
+        y: 256
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -330,12 +330,12 @@ TextureImporter:
       name: Furance_10
       rect:
         serializedVersion: 2
-        x: 193
-        y: 390
-        width: 45
-        height: 51
+        x: 96
+        y: 256
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -351,12 +351,12 @@ TextureImporter:
       name: Furance_12
       rect:
         serializedVersion: 2
-        x: 241
-        y: 390
-        width: 45
-        height: 51
+        x: 0
+        y: 192
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -372,12 +372,12 @@ TextureImporter:
       name: Furance_14
       rect:
         serializedVersion: 2
-        x: 2
-        y: 327
-        width: 44
-        height: 50
+        x: 48
+        y: 128
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -393,12 +393,12 @@ TextureImporter:
       name: Furance_15
       rect:
         serializedVersion: 2
-        x: 2
-        y: 263
-        width: 44
-        height: 50
+        x: 96
+        y: 128
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -414,12 +414,12 @@ TextureImporter:
       name: Furance_16
       rect:
         serializedVersion: 2
-        x: 50
-        y: 263
-        width: 44
-        height: 50
+        x: 144
+        y: 128
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -435,12 +435,12 @@ TextureImporter:
       name: Furance_17
       rect:
         serializedVersion: 2
-        x: 98
-        y: 263
-        width: 44
-        height: 50
+        x: 192
+        y: 128
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -456,12 +456,12 @@ TextureImporter:
       name: Furance_18
       rect:
         serializedVersion: 2
-        x: 146
-        y: 263
-        width: 44
-        height: 50
+        x: 240
+        y: 128
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -477,12 +477,12 @@ TextureImporter:
       name: Furance_19
       rect:
         serializedVersion: 2
-        x: 3
-        y: 199
-        width: 44
-        height: 51
+        x: 0
+        y: 64
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -498,12 +498,12 @@ TextureImporter:
       name: Furance_20
       rect:
         serializedVersion: 2
-        x: 3
-        y: 135
-        width: 44
-        height: 51
+        x: 0
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -519,12 +519,12 @@ TextureImporter:
       name: Furance_21
       rect:
         serializedVersion: 2
-        x: 51
-        y: 135
-        width: 44
-        height: 51
+        x: 48
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -540,12 +540,12 @@ TextureImporter:
       name: Furance_22
       rect:
         serializedVersion: 2
-        x: 99
-        y: 135
-        width: 44
-        height: 51
+        x: 96
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -561,12 +561,12 @@ TextureImporter:
       name: Furance_23
       rect:
         serializedVersion: 2
-        x: 147
-        y: 135
-        width: 44
-        height: 51
+        x: 144
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -582,12 +582,12 @@ TextureImporter:
       name: Furance_24
       rect:
         serializedVersion: 2
-        x: 195
-        y: 135
-        width: 44
-        height: 51
+        x: 192
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -603,12 +603,12 @@ TextureImporter:
       name: Furance_25
       rect:
         serializedVersion: 2
-        x: 243
-        y: 135
-        width: 44
-        height: 51
+        x: 240
+        y: 0
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -621,148 +621,148 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Furance_26
+      name: Furance_1
       rect:
         serializedVersion: 2
-        x: 3
-        y: 69
-        width: 42
-        height: 54
+        x: 0
+        y: 384
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 38ab7984c66fe6240800000000000000
-      internalID: 4787034398876220035
+      spriteID: e92dcd25d1c1f2242812904559d89d02
+      internalID: -321381036755027557
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Furance_27
+      name: Furance_3
       rect:
         serializedVersion: 2
-        x: 3
-        y: 5
-        width: 42
-        height: 54
+        x: 96
+        y: 384
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1a5b4c5b3a235c460800000000000000
-      internalID: 7261265652915418529
+      spriteID: b541b995062c73f4e9333d24d5c0b3cd
+      internalID: -1330076710877497805
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Furance_28
+      name: Furance_5
       rect:
         serializedVersion: 2
-        x: 51
-        y: 5
-        width: 42
-        height: 54
+        x: 192
+        y: 384
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 039c7047ded7b3130800000000000000
-      internalID: 3547567590291786032
+      spriteID: 195cb2b1bcdf92b418baa11bf36d0652
+      internalID: 1386353142433799588
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Furance_29
+      name: Furance_7
       rect:
         serializedVersion: 2
-        x: 99
-        y: 5
-        width: 42
-        height: 54
+        x: 0
+        y: 320
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 57a00be78be482f70800000000000000
-      internalID: 9162659996191689333
+      spriteID: fa57f9512cf7c5d4694f381127de14c4
+      internalID: -4827635770710654893
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Furance_30
+      name: Furance_9
       rect:
         serializedVersion: 2
-        x: 147
-        y: 5
-        width: 42
-        height: 54
+        x: 48
+        y: 256
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: adc4c7a9be03bb3d0800000000000000
-      internalID: -3189902122594579238
+      spriteID: badfec8e73b362641b9da44cdd5e7e4d
+      internalID: 2380022342159862309
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Furance_31
+      name: Furance_11
       rect:
         serializedVersion: 2
-        x: 195
-        y: 5
-        width: 42
-        height: 54
+        x: 144
+        y: 256
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 289e314600208af80800000000000000
-      internalID: -8095218129496184446
+      spriteID: f8a60ac02f7a16d4883bab064205e950
+      internalID: -6859919902492212174
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Furance_32
+      name: Furance_13
       rect:
         serializedVersion: 2
-        x: 243
-        y: 5
-        width: 42
-        height: 54
+        x: 0
+        y: 128
+        width: 48
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: dba0574f8fd396700800000000000000
-      internalID: 534026170282609341
+      spriteID: a6f50b7391915fa4e81c269ab539c591
+      internalID: 8685923679314507835
       vertices: []
       indices: 
       edges: []
@@ -797,14 +797,7 @@ TextureImporter:
       Furance_23: 6707140840062249960
       Furance_24: 2962818322087252707
       Furance_25: 8349460508536173050
-      Furance_26: 4787034398876220035
-      Furance_27: 7261265652915418529
-      Furance_28: 3547567590291786032
-      Furance_29: 9162659996191689333
       Furance_3: -1330076710877497805
-      Furance_30: -3189902122594579238
-      Furance_31: -8095218129496184446
-      Furance_32: 534026170282609341
       Furance_4: 592090815763856449
       Furance_5: 1386353142433799588
       Furance_6: 669734485537927999

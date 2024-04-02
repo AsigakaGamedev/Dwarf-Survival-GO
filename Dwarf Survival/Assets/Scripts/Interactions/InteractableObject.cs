@@ -1,16 +1,23 @@
+using EPOOutline;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Outlinable))]
 public class InteractableObject : MonoBehaviour
 {
-    [SerializeField] private GameObject outline;
+    [SerializeField] private Outlinable outline;
 
     [Space]
     [SerializeField] private bool deactivateOnInteract;
 
     [Space]
     [SerializeField] private List<AInteractionComponent> components = new List<AInteractionComponent>();
+
+    private void OnValidate()
+    {
+        if (!outline) outline = GetComponent<Outlinable>();
+    }
 
     private void Start()
     {
@@ -19,12 +26,12 @@ public class InteractableObject : MonoBehaviour
 
     public void ShowOutline()
     {
-        if (outline) outline.SetActive(true);
+        outline.enabled = true;
     }
 
     public void HideOutline()
     {
-        if (outline) outline.SetActive(false);
+        outline.enabled = false;
     }
 
     public void Interact(Actor actor)
