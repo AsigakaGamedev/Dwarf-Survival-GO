@@ -147,7 +147,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 748825377}
   m_Father: {fileID: 1648138234}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &50045437
@@ -1746,7 +1747,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00027980492}
+  m_AnchoredPosition: {x: 0, y: -0.0000043369323}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &586433966
@@ -2332,6 +2333,50 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &748825376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 748825377}
+  - component: {fileID: 748825378}
+  m_Layer: 0
+  m_Name: Pooling Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &748825377
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748825376}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 43550901}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &748825378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748825376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f3bd6f59df52a4f883fef006fe16e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &749681359
 GameObject:
   m_ObjectHideFlags: 0
@@ -3463,6 +3508,7 @@ GameObject:
   - component: {fileID: 916868899}
   - component: {fileID: 916868898}
   - component: {fileID: 916868897}
+  - component: {fileID: 916868901}
   m_Layer: 0
   m_Name: Loading
   m_TagString: Untagged
@@ -3569,6 +3615,23 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &916868901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916868895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ab4823e1d83924eadd5a92e25d5b89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveItemPrefab: {fileID: 3509249846655108662, guid: 2f5c7a2495bec5d44b2c97db3fc8626c, type: 3}
+  savesContent: {fileID: 586433965}
+  selectedSavePanel: {fileID: 1046278757}
+  loadBtn: {fileID: 823834341}
+  deleteBtn: {fileID: 754387855}
 --- !u!1 &951526846
 GameObject:
   m_ObjectHideFlags: 0
@@ -4261,7 +4324,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 233146899}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999838
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5344,6 +5407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31742fa0dff0f694e8b4b71b94131b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poolingManager: {fileID: 748825378}
   uiManager: {fileID: 134372483}
 --- !u!114 &1648138236
 MonoBehaviour:

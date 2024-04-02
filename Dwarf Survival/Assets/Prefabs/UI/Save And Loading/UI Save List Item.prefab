@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8012520211300795232}
   - component: {fileID: 2524259773792160374}
   - component: {fileID: 2267951288644440802}
+  - component: {fileID: 3509249846655108662}
   m_Layer: 0
   m_Name: UI Save List Item
   m_TagString: Untagged
@@ -121,6 +122,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3509249846655108662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030157597622580533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f6a33eb0cff7144a214ed351df9547, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolID: ui_save_list_item
+  saveNameText: {fileID: 5256339521352145009}
+  btn: {fileID: 2267951288644440802}
 --- !u!1 &6005192831458633782
 GameObject:
   m_ObjectHideFlags: 0
