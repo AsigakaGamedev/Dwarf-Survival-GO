@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 388146001974266244}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8625415751496456172}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4863527863643565840
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -175,6 +175,14 @@ MonoBehaviour:
   damageRadius: 1.5
   damageValue: 5
   ignoredCollider: {fileID: 5126642856562177113}
+  hasDamageBuff: 0
+  damageBuffInfo: {fileID: 0}
+  damageBuffData:
+    id: 
+    icon: {fileID: 0}
+    lifeTime: 0
+    characteristics:
+      _serializedList: []
 --- !u!1 &7823870278877199652
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,13 +196,13 @@ GameObject:
   - component: {fileID: 8752960316129166844}
   - component: {fileID: 3118112555582601108}
   - component: {fileID: 8282222770186760637}
-  - component: {fileID: 8283358427365239879}
   - component: {fileID: 3619333044419396633}
   - component: {fileID: 2040965218900927825}
   - component: {fileID: 3641964356301130776}
   - component: {fileID: 6870253844085787069}
   - component: {fileID: 1786834705935001224}
   - component: {fileID: 2908905318515902245}
+  - component: {fileID: 8736051764251900885}
   m_Layer: 10
   m_Name: Mole Dog
   m_TagString: Untagged
@@ -210,7 +218,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7823870278877199652}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -218,7 +226,7 @@ Transform:
   - {fileID: 1860049384055190880}
   - {fileID: 3157582082000432514}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &5126642856562177113
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -313,7 +321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: mole_dog
   rb: {fileID: 8752960316129166844}
-  agent: {fileID: 8283358427365239879}
+  agent: {fileID: 8736051764251900885}
   characteristics: {fileID: 3641964356301130776}
   health: {fileID: 2908905318515902245}
   inventory: {fileID: 0}
@@ -322,30 +330,9 @@ MonoBehaviour:
   equipments: {fileID: 0}
   weapons: {fileID: 0}
   needs: {fileID: 0}
+  buffs: {fileID: 0}
   enemiesID:
   - player
---- !u!195 &8283358427365239879
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7823870278877199652}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!114 &3619333044419396633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f34a170c7a98c9f44b70cf2c7c3ec5ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkRadius: 3
+  walkRadius: 5
   waitTime: {x: 3, y: 10}
   currentWaitTime: 0
 --- !u!114 &2040965218900927825
@@ -391,6 +378,9 @@ MonoBehaviour:
     - Key: max_health
       Value:
         curValue: 100
+    - Key: move_speed
+      Value:
+        curValue: 2
 --- !u!114 &6870253844085787069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,7 +396,7 @@ MonoBehaviour:
   enemiesLayer:
     serializedVersion: 2
     m_Bits: 1024
-  enemiesCheckRange: 4
+  enemiesCheckRange: 6
   enemiesCheckDelay: 0.5
   enemies: []
 --- !u!114 &1786834705935001224
@@ -422,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attacksHandler: {fileID: 4035019869962426052}
-  attackDistance: 1.5
+  attackDistance: 1
   waitBeforeAttackDelay: 2
 --- !u!114 &2908905318515902245
 MonoBehaviour:
@@ -441,3 +431,17 @@ MonoBehaviour:
   corpsePrefab: {fileID: 0}
   hasDeathDrop: 0
   droppableObjects: []
+--- !u!114 &8736051764251900885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7823870278877199652}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70c1a1e873b5644e80b6d906a62d774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  path: []

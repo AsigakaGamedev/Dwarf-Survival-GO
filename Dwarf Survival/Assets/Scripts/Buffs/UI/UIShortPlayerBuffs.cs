@@ -21,10 +21,7 @@ public class UIShortPlayerBuffs : MonoBehaviour
         this.playerManager.onPlayerSpawn += OnPlayerSpawn;
 
         this.poolingManager = poolingManager;
-    }
 
-    private void Awake()
-    {
         spawnedItems = new Dictionary<string, UIShortBuffItem>();
     }
 

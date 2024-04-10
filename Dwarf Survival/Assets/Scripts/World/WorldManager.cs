@@ -15,7 +15,6 @@ public class WorldManager : MonoBehaviour
     [Expandable, SerializeField] private WorldPreset currentPreset;
 
     [Space]
-    [SerializeField] private NavMeshSurface navSurface;
     [SerializeField] private Tilemap groundTilemap;
     [SerializeField] private Tilemap wallsTilemap;
 
@@ -27,11 +26,15 @@ public class WorldManager : MonoBehaviour
     private Dictionary<string, WorldBiomeData> biomes;
 
     private ObjectPoolingManager poolingManager;
+    private AStarPathfinding pathfinding;
+
+    public WorldCellData[,] WorldCells { get => worldCells; }
 
     [Inject]
-    public void Construct(ObjectPoolingManager poolingManager)
+    public void Construct(ObjectPoolingManager poolingManager, AStarPathfinding pathfinding)
     {
         this.poolingManager = poolingManager;
+        this.pathfinding = pathfinding;
     }
 
     #region Generating
@@ -78,7 +81,7 @@ public class WorldManager : MonoBehaviour
             }
         }
 
-        navSurface.BuildNavMesh();
+        pathfinding.SetCells(worldCells);
     }
 
     public void GenerateWorld(WorldSaveData saveData)
@@ -225,6 +228,8 @@ public class WorldCellData
     public WorldCellType CellType;
     public float Health;
 
+    public int Cost { get; set; }
+
     public WorldCellData(string biomeID, int posX, int posY, WorldCellType cellType, float health)
     {
         BiomeID = biomeID;
@@ -232,6 +237,7 @@ public class WorldCellData
         PosY = posY;
         CellType = cellType;
         Health = health;
+        Cost = int.MaxValue;
     }
 }
 

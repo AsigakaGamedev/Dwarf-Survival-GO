@@ -25,13 +25,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 388146001974266244}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8625415751496456172}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4863527863643565840
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -156,6 +156,7 @@ MonoBehaviour:
   damageBuffInfo: {fileID: 11400000, guid: 6e4d37611627d27458e42dfaeab63d9a, type: 2}
   damageBuffData:
     id: 
+    icon: {fileID: 0}
     lifeTime: 0
     characteristics:
       _serializedList: []
@@ -172,7 +173,6 @@ GameObject:
   - component: {fileID: 8752960316129166844}
   - component: {fileID: 3118112555582601108}
   - component: {fileID: 8282222770186760637}
-  - component: {fileID: 8283358427365239879}
   - component: {fileID: 3619333044419396633}
   - component: {fileID: 2040965218900927825}
   - component: {fileID: 5083066357956149958}
@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 8462071626204867852}
   - component: {fileID: 10857540966687745}
   - component: {fileID: 5529500310395734585}
+  - component: {fileID: 8736051764251900885}
   m_Layer: 10
   m_Name: Cave Bear
   m_TagString: Untagged
@@ -195,7 +196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7823870278877199652}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -203,7 +204,7 @@ Transform:
   - {fileID: 1860049384055190880}
   - {fileID: 9194908094550880131}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &5126642856562177113
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -298,7 +299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: cave_bear
   rb: {fileID: 8752960316129166844}
-  agent: {fileID: 8283358427365239879}
+  agent: {fileID: 8736051764251900885}
   characteristics: {fileID: 3641964356301130776}
   health: {fileID: 5529500310395734585}
   inventory: {fileID: 0}
@@ -310,28 +311,6 @@ MonoBehaviour:
   buffs: {fileID: 0}
   enemiesID:
   - player
---- !u!195 &8283358427365239879
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7823870278877199652}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!114 &3619333044419396633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,7 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f34a170c7a98c9f44b70cf2c7c3ec5ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkRadius: 3
+  walkRadius: 5
   waitTime: {x: 3, y: 10}
   currentWaitTime: 0
 --- !u!114 &2040965218900927825
@@ -399,6 +378,9 @@ MonoBehaviour:
     - Key: max_health
       Value:
         curValue: 100
+    - Key: move_speed
+      Value:
+        curValue: 2
 --- !u!114 &8462071626204867852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,7 +396,7 @@ MonoBehaviour:
   enemiesLayer:
     serializedVersion: 2
     m_Bits: 1024
-  enemiesCheckRange: 5
+  enemiesCheckRange: 7
   enemiesCheckDelay: 0.5
   enemies: []
 --- !u!114 &10857540966687745
@@ -430,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attacksHandler: {fileID: 3901205579759651334}
-  attackDistance: 1.5
+  attackDistance: 1
   waitBeforeAttackDelay: 2
 --- !u!114 &5529500310395734585
 MonoBehaviour:
@@ -449,3 +431,17 @@ MonoBehaviour:
   corpsePrefab: {fileID: 0}
   hasDeathDrop: 0
   droppableObjects: []
+--- !u!114 &8736051764251900885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7823870278877199652}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70c1a1e873b5644e80b6d906a62d774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  path: []

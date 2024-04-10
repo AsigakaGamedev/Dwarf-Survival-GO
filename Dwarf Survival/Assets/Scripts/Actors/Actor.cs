@@ -5,14 +5,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(CharacteristicsController))]
+[RequireComponent(typeof(CharacteristicsController), typeof(AStarAgent))]
 public class Actor : MonoBehaviour
 {
     [SerializeField] private string id;
 
     [Space]
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private AStarAgent agent;
 
     [Space]
     [SerializeField] private CharacteristicsController characteristics;
@@ -41,9 +41,12 @@ public class Actor : MonoBehaviour
 
     private void OnValidate()
     {
+        if (!agent) agent = GetComponent<AStarAgent>();
         if (agent) agent.enabled = false;
 
         if (!characteristics) characteristics = GetComponent<CharacteristicsController>();
+
+        characteristics.AddCharacteristic("move_speed", new CharacteristicEntity(2));
 
         if (!inventory) inventory = GetComponent<ActorInventory>();
 
@@ -63,7 +66,7 @@ public class Actor : MonoBehaviour
 
     public void OnInitialize()
     {
-        agent.updateRotation = false;
+        agent.SetMoveSpeed(characteristics["move_speed"].Value);
 
         if (inventory)
         {
@@ -157,19 +160,19 @@ public class Actor : MonoBehaviour
 
     public void MoveByDir(Vector2 dir)
     {
-        rb.velocity = 100 * 2 * Time.fixedDeltaTime * dir;
+        rb.velocity = 100 * characteristics["move_speed"].Value * Time.fixedDeltaTime * dir;
     }
 
     public void MoveAgent(Vector2 targetPoint)
     {
-        agent.SetDestination(targetPoint);
+        agent.SetDistanation(targetPoint);
     }
 
     public void ChangeIsStopped(bool value)
     {
         if (!agent.enabled) return;
 
-        agent.isStopped = value;
+        agent.IsStopped = value;
     }
 
     #endregion

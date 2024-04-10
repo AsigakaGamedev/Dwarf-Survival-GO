@@ -12,6 +12,7 @@ public class GameplaySceneInstaller : MonoInstaller
     [SerializeField] private InputsManager inputsManager;
     [SerializeField] private BuildingsManager buildingsManager;
     [SerializeField] private ObjectPoolingManager poolingManager;
+    [SerializeField] private AStarPathfinding pathfinding;
 
     [Header("UI")]
     [SerializeField] private UIManager uiManager;
@@ -37,6 +38,7 @@ public class GameplaySceneInstaller : MonoInstaller
         Container.Bind<InputsManager>().FromInstance(inputsManager).AsSingle();
         Container.Bind<BuildingsManager>().FromInstance(buildingsManager).AsSingle();
         Container.Bind<ObjectPoolingManager>().FromInstance(poolingManager).AsSingle();
+        Container.Bind<AStarPathfinding>().FromInstance(pathfinding).AsSingle();
         poolingManager.Init();
 
 
