@@ -86,10 +86,40 @@ public class WorldManager : MonoBehaviour
 
     public void GenerateWorld(WorldSaveData saveData)
     {
+        groundTilemap.ClearAllTiles();
+        wallsTilemap.ClearAllTiles();
+
         currentSeed = saveData.Seed;
         worldCells = saveData.Cells;
-        print(worldCells.GetLength(0));
-        print(worldCells.GetLength(1));
+
+        biomes = new Dictionary<string, WorldBiomeData>();
+
+        foreach (WorldBiomeInfoData biomeInfo in currentPreset.Biomes)
+        {
+            biomes.Add(biomeInfo.ID, new WorldBiomeData(biomeInfo));
+        }
+
+        for (int x = 0; x < currentPreset.Size; x++)
+        {
+            for (int y = 0; y < currentPreset.Size; y++)
+            {
+                WorldCellData cell = worldCells[x, y];
+                WorldBiomeData biome = biomes[cell.BiomeID];
+
+                if (cell.CellType == WorldCellType.Ground)
+                {
+                    groundTilemap.SetTile(new Vector3Int(x, y), biome.Info.GroundTile);
+                }
+                else if (cell.CellType == WorldCellType.Wall)
+                {
+                    wallsTilemap.SetTile(new Vector3Int(x, y), biome.Info.WallsTile);
+                }
+
+                biome.Cells.Add(worldCells[x, y]);
+            }
+        }
+
+        pathfinding.SetCells(worldCells);
     }
 
     public void GenerateNewObjects()
@@ -220,10 +250,10 @@ public class WorldManager : MonoBehaviour
 
 public class WorldCellData
 {
-    public readonly string BiomeID;
+    public string BiomeID;
 
-    public readonly int PosX;
-    public readonly int PosY;
+    public int PosX;
+    public int PosY;
 
     public WorldCellType CellType;
     public float Health;
