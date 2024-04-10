@@ -14,10 +14,8 @@ public class ObjectPoolingManager : MonoBehaviour
         this.diContainer = diContainer;
     }
 
-    private void OnEnable()
+    public void Init()
     {
-        if (cachedPoolables != null) return;
-
         cachedPoolables = new Dictionary<string, PoolObjects<PoolableObject>>();
     }
 

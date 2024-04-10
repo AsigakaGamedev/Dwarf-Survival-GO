@@ -33,13 +33,13 @@ public class UIWorldCreator : MonoBehaviour
             LoadingAction generateWorldTask = new LoadingAction("World Generating", () =>
             {
                 WorldManager worldManager = GameplaySceneInstaller.Instance.WorldManager;
-                worldManager.GenerateWorld();
+                worldManager.GenerateNewWorld(Random.Range(0, 3000));
             });
 
             LoadingAction generateObjectsTask = new LoadingAction("Objects Generating", () =>
             {
                 WorldManager worldManager = GameplaySceneInstaller.Instance.WorldManager;
-                worldManager.GenerateObjects();
+                worldManager.GenerateNewObjects();
             });
 
             LoadingAction generatePlayerTask = new LoadingAction("Aznor Generating", () =>

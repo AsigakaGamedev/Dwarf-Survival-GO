@@ -1,9 +1,0 @@
-{
-	"Test Save 1" : {
-		"__type" : "SaveEntity,Assembly-CSharp",
-		"value" : {
-			"Name" : "Test Save 1",
-			"Path" : "C:\/Git\/Fork\/Dwarf-Survival-GO\/Dwarf Survival\/Assets\/Saves\/Test Save 1"
-		}
-	}
-}

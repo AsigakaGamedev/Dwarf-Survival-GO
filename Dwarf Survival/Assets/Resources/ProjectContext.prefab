@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allSaves: []
+  gameplaySceneName: GameScene
 --- !u!1 &7223729515898952408
 GameObject:
   m_ObjectHideFlags: 0

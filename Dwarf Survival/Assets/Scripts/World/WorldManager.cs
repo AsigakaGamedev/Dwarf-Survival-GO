@@ -1,5 +1,6 @@
 using AYellowpaper.SerializedCollections;
 using NaughtyAttributes;
+using NavMeshPlus.Components;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
@@ -14,12 +15,14 @@ public class WorldManager : MonoBehaviour
     [Expandable, SerializeField] private WorldPreset currentPreset;
 
     [Space]
+    [SerializeField] private NavMeshSurface navSurface;
     [SerializeField] private Tilemap groundTilemap;
     [SerializeField] private Tilemap wallsTilemap;
 
     [Space]
     [SerializeField] private TilemapCollider2D wallsTilemapCollider; 
 
+    private int currentSeed;
     private WorldCellData[,] worldCells;
     private Dictionary<string, WorldBiomeData> biomes;
 
@@ -33,9 +36,13 @@ public class WorldManager : MonoBehaviour
 
     #region Generating
 
-    public void GenerateWorld()
+    public void GenerateNewWorld(int seed)
     {
+        groundTilemap.ClearAllTiles();
+        wallsTilemap.ClearAllTiles();
         print("Генерация тайлов...");
+
+        currentSeed = seed;
 
         worldCells = new WorldCellData[currentPreset.Size, currentPreset.Size];
         biomes = new Dictionary<string, WorldBiomeData>();
@@ -49,8 +56,8 @@ public class WorldManager : MonoBehaviour
         {
             for (int y = 0; y < currentPreset.Size; y++)
             {
-                float xCoord = (float)x / currentPreset.Size * currentPreset.Scale;
-                float yCoord = (float)y / currentPreset.Size * currentPreset.Scale;
+                float xCoord = (float)x / currentPreset.Size * currentPreset.Scale + seed;
+                float yCoord = (float)y / currentPreset.Size * currentPreset.Scale + seed;
 
                 float height = Mathf.PerlinNoise(xCoord, yCoord);
 
@@ -70,9 +77,19 @@ public class WorldManager : MonoBehaviour
                 biome.Cells.Add(worldCells[x, y]);
             }
         }
+
+        navSurface.BuildNavMesh();
     }
 
-    public void GenerateObjects()
+    public void GenerateWorld(WorldSaveData saveData)
+    {
+        currentSeed = saveData.Seed;
+        worldCells = saveData.Cells;
+        print(worldCells.GetLength(0));
+        print(worldCells.GetLength(1));
+    }
+
+    public void GenerateNewObjects()
     {
         print("Генерация объектов...");
 
@@ -88,6 +105,19 @@ public class WorldManager : MonoBehaviour
                 newObject.transform.position = new Vector2(randomCell.PosX, randomCell.PosY) + Vector2.one / 2;
             }
         }
+    }
+
+    #endregion
+
+    #region Save And Loading
+
+    public WorldSaveData SaveWorld()
+    {
+        return new WorldSaveData()
+        {
+            Seed = currentSeed,
+            Cells = worldCells
+        };
     }
 
     #endregion
@@ -114,7 +144,9 @@ public class WorldManager : MonoBehaviour
             }
         }
 
-        throw new System.Exception($"Для высоты {height} не нашёлся биом");
+        cellType = WorldCellType.Ground;
+        return "cave";
+        //throw new System.Exception($"Для высоты {height} не нашёлся биом");
     }
 
     #endregion

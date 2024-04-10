@@ -13,6 +13,7 @@ public class MainMenuInstaller : MonoInstaller
     public override void InstallBindings()
     {
         Container.Bind<ObjectPoolingManager>().FromInstance(poolingManager);
+        poolingManager.Init();
 
         Container.Bind<UIManager>().FromInstance(uiManager);
     }

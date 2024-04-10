@@ -12,6 +12,7 @@ public class UISavesPanel : MonoBehaviour
     [Header("Selected Save")]
     [SerializeField] private GameObject selectedSavePanel;
     [SerializeField] private Button loadBtn;
+    [SerializeField] private Button saveBtn;
     [SerializeField] private Button deleteBtn;
 
     private SavesManager savesManager;
@@ -36,8 +37,16 @@ public class UISavesPanel : MonoBehaviour
 
     private void Awake()
     {
-        loadBtn.onClick.AddListener(LoadSelectedSave);
+        if (loadBtn) loadBtn.onClick.AddListener(LoadSelectedSave);
+        if (saveBtn) saveBtn.onClick.AddListener(ResaveSelectedSave);
         deleteBtn.onClick.AddListener(DeleteSelectedSave);
+
+        savesManager.onSavesUpdate += UpdatePanel;
+    }
+
+    private void OnDestroy()
+    {
+        savesManager.onSavesUpdate -= UpdatePanel;
     }
 
     private void UpdatePanel()
@@ -73,6 +82,15 @@ public class UISavesPanel : MonoBehaviour
     private void LoadSelectedSave()
     {
         if (selectedSave == null) return;
+
+        savesManager.LoadSave(selectedSave.Name);
+    }
+
+    private void ResaveSelectedSave()
+    {
+        if (selectedSave == null) return;
+
+        savesManager.CreateSave(selectedSave.Name);
     }
 
     private void DeleteSelectedSave()

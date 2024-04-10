@@ -396,7 +396,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Building_ork_0: 5719878859256278350
+      Building_ork_1: 3078055520489349034
+      Building_ork_10: 4967748912017871626
+      Building_ork_2: -1703643238862179148
+      Building_ork_3: -1163060309776281649
+      Building_ork_4: -9179097312093974966
+      Building_ork_5: -6363878742970548073
+      Building_ork_6: -8298229170513181786
+      Building_ork_7: 122065978782408502
+      Building_ork_8: 5901003759087408857
+      Building_ork_9: 6629236696912105997
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

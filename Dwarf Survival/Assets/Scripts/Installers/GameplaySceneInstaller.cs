@@ -37,7 +37,9 @@ public class GameplaySceneInstaller : MonoInstaller
         Container.Bind<InputsManager>().FromInstance(inputsManager).AsSingle();
         Container.Bind<BuildingsManager>().FromInstance(buildingsManager).AsSingle();
         Container.Bind<ObjectPoolingManager>().FromInstance(poolingManager).AsSingle();
-        
+        poolingManager.Init();
+
+
         Container.Bind<UIManager>().FromInstance(uiManager).AsSingle();
         Container.Bind<UIPopupsManager>().FromInstance(popupsManager).AsSingle();
         Container.Bind<UIPlayerCraftsManager>().FromInstance(uiPlayerCrafts).AsSingle();
@@ -54,8 +56,8 @@ public class GameplaySceneInstaller : MonoInstaller
 
         if (bootstrapOnStart)
         {
-            worldManager.GenerateWorld();
-            worldManager.GenerateObjects();
+            worldManager.GenerateNewWorld(Random.Range(0, 3000));
+            worldManager.GenerateNewObjects();
             playerManager.FirstSpawnPlayer();
         }
     }
